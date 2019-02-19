@@ -1,5 +1,6 @@
-# Bloom - A hub for building and growing sustainable businesses 
-CEN3031 Introduction to Software Engineering Group Project
+# Bloom
+## A hub for building and growing sustainable businesses 
+### A CEN3031: Introduction to Software Engineering, client project 
 
 Team Members:
 * Katherine Lee - UX
