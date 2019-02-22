@@ -1,0 +1,18 @@
+{
+  "name": "Bloom",
+  "version": "1.0.0",
+  "description": "A hub for building and growing sustainable businesses",
+  "main": "server.js",
+  "author": "CEN3031 Afternoon Project Team 4",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.9",
+    "morgan": "^1.6.1",
+    "request": "^2.67.0"
+  },
+  "devDependencies": {
+    "should": "^7.1.1",
+    "supertest": "^1.1.0"
+  }
+}
