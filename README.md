@@ -5,6 +5,7 @@ A hub for building and growing sustainable businesses. A CEN3031: Introduction t
 ### Clone the project on your local machine
 1. Navigate to a directory in your terminal
 2. Clone the repository: 'git clone <clone_link>'
+3. Install the project dependencies: 'npm install'
 ### Create your own working copy of the code (a new branch)
 1. Open a terminal in the repository directory
 2. Get the most current version of the code: 'git pull origin master'
