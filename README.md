@@ -36,5 +36,6 @@ A hub for building and growing sustainable businesses. A CEN3031: Introduction t
 
 ## Team Members
 Parth Patel : Project Manager
+Nicholas Ionata : Scrum Master
 Cale Fitzwater
 Jake Meisenheimer
