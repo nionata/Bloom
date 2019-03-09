@@ -1,5 +1,5 @@
 /* Dependencies */
-var name = require('../controllers/listings.server.controller.js'), //Replace with controller name
+var name = require('../controllers/name.server.controller.js'), //Replace with controller name
     express = require('express'),
     router = express.Router();
 

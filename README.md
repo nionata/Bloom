@@ -35,4 +35,7 @@ A hub for building and growing sustainable businesses. A CEN3031: Introduction t
 9. Wait for someone to review and approve your changes
 
 ## Team Members
-Jake Meisenheimer
+* Parth Patel : Project Manager
+* Nicholas Ionata : Scrum Master
+* Cale Fitzwater
+* Jake Meisenheimer
