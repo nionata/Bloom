@@ -1,7 +1,7 @@
 # Bloom
 A hub for building and growing sustainable businesses. A CEN3031: Introduction to Software Engineering, client project.
 
-[![Build Status](https://travis-ci.org/nionata/Bloom.svg?branch=master)](https://travis-ci.org/nionata/Bloom)  [![Heroku](https://heroku-badge.herokuapp.com/?app=bizbloom)]
+[![Build Status](https://travis-ci.org/nionata/Bloom.svg?branch=master)](https://travis-ci.org/nionata/Bloom) (http://heroku-badge.herokuapp.com/?app=bizbloom&style=flat&svg=1)
 
 ## How to Contribute to Bloom
 ### Clone the project on your local machine
