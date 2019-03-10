@@ -4,6 +4,14 @@ node_js:
  - “10"
 cache: 
   - node_modules
+env:
+ - CXX=g++-5
+addons:
+ apt:
+   sources:
+     - ubuntu-toolchain-r-test
+   packages:
+     - g++-5
 script:
   - "npm run test"
 deploy:
