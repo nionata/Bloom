@@ -2,15 +2,16 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/login.css">
   </head>
   <body ng-app="app">
-    <div class="container">
+    <div class="box">
+      <h1> Welcome To Bloom </h1>
       <div ng-controller="controller">
-          <form novalidate class="simple-form">
-            username: <input type="text" ng-model="user.username" /><br />
-            password: <input type="text" ng-model="user.password" /><br />
-            <button class="btn btn-primary" ng-click="login()">login</button>
+          <form novalidate class="simple-form" id=formText>
+            <input type="text" ng-model="user.username" placeholder="Username"><br />
+            <input type="password" ng-model="user.password" placeholder="Password"><br />
+            <button type="submit" ng-click="login()">Sign In</button>
           </form>
       </div>
     </div>
