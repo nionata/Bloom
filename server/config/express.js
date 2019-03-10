@@ -1,6 +1,6 @@
 var path = require('path'),
     express = require('express'),
-    name = require('../controllers/listings.server.controller.js'),
+    name = require('../controllers/auth.server.controller.js'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
