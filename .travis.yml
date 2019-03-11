@@ -9,6 +9,8 @@ addons:
      - ubuntu-toolchain-r-test
    packages:
      - g++-5
+before_install:
+  - npm install -g node-pre-gyp
 script:
   - "npm run test"
 deploy:
