@@ -9,10 +9,12 @@
         <h1> Welcome To Bloom </h1>
         <div ng-controller="controller">
             <form novalidate class="simple-form">
-              <input type="text" ng-model="user.username" placeholder="Username"><br />
-              <input type="password" ng-model="user.password" placeholder="Password"><br />
-              <input type="text" ng-model="user.email" placeholder="Email"><br />
-              <button type="submit" ng-click="create()">Create Account</button>
+              <input type="text" ng-model="user.username" placeholder="Username"><br>
+              <input type="password" ng-model="user.password" placeholder="Password"><br>
+              <input type="text" ng-model="user.email" placeholder="Email"><br>
+              <button type="submit" ng-click="create()">Create Account</button> <br>
+              Already a User? 
+              <a href="/login">Login</a>
             </form>
         </div>
       </div>
