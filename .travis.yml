@@ -1,12 +1,12 @@
 language: node_js
 cache:
-  - node_modules
+- node_modules
 script:
-  - "npm run test"
+- npm run test
 deploy:
   provider: heroku
   api_key:
-    secure: HEROKU_API_KEY
+    secure: a8BoaqqOUNli5mfAdvfRNvZTB+6JyP4yWC7EtfWiVxaHwLiXYVptbGePnbpU0xPDY5fHM/UXnHjRSJ1jpj4J6kpPIjYNZ/eaU69kYcrk4/H/0lEge1WdZPId8cqwMJw1cbkM8AXk4p1Zptah2xq88RWDAq8T3wLT+9SLay3QURYcaiNHMi89QV+jwMbk24iR3ZrBKj5LYd64ofDwRX+WFEcodfIyqrfHXP5THeIk7BjdRKThb9vhro+iImk2RvP3neSdKotsJAzNXkPsy4JMUiqze9ISTUKAXu4fCOLioSS4hcBc6vUnD4ZCz2lTvxR/fOIo/yLFblW0w9gxiA/8WX35oqL0j8fm6buBohCEbWLyM22r4K5kHcpt1cIDrkIvUWcNRvuzQQ0qP2YuLv/NIcd3OXckhB6caDCOukmcPK8UeBD+qaa5czFYYB9d/hcQpnfvbaW7HbFYJ35+y0ECD1hKgXPvkRkM+Gu5BGLQzQc1m3UKAXnh4QhesshSVddF2/diJcRQ/GxysC8j9B6zc0dFwoCnwp1ndi6okvXhRXtDXl5ewP7cNgdZhm14w/i6NYeBo3GwJtCOWzkJwA8B+2bph+kWImXgSRGoE3q4TUw64kjKkTCly382pnEf4JaZMjMKPl0GiK4IhndpfJBWZktkPlDeXuDGO8pVAvXXvqo=
   app: bizbloom
   on:
     repo: nionata/Bloom
