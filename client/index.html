@@ -2,24 +2,20 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/login.css">
   </head>
   <body ng-app="app">
-    <div class="container">
-<<<<<<< HEAD
-      <div ng-controller="controller">
-          <form novalidate class="simple-form">
-            username: <input type="text" ng-model="user.username" /><br />
-            password: <input type="text" ng-model="user.password" /><br />
-            email: <input type="text" ng-model="user.email" /><br />
-            <button class="btn btn-primary" ng-click="create()">Add Listing</button>
-          </form>
-=======
-      <div ng-controller="Controller">
-        <h1>Hello World</h1>
->>>>>>> master
+    <div class="box">
+        <h1> Welcome To Bloom </h1>
+        <div ng-controller="controller">
+            <form novalidate class="simple-form">
+              <input type="text" ng-model="user.username" placeholder="Username"><br />
+              <input type="password" ng-model="user.password" placeholder="Password"><br />
+              <input type="text" ng-model="user.email" placeholder="Email"><br />
+              <button type="submit" ng-click="create()">Sign Up</button>
+            </form>
+        </div>
       </div>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
