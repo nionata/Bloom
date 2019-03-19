@@ -28,7 +28,7 @@ describe('User API tests', function() {
       .end((err, res) => {
         should.not.exist(err);
         should.exist(res);
-        res.text.should.equal("success");
+        res.body.message.should.equal("User created successfully");
         done();
       })
   });
@@ -40,7 +40,7 @@ describe('User API tests', function() {
       .end((err, res) => {
         should.not.exist(err);
         should.exist(res);
-        res.text.should.equal("username already take");
+        res.body.message.should.equal("That username is taken");
         done();
       })
   });
@@ -52,7 +52,7 @@ describe('User API tests', function() {
       .end((err, res) => {
         should.not.exist(err);
         should.exist(res);
-        res.text.should.equal("success");
+        res.body.message.should.equal("User signed in successfully");
         done();
       });
   });
@@ -66,14 +66,14 @@ describe('User API tests', function() {
       .end((err, res) => {
         should.not.exist(err);
         should.exist(res);
-        res.text.should.equal("wrong username or password")
+        res.body.message.should.equal("That username does not exist");
         testUser.username = "test"
         done();
       });
   });
 
   it('should not login a user with the wrong password', function(done) {
-    testUser.username = "wrong"
+    testUser.password = "wrong"
 
     agent.post('/api/user/login')
       .send(testUser)
@@ -81,8 +81,20 @@ describe('User API tests', function() {
       .end((err, res) => {
         should.not.exist(err);
         should.exist(res);
-        res.text.should.equal("wrong username or password")
+        res.body.message.should.equal("Incorrect password");
         testUser.password = "password"
+        done();
+      });
+  });
+
+  it('should delete a user', function(done) {
+    agent.post('/api/user/delete')
+      .send(testUser)
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err);
+        should.exist(res);
+        res.body.message.should.equal("User deleted successfully");
         done();
       });
   });

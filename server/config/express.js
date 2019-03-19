@@ -12,7 +12,6 @@ var path = require('path'),
     adminRouter = require('../routes/admin.server.routes');
 
 module.exports.init = function() {
-
   //initialize app
   var app = express();
 
