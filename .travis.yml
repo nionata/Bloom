@@ -1,8 +1,10 @@
 language: node_js
 cache:
 - node_modules
+before_install:
+- npm install -g mocha
 script:
-- npm run test
+- npm test
 deploy:
   provider: heroku
   api_key:
