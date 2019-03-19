@@ -4,8 +4,7 @@ const bcrypt = require('bcryptjs');
 const uri = require('../config/config.js');
 express = require('../config/express.js');
 
-exports.create = async function(req, res,next) {
-
+exports.create = async function(req, res, next) {
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
@@ -13,19 +12,18 @@ exports.create = async function(req, res,next) {
     var result = await client.query('select exists(select 1 from users where username=$1)',[req.body.username]);
 
     // if it does not exist add the user
-    if(result.rows[0].exists==false){
-    bcrypt.hash(req.body.password, 10, async function(err, hash) {
-        res.locals.success = true;
-        await client.query('INSERT INTO users(username, password,admin,email) values($1, $2 ,$3,$4)',[req.body.username, hash,false,req.body.email]);
-        await client.end();
-        next();
-    });
-    // else pass false to the next function
+    if(result.rows[0].exists==false) {
+      bcrypt.hash(req.body.password, 10, async function(err, hash) {
+          res.locals.success = true;
+          await client.query('INSERT INTO users(username, password,admin,email) values($1, $2 ,$3,$4)',[req.body.username, hash,false,req.body.email]);
+          await client.end();
+          next();
+      });
     } else {
+        // else pass false to the next function
         res.locals.success = false;
         next();
     }
-
 };
 
 exports.login = async function(req, res, next) {

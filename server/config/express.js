@@ -5,9 +5,10 @@ var path = require('path'),
     config = require('./config'),
     session = require('express-session'),
     cookieParser = require('cookie-parser'),
-    userRouter = require('../routes/user.server.routes');
-    eventsRouter = require('../routes/events.server.routes');
-    announcementsRouter = require('../routes/announcements.server.routes');
+    pageRouter = require('../routes/page.server.routes'),
+    userRouter = require('../routes/user.server.routes'),
+    eventsRouter = require('../routes/events.server.routes'),
+    announcementsRouter = require('../routes/announcements.server.routes'),
     adminRouter = require('../routes/admin.server.routes');
 
 module.exports.init = function() {
@@ -35,14 +36,11 @@ module.exports.init = function() {
   //serves static files from the angular app
   app.use(express.static('client'));
 
-  //applies different routers for all api calls
-  app.use('/api/user', userRouter);
-  app.use('/api/events', eventsRouter);
-  app.use('/api/announcements', announcementsRouter);
-  app.use('/api/admin', adminRouter);
+  //applies api routers
+
 
   // middleware
-  app.use('/', (req, res, next) => {
+  app.use((req, res, next) => {
       // check if user's cookie is still saved in browser and user is not set, then automatically log the user out
       if (req.cookies.user_sid && !req.session.user) {
         res.clearCookie('user_sid');
@@ -50,28 +48,26 @@ module.exports.init = function() {
 
       // check if a user is logged-in, if not direct to login, if so redirect to dashboard, only if not the original route
       if (req.session.user && req.cookies.user_sid) {
-        req.originalUrl !== "/dashboard" && res.redirect('/dashboard')
+        if(req.originalUrl !== "/dashboard" && !req.originalUrl.includes("/api")) {
+          res.redirect('/dashboard')
+        }
       } else {
-        req.originalUrl !== "/login" && res.redirect('/login');
+        if(req.originalUrl !== "/login" && !req.originalUrl.includes("/api")) {
+          res.redirect('/login');
+        } else if(req.originalUrl.includes("/api") && !req.originalUrl.includes("/api/user")) {
+          res.send("Missing authentication")
+        }
       }
 
       next();
   });
 
-  //route to home page
-  app.get('/', function(req, res) {
-    res.sendFile('/client/index.html', { root: '.'});
-  });
-
-  //route to login page
-  app.get('/login', function(req, res) {
-    res.sendFile('/client/login.html', { root: '.'});
-  });
-
-  //check if login in and route to dash board
-  app.get('/dashboard', function (req, res) {
-    res.sendFile('/client/dashboard.html', { root: '.'});
-  });
+  //applies page router
+  app.use('/', pageRouter);
+  app.use('/api/user', userRouter);
+  app.use('/api/events', eventsRouter);
+  app.use('/api/announcements', announcementsRouter);
+  app.use('/api/admin', adminRouter);
 
   return app;
 };
