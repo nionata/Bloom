@@ -1,13 +1,15 @@
 var path = require('path'),
     express = require('express'),
-    name = require('../controllers/auth.server.controller.js'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
     session = require('express-session'),
     cookieParser = require('cookie-parser'),
-    routerName = require('../routes/name.server.routes');
-
+    pageRouter = require('../routes/page.server.routes'),
+    userRouter = require('../routes/user.server.routes'),
+    eventsRouter = require('../routes/events.server.routes'),
+    announcementsRouter = require('../routes/announcements.server.routes'),
+    adminRouter = require('../routes/admin.server.routes');
 
 module.exports.init = function() {
 
@@ -17,92 +19,55 @@ module.exports.init = function() {
   //enable request logging for development debugging
   app.use(morgan('dev'));
 
-    
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(bodyParser.json());
+  //add tools
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
+  app.use(cookieParser()); //allows access to browser cookers
+  app.use(session({ //initialize express-session to allow us track the logged-in user across sessions
+      key: 'user_sid',
+      secret: 'somerandonstuffs',
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+          expires: 600000
+      }
+  }));
 
-//serves static files from the angular app
+  //serves static files from the angular app
   app.use(express.static('client'));
 
-  //uses the listing router for all api calls
-  app.use('/api/name', routerName); //Replace name with name of router
-    
-        // initialize cookie-parser to allow us access the cookies stored in the browser. 
-    app.use(cookieParser());
+  //applies api routers
 
-    // initialize express-session to allow us track the logged-in user across sessions.
-    app.use(session({
-        key: 'user_sid',
-        secret: 'somerandonstuffs',
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            expires: 600000
-        }
-    }));
-    
-    // This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
-// This usually happens when you stop your express server after login, your cookie still remains saved in the browser.
-app.use((req, res, next) => {
-    if (req.cookies.user_sid && !req.session.user) {
-        res.clearCookie('user_sid');        
-    }
-    next();
-});
-    
-    // middleware function to check for logged-in users and if not route to login
-var sessionChecker = (req, res, next) => {
-   
-    if (req.session.user && req.cookies.user_sid) {
-        next();
-    }else {
-         res.redirect('/login');
-    }    
-};
-    
-    // calls lgin function and write response weather it was successful
-    app.post('/login',name.login,function(req,res){
-        if(res.locals.log== true)
-        {
-           req.session.user = req.body.username;
-           res.writeHead(200, {'Content-Type': 'text/plain'});
-           res.end('success');
-        }else
-        {
-           res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.end('wrong username or password');
-        }
-        
-    });
-    
-    // calss create user and write response weather it was successful
-    app.post('/reg',name.create,function(req,res){
-        if(res.locals.success == true)
-        {
-           res.writeHead(200, {'Content-Type': 'text/plain'});
-           res.end('success');
-        }else
-        {
-            res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.end('username already take');
-        }
-      
-    });
 
-  //route to home page
-  app.get('/', function(req, res) {
-    res.sendFile('/client/index.html', { root: '.'});
+  // middleware
+  app.use((req, res, next) => {
+      // check if user's cookie is still saved in browser and user is not set, then automatically log the user out
+      if (req.cookies.user_sid && !req.session.user) {
+        res.clearCookie('user_sid');
+      }
+
+      // check if a user is logged-in, if not direct to login, if so redirect to dashboard, only if not the original route
+      if (req.session.user && req.cookies.user_sid) {
+        if(req.originalUrl !== "/dashboard" && !req.originalUrl.includes("/api")) {
+          res.redirect('/dashboard')
+        }
+      } else {
+        if(req.originalUrl !== "/login" && !req.originalUrl.includes("/api")) {
+          res.redirect('/login');
+        } else if(req.originalUrl.includes("/api") && !req.originalUrl.includes("/api/user")) {
+          res.send("Missing authentication")
+        }
+      }
+
+      next();
   });
-    
-     //route to login page
-    app.get('/login', function(req, res) {
-    res.sendFile('/client/login.html', { root: '.'});
-  });
-        
-    //check if login in and route to dash board
-    app.get('/dashboard', sessionChecker, function (req, res) {
-        res.sendFile('/client/dashboard.html', { root: '.'});
-});
+
+  //applies page router
+  app.use('/', pageRouter);
+  app.use('/api/user', userRouter);
+  app.use('/api/events', eventsRouter);
+  app.use('/api/announcements', announcementsRouter);
+  app.use('/api/admin', adminRouter);
 
   return app;
 };
