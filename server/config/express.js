@@ -41,41 +41,37 @@ module.exports.init = function() {
   app.use('/api/announcements', announcementsRouter);
   app.use('/api/admin', adminRouter);
 
-  /*
-      middleware
-  */
-
-  // Check if user's cookie is still saved in browser and user is not set, then automatically log the user out
-  app.use((req, res, next) => {
+  // middleware
+  app.use('/', (req, res, next) => {
+      // check if user's cookie is still saved in browser and user is not set, then automatically log the user out
       if (req.cookies.user_sid && !req.session.user) {
-          res.clearCookie('user_sid');
+        res.clearCookie('user_sid');
       }
+
+      // check if a user is logged-in, if not direct to login, if so redirect to dashboard, only if not the original route
+      if (req.session.user && req.cookies.user_sid) {
+        req.originalUrl !== "/dashboard" && res.redirect('/dashboard')
+      } else {
+        req.originalUrl !== "/login" && res.redirect('/login');
+      }
+
       next();
   });
-
-  // check for logged-in users and if not route to login
-  var sessionChecker = (req, res, next) => {
-      if (req.session.user && req.cookies.user_sid) {
-          next();
-      } else {
-           res.redirect('/login');
-      }
-  };
 
   //route to home page
   app.get('/', function(req, res) {
     res.sendFile('/client/index.html', { root: '.'});
   });
 
-     //route to login page
-    app.get('/login', function(req, res) {
+  //route to login page
+  app.get('/login', function(req, res) {
     res.sendFile('/client/login.html', { root: '.'});
   });
 
-    //check if login in and route to dash board
-    app.get('/dashboard', sessionChecker, function (req, res) {
-        res.sendFile('/client/dashboard.html', { root: '.'});
-});
+  //check if login in and route to dash board
+  app.get('/dashboard', function (req, res) {
+    res.sendFile('/client/dashboard.html', { root: '.'});
+  });
 
   return app;
 };
