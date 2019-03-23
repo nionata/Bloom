@@ -35,9 +35,6 @@ module.exports.init = function() {
   //serves static files from the angular app
   app.use(express.static('client'));
 
-  //applies api routers
-
-
   // middleware
   app.use((req, res, next) => {
       // check if user's cookie is still saved in browser and user is not set, then automatically log the user out
