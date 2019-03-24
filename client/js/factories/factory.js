@@ -22,6 +22,11 @@ angular.module('moduleName', []).factory('factoryName', function($http, $window)
                 alert(data);
             }
   })
+    },
+       google: function() {
+	  return $http.get('/api/user/google').success(function(data, status, headers, config) {
+                 $window.location=(data);
+  })
     }
   };
 

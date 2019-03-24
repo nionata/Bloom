@@ -1,5 +1,7 @@
 /* Dependencies */
 var express = require('express'),
+    user = require('../controllers/user.server.controller.js'),
+    googleurl =require('../config/google-util'),
     router = express.Router();
 
 //These method calls are responsible for routing requests to the correct request handler.
@@ -15,5 +17,7 @@ router.route('/login').get((req, res) => {
 router.route('/dashboard').get((req, res) => {
   res.sendFile('/client/dashboard.html', { root: '.'});
 });
+
+
 
 module.exports = router;

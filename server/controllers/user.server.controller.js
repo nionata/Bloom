@@ -2,9 +2,13 @@
 const { Client } = require('pg');
 const bcrypt = require('bcryptjs');
 const uri = require('../config/config.js');
+googleurl =require('../config/google-util');
 express = require('../config/express.js');
 
+
 exports.create = async function(req, res, next) {
+    
+    
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
@@ -24,9 +28,37 @@ exports.create = async function(req, res, next) {
         res.locals.success = false;
         next();
     }
+    
+};
+
+
+exports.creategoogleuser = async function(req, res, next) {
+    var googleuser = await googleurl.getGoogleAccountFromCode(req.query.code);
+    var useremail = googleuser.email;
+    var username = googleuser.id;
+    
+    // conncects to postres server
+    const client = new Client({connectionString: uri.db.uri,ssl: true,});
+    await client.connect();
+    // check if username already exist
+    var result = await client.query('select exists(select 1 from users where email=$1)',[useremail]);
+
+    // if it does not exist add the user
+    if(result.rows[0].exists==false) {
+          req.session.user =username;
+          res.redirect('/dashboard');
+          await client.query('INSERT INTO users(username, password,admin,email) values($1, $2 ,$3,$4)',[username.substr(0,16), '',false,useremail]);
+          await client.end();
+          next();
+    } else {
+          req.session.user = username;
+          next();
+    }
+    
 };
 
 exports.login = async function(req, res, next) {
+   
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();

@@ -9,10 +9,11 @@ var path = require('path'),
     userRouter = require('../routes/user.server.routes'),
     eventsRouter = require('../routes/events.server.routes'),
     announcementsRouter = require('../routes/announcements.server.routes'),
+    googleurl =require('./google-util'),
     adminRouter = require('../routes/admin.server.routes');
+    
 
 module.exports.init = function() {
-
   //initialize app
   var app = express();
 
@@ -48,16 +49,20 @@ module.exports.init = function() {
 
       // check if a user is logged-in, if not direct to login, if so redirect to dashboard, only if not the original route
       if (req.session.user && req.cookies.user_sid) {
+          console.log(req.session.user);
         if(req.originalUrl !== "/dashboard" && !req.originalUrl.includes("/api")) {
           res.redirect('/dashboard')
         }
-      } else {
+      }
+      else {
         if(req.originalUrl !== "/login" && !req.originalUrl.includes("/api")) {
           res.redirect('/login');
         } else if(req.originalUrl.includes("/api") && !req.originalUrl.includes("/api/user")) {
           res.send("Missing authentication")
         }
       }
+      
+
 
       next();
   });

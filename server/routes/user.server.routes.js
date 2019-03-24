@@ -1,5 +1,6 @@
 /* Dependencies */
 var user = require('../controllers/user.server.controller.js'),
+    googleurl =require('../config/google-util'),
     express = require('express'),
     router = express.Router();
 
@@ -24,6 +25,17 @@ router.route('/register').post(user.create,function(req, res){
       res.end('username already take');
     }
 });
+
+router.route('/google').get(function(req, res){
+     res.writeHead(200, {'Content-Type': 'text/plain'});
+     res.end(googleurl.urlGoogle());
+});
+
+
+router.route('/google-auth').get(user.creategoogleuser,(req, res) => {
+     res.redirect('/dashboard');
+});
+
 
 //The ':' specifies a URL parameter.
 router.route('/:Id')
