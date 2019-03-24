@@ -19,10 +19,10 @@ router.route('/login').post(user.login, function(req, res) {
 router.route('/register').post(user.create,function(req, res){
     if(res.locals.success == true){
       res.writeHead(200, {'Content-Type': 'text/plain'});
-      res.end('success');
+      res.end(res.locals.reply);
     } else{
       res.writeHead(200, {'Content-Type': 'text/plain'});
-      res.end('username already take');
+      res.end(res.locals.reply);
     }
 });
 
