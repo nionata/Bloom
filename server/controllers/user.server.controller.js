@@ -33,7 +33,7 @@ exports.create = async function(req, res, next) {
 
 
 exports.creategoogleuser = async function(req, res, next) {
-    var googleuser = await googleurl.getGoogleAccountFromCode(req.query.code);
+    var googleuser = await googleurl.GetGoogleUser(req.query.code);
     var useremail = googleuser.email;
     var username = googleuser.id;
     

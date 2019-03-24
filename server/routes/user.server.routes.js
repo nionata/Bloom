@@ -28,7 +28,7 @@ router.route('/register').post(user.create,function(req, res){
 
 router.route('/google').get(function(req, res){
      res.writeHead(200, {'Content-Type': 'text/plain'});
-     res.end(googleurl.urlGoogle());
+     res.end(googleurl.CreateGoogleURL());
 });
 
 
