@@ -54,7 +54,7 @@ module.exports.init = function() {
 
   //applies page router
   app.use('/', pageRouter);
-  app.use('/api/user', userRouter);
+  app.use('/api/users', userRouter);
   app.use('/api/events', eventsRouter);
   app.use('/api/announcements', announcementsRouter);
   app.use('/api/admin', adminRouter);
