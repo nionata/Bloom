@@ -1,4 +1,4 @@
-angular.module('moduleName', []).factory('factoryName', function($http, $window) {
+angular.module('userDataModule', []).factory('userDataFactory', function($http, $window) {
   var methods = {
     create: function(user) {
       return $http.post('/api/users/register', user).success(function(data, status, headers, config) {

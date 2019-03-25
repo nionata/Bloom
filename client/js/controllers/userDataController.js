@@ -1,5 +1,5 @@
 //Replace moduleName //Replace controller //Import factoryName
-angular.module('moduleName').controller('controller', ['$scope','factoryName','$window',
+angular.module('userDataModule').controller('userDataController', ['$scope','userDataFactory','$window',
   function($scope,factoryName) {
       
   $scope.create = function() {

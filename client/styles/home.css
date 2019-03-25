@@ -32,6 +32,11 @@ ul{
     font-size: 18px;
 }
 
+button:hover {
+    background-color: #fab042;
+    color: rgb(236, 236, 236);
+}
+
 .button_1 {
     height: 38px;
     background: #ffbe5e;
@@ -89,12 +94,10 @@ header .highlight{
 
 header .current a{
     color: #ffbe5e;
-    font-weight: bold;
 }
 
 header a:hover{
     color: #ffbe5e;
-    font-weight: bold;
     text-decoration: none;
 }
 
