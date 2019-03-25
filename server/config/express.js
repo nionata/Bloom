@@ -11,7 +11,7 @@ var path = require('path'),
     announcementsRouter = require('../routes/announcements.server.routes'),
     googleurl =require('./google-util'),
     adminRouter = require('../routes/admin.server.routes');
-    
+
 
 module.exports.init = function() {
   //initialize app
@@ -37,9 +37,6 @@ module.exports.init = function() {
   //serves static files from the angular app
   app.use(express.static('client'));
 
-  //applies api routers
-
-
   // middleware
   app.use((req, res, next) => {
       // check if user's cookie is still saved in browser and user is not set, then automatically log the user out
@@ -47,29 +44,19 @@ module.exports.init = function() {
         res.clearCookie('user_sid');
       }
 
-      // check if a user is logged-in, if not direct to login, if so redirect to dashboard, only if not the original route
-      if (req.session.user && req.cookies.user_sid) {
-          console.log(req.session.user);
-        if(req.originalUrl !== "/dashboard" && !req.originalUrl.includes("/api")) {
-          res.redirect('/dashboard')
-        }
-      }
-      else {
-        if(req.originalUrl !== "/login" && !req.originalUrl.includes("/api")) {
-          res.redirect('/login');
-        } else if(req.originalUrl.includes("/api") && !req.originalUrl.includes("/api/user")) {
+      // check if a user is logged-in, if not, make sure they can't access the api
+      if (!req.session.user || !req.cookies.user_sid) {
+        if(req.originalUrl.includes("/api") && !req.originalUrl.includes("/api/user")) {
           res.send("Missing authentication")
         }
       }
-      
-
 
       next();
   });
 
   //applies page router
   app.use('/', pageRouter);
-  app.use('/api/user', userRouter);
+  app.use('/api/users', userRouter);
   app.use('/api/events', eventsRouter);
   app.use('/api/announcements', announcementsRouter);
   app.use('/api/admin', adminRouter);

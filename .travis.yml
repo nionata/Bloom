@@ -1,8 +1,10 @@
 language: node_js
+node_js:
+- node
 cache:
 - node_modules
 script:
-- npm run test
+- npm test
 deploy:
   provider: heroku
   api_key:
