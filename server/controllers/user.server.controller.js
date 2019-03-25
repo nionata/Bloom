@@ -70,12 +70,13 @@ exports.create = async function(req, res, next) {
         }
       }
     });
+};
 
 exports.creategoogleuser = async function(req, res, next) {
     var googleuser = await googleurl.GetGoogleUser(req.query.code);
     var useremail = googleuser.email;
     var username = googleuser.id;
-    
+
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
@@ -101,7 +102,6 @@ exports.creategoogleuser = async function(req, res, next) {
 };
 
 exports.login = async function(req, res, next) {
-   
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();

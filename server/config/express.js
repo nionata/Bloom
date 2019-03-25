@@ -11,7 +11,7 @@ var path = require('path'),
     announcementsRouter = require('../routes/announcements.server.routes'),
     googleurl =require('./google-util'),
     adminRouter = require('../routes/admin.server.routes');
-    
+
 
 module.exports.init = function() {
   //initialize app
@@ -52,7 +52,7 @@ module.exports.init = function() {
       } else {
         console.log(req.session.user);
       }
-      
+
       next();
   });
 

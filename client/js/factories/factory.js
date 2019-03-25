@@ -3,7 +3,7 @@ angular.module('moduleName', []).factory('factoryName', function($http, $window)
     create: function(user) {
       return $http.post('/api/users/register', user).success(function(data, status, headers, config) {
           // if the response is data is success then redirect to the login otherwise send a message
-          if(data === "User created successfully") {
+          if(data instanceof Object) {
             $window.location=('login');
           } else {
             alert(data);
