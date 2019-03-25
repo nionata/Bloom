@@ -42,15 +42,9 @@ module.exports.init = function() {
         res.clearCookie('user_sid');
       }
 
-      // check if a user is logged-in, if not direct to login, if so redirect to dashboard, only if not the original route
-      if (req.session.user && req.cookies.user_sid) {
-        if(req.originalUrl !== "/dashboard" && !req.originalUrl.includes("/api")) {
-          res.redirect('/dashboard')
-        }
-      } else {
-        if(req.originalUrl !== "/login" && !req.originalUrl.includes("/api")) {
-          res.redirect('/login');
-        } else if(req.originalUrl.includes("/api") && !req.originalUrl.includes("/api/user")) {
+      // check if a user is logged-in, if not, make sure they can't access the api
+      if (!req.session.user || !req.cookies.user_sid) {
+        if(req.originalUrl.includes("/api") && !req.originalUrl.includes("/api/user")) {
           res.send("Missing authentication")
         }
       }
