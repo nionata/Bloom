@@ -1,29 +1,83 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/login.css">
-  </head>
-  <body ng-app="app">
-    <div class="box">
-        <h1> Welcome To Bloom </h1>
-        <div ng-controller="controller">
-            <form novalidate class="simple-form">
-              <input type="text" ng-model="user.username" placeholder="Username"><br>
-              <input type="password" ng-model="user.password" placeholder="Password"><br>
-              <input type="text" ng-model="user.email" placeholder="Email"><br>
-              <button type="submit" ng-click="create()">Create Account</button> <br>
-              Already a User? 
-              <a href="/login">Login</a>
-            </form>
-        </div>
-      </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/factories/factory.js"></script>
-    <script src="js/controllers/controller.js"></script>
-      
-  </body>
+<head>
+	<meta charset="utf-8">
+	<title>Bloom</title>
+	<link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+	<header>
+	<div class="container">
+		<div id="branding">
+      <img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+		</div>
+		<nav>
+			<ul>
+        <li class="current"><a href="/">Home</a></li>
+        <li><a href="/videos">Videos</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/rsrc">Resources</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/login"><button class="buttonhdr">Login</button></a></li>
+        <li><a href="/register"><button class="buttonhdr">Register</button></a></li>
+			</ul>
+		</nav>
+	</div>
+	</header>
+	
+	<section id="showcase">
+		<div class ="container">
+			<h1> Entrepreneurship Empowerment </h1>
+			<p>Empowering individuals through a resource-intensive, educational experience. Entrepreneurship Empowerment exists to help people create their own jobs.</p>
+		</div>
+	</section>
+	<section id = "newsletter">
+		<div class="container">
+			<h1>Subscribe to our newletter</h1>
+			<form>
+			<input type="email" placeholder="Enter Email…">
+			<button type="submit" class="button_1">Subscribe</button>
+			</form>
+		</div>
+	</section>
+	
+	<section id = boxes>
+	<div class="boxes">
+		<div class="box-a">
+			<img src="./img/s.png">
+			<h3>Supportive Architecture</h3>
+			<p> Key infrastructure elements include education/training mechanisms, availability of finance, incubators/accelerators, a supportive business community, vehicles for social networking/connecting, support organizations, service providers, entrepreneurial role models, and entrepreneurial mentors, among others.</p>
+		</div>
+		<div class="box-b">
+			<img src="./img/p.png">
+			<h3>Entrepreneur Preparation</h3>
+			<p>It is critical to prepare individuals in low-income conditions to become entrepreneurs, providing them with the knowledge, tactics and tools to think and act more entrepreneurially</p>
+		</div>
+		<div class="box-c">
+			<img src="./img/o.png">
+			<h3>Opportunity Horizon</h3>
+			<p>Here the priority is to continually extend this horizon, enabling the low income individual to recognize more attractive and higher potential possibilities both as the basis for launching the venture, but also to enable ongoing growth and expansion of the business.</p>
+    </div>
+    <div class="box-d">
+			<img src="./img/d.png">
+			<h3>Sustainable Differentiation</h3>
+			<p>The key is strategic thinking, as opposed to reactive or tactical management, as sources of differentiation exist for virtually any business.</p>
+    </div>
+    <div class="box-e">
+			<img src="./img/e.png">
+			<h3>Economic Model</h3>
+			<p>Rather, the entrepreneur must find innovative ways to capture revenue, price on a value basis, achieve cost economies while keeping overhead low, and reach higher potential market segments.</p>
+    </div>
+    <div class="box-f">
+			<img src="./img/r.png">
+			<h3>Resources</h3>
+			<p>he key concept here is resource leveraging, which means finding creative ways to borrow, share, rent, outsource, barter, partner and otherwise tap into resources not owned by the entrepreneur, including community resources.</p>
+		</div>
+		
+	</div>
+	</section>
+	
+	<footer>
+		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
+	</footer>
+</body>
 </html>
