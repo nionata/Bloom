@@ -9,6 +9,10 @@ angular.module('moduleName').controller('controller', ['$scope','factoryName','$
    $scope.login = function() {
 	  factoryName.login($scope.user);
 }
+   
+    $scope.google = function() {
+	  factoryName.google();
+}
 }
       
       

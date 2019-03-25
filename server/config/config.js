@@ -3,7 +3,19 @@
 
 module.exports = {
   db: {
-    uri:  "postgres://cpynvkvwppcstx:dccee649b249bd7063c255668e006761bc0d3641d2c74831d100de81bfebf6eb@ec2-54-83-55-115.compute-1.amazonaws.com:5432/d6jcl9ghh8sqnu", //place the URI of your database here.
+    uri:  "postgres://iwjewfjobkazdj:ebb30356e4f44872b394e806ec18b67a392dee8fcd8788c25ffa628ebe0a90aa@ec2-174-129-10-235.compute-1.amazonaws.com:5432/d5vh26dfqt2dp8", //place the URI of your database here.
   },
   port: 8080
 };
+
+exports.getdatabaseuri = function()
+{
+    if(process.env.DATABASE_URL == null)
+    {
+        return uri;
+    }else
+    {
+        return process.env.DATABASE_URL;
+    }
+}
+
