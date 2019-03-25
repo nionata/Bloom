@@ -49,8 +49,6 @@ module.exports.init = function() {
         if(req.originalUrl.includes("/api") && !req.originalUrl.includes("/api/user")) {
           res.send("Missing authentication")
         }
-      } else {
-        console.log(req.session.user);
       }
 
       next();

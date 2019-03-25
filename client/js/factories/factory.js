@@ -21,7 +21,7 @@ angular.module('moduleName', []).factory('factoryName', function($http, $window)
       })
     },
     google: function() {
-      return $http.get('/api/users/google').success(function(data, status, headers, config) {
+      return $http.get('/api/users/auth/google').success(function(data, status, headers, config) {
         $window.location=(data);
       })
     }
