@@ -9,7 +9,9 @@ var path = require('path'),
     userRouter = require('../routes/user.server.routes'),
     eventsRouter = require('../routes/events.server.routes'),
     announcementsRouter = require('../routes/announcements.server.routes'),
+    googleurl =require('./google-util'),
     adminRouter = require('../routes/admin.server.routes');
+    
 
 module.exports.init = function() {
   //initialize app
@@ -47,8 +49,10 @@ module.exports.init = function() {
         if(req.originalUrl.includes("/api") && !req.originalUrl.includes("/api/user")) {
           res.send("Missing authentication")
         }
+      } else {
+        console.log(req.session.user);
       }
-
+      
       next();
   });
 
