@@ -6,7 +6,7 @@ var express = require('express'),
 
 //These method calls are responsible for routing requests to the correct request handler.
 router.route('/').get((req, res) => {
-  res.sendFile('/client/index.html', { root: '.'});
+  res.sendFile('/client/home.html', { root: '.'});
 });
 
 router.route('/login').get((req, res) => {
@@ -17,6 +17,24 @@ router.route('/register').get((req, res) => {
   res.sendFile('/client/register.html', { root: '.'});
 });
 
+router.route('/404').get((req, res) => {
+  res.sendFile('/client/notfound.html', { root: '.'});
+});
 
+router.route('/bio').get((req, res) => {
+  res.sendFile('/client/bio.html', { root: '.'});
+});
+
+router.route('/about').get((req, res) => {
+  res.sendFile('/client/about.html', { root: '.'});
+});
+
+router.route('/resources').get((req, res) => {
+  res.sendFile('/client/resources.html', { root: '.'});
+});
+
+router.route('/events').get((req, res) => {
+  res.sendFile('/client/events.html', { root: '.'});
+});
 
 module.exports = router;
