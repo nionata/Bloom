@@ -44,11 +44,22 @@ module.exports.init = function() {
         res.clearCookie('user_sid');
       }
 
+      //Any api endpoint not in this list will not be accessable unless you are authenticated
+      var whiteListedEndpoints = [
+        "/api/users/login",
+        "/api/users/register",
+        "/api/auth/google",
+        "/api/auth/google-auth",
+        "/api/users/user"
+      ];
+
       // check if a user is logged-in, if not, make sure they can't access the api
       if (!req.session.user || !req.cookies.user_sid) {
-        if(req.originalUrl.includes("/api") && !req.originalUrl.includes("/api/user")) {
-          res.send("Missing authentication")
+        if(req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl)) {
+          res.send("Missing authentication");
         }
+
+        //Add redirecting to bio if they are logged in and bio is empty
       }
 
       next();
