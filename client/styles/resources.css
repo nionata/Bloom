@@ -120,7 +120,7 @@ header a:hover{
 /*boxes*/
 .boxes{
     display: grid;
-    margin-left: 100px;
+    margin-left: 150px;
     grid-template-columns:25% 25% 25%;
     grid-template-rows: auto auto; 
     grid-column-gap: 50px;
@@ -135,7 +135,7 @@ header a:hover{
 #boxes .box-a{
     grid-area: a;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     background: #6aa3ff;
@@ -145,7 +145,7 @@ header a:hover{
 #boxes .box-a:hover {
     grid-area: a;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     border-radius: 10px;
@@ -155,7 +155,7 @@ header a:hover{
 #boxes .box-b {
     grid-area: b;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     background: #6aa3ff;
@@ -165,7 +165,7 @@ header a:hover{
 #boxes .box-b:hover {
     grid-area: b;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     border-radius: 10px;
@@ -175,7 +175,7 @@ header a:hover{
 #boxes .box-c {
     grid-area: c;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     background: #6aa3ff;
@@ -185,7 +185,7 @@ header a:hover{
 #boxes .box-c:hover {
     grid-area: c;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     border-radius: 10px;
@@ -195,7 +195,7 @@ header a:hover{
 #boxes .box-d {
     grid-area: d;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     background: #6aa3ff;
@@ -205,7 +205,7 @@ header a:hover{
 #boxes .box-d:hover {
     grid-area: d;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     border-radius: 10px;
@@ -215,7 +215,7 @@ header a:hover{
 #boxes .box-e {
     grid-area: e;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     background: #6aa3ff;
@@ -225,7 +225,7 @@ header a:hover{
 #boxes .box-e:hover {
     grid-area: e;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     border-radius: 10px;
@@ -235,7 +235,7 @@ header a:hover{
 #boxes .box-f {
     grid-area: f;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     background: #6aa3ff;
@@ -245,7 +245,7 @@ header a:hover{
 #boxes .box-f:hover {
     grid-area: f;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     border-radius: 10px;
@@ -255,7 +255,7 @@ header a:hover{
 #boxes .box-g {
     grid-area: g;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     background: #6aa3ff;
@@ -265,7 +265,7 @@ header a:hover{
 #boxes .box-g:hover {
     grid-area: g;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     border-radius: 10px;
@@ -275,7 +275,7 @@ header a:hover{
 #boxes .box-h {
     grid-area: h;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     background: #6aa3ff;
@@ -285,7 +285,7 @@ header a:hover{
 #boxes .box-h:hover {
     grid-area: h;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     border-radius: 10px;
@@ -295,7 +295,7 @@ header a:hover{
 #boxes .box-i {
     grid-area: i;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     background: #6aa3ff;
@@ -305,7 +305,7 @@ header a:hover{
 #boxes .box-i:hover {
     grid-area: i;
 
-    width: 300px;
+    width: 270px;
     padding-top: 20px;
     height: 270px; 
     border-radius: 10px;
