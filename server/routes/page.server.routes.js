@@ -37,4 +37,8 @@ router.route('/events').get((req, res) => {
   res.sendFile('/client/events.html', { root: '.'});
 });
 
+router.route('/profile').get((req, res) => {
+  res.sendFile('/client/profile.html', { root: '.'});
+});
+
 module.exports = router;
