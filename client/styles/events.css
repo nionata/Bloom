@@ -1,0 +1,133 @@
+body {
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding:0;
+    margin:0;
+    background-color: #eaf1ff
+}
+
+/* Global */
+.container{
+    margin:auto;
+    overflow:hidden;
+    color: #ffffff;
+}
+ul{
+    margin: 0;
+    padding: 0;
+
+}
+.buttonhdr {
+    background: #ffbe5e;
+    border: 0;
+    color: white;
+    height: 38px;
+    width: 120px;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: -6px;
+    margin-right: 30px;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #fab042;
+    color: rgb(236, 236, 236);
+}
+
+.button_1 {
+    height: 38px;
+    background: #ffbe5e;
+    border: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+
+
+header{
+    background: #4286f4;
+    color: #ffffff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: #ffbe5e 4px solid;
+}
+
+header a{
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+header li{
+
+    display:inline;
+    padding: 5px 20px 0 20px;
+}
+
+header #branding{
+    margin-top:5px;
+    margin-left:40px;
+    float: left;
+
+}
+header #branding h1{
+    margin:0;
+    display:inline;
+}
+
+header #branding img{
+    float: left;
+    margin-top: 5px;
+    margin-right: 20px;
+    margin-left: -20px;
+}
+
+header nav{
+    margin-top: 12px;
+    text-align: center;
+}
+
+header .highlight{
+    font-weight: bold;
+}
+
+header .current a{
+    color: #ffbe5e;
+}
+
+header a:hover{
+    color: #ffbe5e;
+    text-decoration: none;
+}
+
+#username {
+    margin-right: 50px;
+    margin-top: -20px;
+    float: right;
+}
+
+.box1 {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    width: 1000px;
+    height: 800px;
+    font-size:15px;
+    font-family:Tahoma; 
+    padding-left:15px; 
+    border:1px solid black; 
+    overflow:hidden;
+}
+
+
+footer{
+    padding: 20px;
+    margin-top: 20px;
+    color: white;
+    background-color: #ffbe5e;
+    text-align: center;
+}
