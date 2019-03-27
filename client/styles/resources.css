@@ -123,8 +123,8 @@ header a:hover{
     margin-left: 100px;
     grid-template-columns:25% 25% 25%;
     grid-template-rows: auto auto; 
-    grid-column-gap: 40px;
-    grid-row-gap: 60px;
+    grid-column-gap: 50px;
+    grid-row-gap: 80px;
     justify-content: center;
     grid-template-areas: 
     "a b c"
@@ -319,7 +319,7 @@ header a:hover{
 
 footer{
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 80px;
     color: white;
     background-color: #ffbe5e;
     text-align: center;
