@@ -1,10 +1,14 @@
 angular.module('userDataModule').controller('userDataController', ['$scope','userDataFactory','$window',
   function($scope, userDataFactory) { 
     
-    $scope.getBio = function(){
-      userDataFactory.getBio();
-    }
+    $scope.bio = userDataFactory.getBio().then(function(response){
+      $scope.bio = response.data;
+    });
     
+    $scope.test = function() {
+      console.log($scope.bio.username);
+    }
+
     $scope.create = function() {
       userDataFactory.create($scope.user);
     }

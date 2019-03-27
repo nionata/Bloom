@@ -2,9 +2,9 @@ angular.module('userDataModule', []).factory('userDataFactory', function($http, 
   var methods = {
 
     getBio: function(){
-      return $http.get('/api/users/bio');
+      return $http.get('/api/users/user');
     },
-    
+
     create: function(user) {
       return $http.post('/api/users/register', user).success(function(data, status, headers, config) {
           // if the response is data is success then redirect to the login otherwise send a message

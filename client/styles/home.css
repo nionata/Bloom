@@ -70,7 +70,8 @@ header li{
 
 header #branding{
     margin-top:5px;
-    float: left;
+    position: absolute;
+    left: 45px;
 }
 header #branding h1{
     margin:0;
@@ -80,12 +81,14 @@ header #branding h1{
 header #branding img{
     float: left;
     margin-top: 5px;
-    margin-right: 5px;
+    margin-right: 20px;
+    margin-left: -20px;
 }
 
 header nav{
     margin-top: 10px;
-    float:right;
+    position: absolute;
+    left: 1250px;
 }
 
 header .highlight{
