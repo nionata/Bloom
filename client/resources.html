@@ -1,4 +1,98 @@
-RESOURCES PAGE
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/factories/userDataFactory.js"></script>
+<script src="js/controllers/userDataController.js"></script>
 
-<br><br>
-<a href="/">BACK TO HOME</a>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bloom</title>
+	<link rel="stylesheet" href="./styles/resources.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body ng-app="app" ng-controller="userDataController">
+	<header>
+	<div class="container">
+		<div id="branding">
+      		<img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+		</div>
+		<nav>
+			<ul>
+				<li class="current"><a href="/">Home</a></li>
+				<li><a href="/events">Events</a></li>
+				<li><a href="/resources">Resources</a></li>
+				<li><a href="/about">About Us</a></li>
+				<li ng-if="bio == 'No current user'">
+					<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
+				</li>		
+				<div id="username" ng-if="bio != 'No current user'">
+					<h2>
+						{{bio.username}}
+						<a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
+					</h2>
+				</div>	
+				
+			</ul>
+		</nav>
+	</div>
+	</header>
+	
+	<section id = boxes>
+	<div class="boxes">
+		<div class="box-a">
+			<img src="./img/s.png">
+			<h3>Resource 1</h3>
+			<p> Summary of Resource 1 </p>
+		</div>
+		<div class="box-b">
+			<img src="./img/p.png">
+			<h3>Resource 2</h3>
+			<p>Summary of Resource 2 </p>
+		</div>
+		<div class="box-c">
+			<img src="./img/o.png">
+			<h3>Resource 3</h3>
+			<p>Summary of Resource 3 </p>
+        </div>
+
+        <div class="box-d">
+            <img src="./img/d.png">
+            <h3>Resource 4</h3>
+            <p>Summary of Resource 4</p>
+        </div>
+        <div class="box-e">
+            <img src="./img/e.png">
+            <h3>Resource 5</h3>
+            <p> Summary of Resource 5 </p>
+        </div>
+        <div class="box-f">
+            <img src="./img/r.png">
+            <h3>Resource 6</h3>
+            <p>Summary of Resource 6 </p>
+        </div>	
+
+        <div class="box-g">
+            <img src="./img/d.png">
+            <h3>Resource 7</h3>
+            <p>Summary of Resource 7</p>
+        </div>
+        <div class="box-h">
+            <img src="./img/e.png">
+            <h3>Resource 7</h3>
+            <p> Summary of Resource 7 </p>
+        </div>
+        <div class="box-i">
+            <img src="./img/r.png">
+            <h3>Resource 7</h3>
+            <p>Summary of Resource 7 </p>
+        </div>	
+	</div>
+	</section>
+	
+	<footer>
+		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
+	</footer>
+</body>
+</html>
