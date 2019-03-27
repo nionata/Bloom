@@ -4,21 +4,21 @@
 	<title>Bloom</title>
 	<link rel="stylesheet" href="./styles/home.css">
 </head>
-<body>
+<body ng-app="app">
 	<header>
-	<div class="container">
+	<div class="container" ng-controller="userDataController">
 		<div id="branding">
-      <img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+      		<img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
 		</div>
 		<nav>
 			<ul>
-        <li class="current"><a href="/">Home</a></li>
-        <li><a href="/videos">Videos</a></li>
-        <li><a href="/events">Events</a></li>
-        <li><a href="/rsrc">Resources</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/login"><button class="buttonhdr">Login</button></a></li>
-        <li><a href="/register"><button class="buttonhdr">Register</button></a></li>
+				<li class="current"><a href="/">Home</a></li>
+				<li><a href="/videos">Videos</a></li>
+				<li><a href="/events">Events</a></li>
+				<li><a href="/rsrc">Resources</a></li>
+				<li><a href="/about">About Us</a></li>
+				<li><a href="/login"><button class="buttonhdr">Login</button></a></li>
+				<li><a href="/register"><button class="buttonhdr">Register</button></a></li>
 			</ul>
 		</nav>
 	</div>

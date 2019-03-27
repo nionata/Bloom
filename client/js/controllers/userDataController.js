@@ -1,6 +1,9 @@
 angular.module('userDataModule').controller('userDataController', ['$scope','userDataFactory','$window',
   function($scope, userDataFactory) { 
     
+    $scope.getBio = function(){
+      userDataFactory.getBio();
+    }
     
     $scope.create = function() {
       userDataFactory.create($scope.user);
