@@ -1,19 +1,17 @@
-//Replace moduleName //Replace controller //Import factoryName
 angular.module('userDataModule').controller('userDataController', ['$scope','userDataFactory','$window',
-  function($scope,factoryName) {
+  function($scope, userDataFactory) { 
+    
+    
+    $scope.create = function() {
+      userDataFactory.create($scope.user);
+    }
+
+    $scope.login = function() {
+      userDataFactory.login($scope.user);
+    }
       
-  $scope.create = function() {
-	  factoryName.create($scope.user);
-}
-  
-   $scope.login = function() {
-	  factoryName.login($scope.user);
-}
-   
     $scope.google = function() {
-	  factoryName.google();
-}
-}
-      
-      
+        userDataFactory.google();
+    }
+  }     
 ]);
