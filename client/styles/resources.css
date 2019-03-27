@@ -121,7 +121,7 @@ header a:hover{
     grid-template-columns:25% 25% 25%;
     grid-template-rows: auto auto; 
     grid-column-gap: 40px;
-    grid-row-gap: 40px;
+    grid-row-gap: 60px;
     justify-content: center;
     grid-template-areas: 
     "a b c"
@@ -129,33 +129,184 @@ header a:hover{
     "g h i";
 }
 
-#boxes .box-a {
+#boxes .box-a{
     grid-area: a;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    background: #6aa3ff;
+    border-radius: 10px;
 }
+
+#boxes .box-a:hover {
+    grid-area: a;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    border-radius: 10px;
+    background: #5694f8;
+}
+
 #boxes .box-b {
     grid-area: b;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    background: #6aa3ff;
+    border-radius: 10px;
 }
+
+#boxes .box-b:hover {
+    grid-area: b;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    border-radius: 10px;
+    background: #5694f8;
+}
+
 #boxes .box-c {
     grid-area: c;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    background: #6aa3ff;
+    border-radius: 10px;
 }
+
+#boxes .box-c:hover {
+    grid-area: c;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    border-radius: 10px;
+    background: #5694f8;
+}
+
 #boxes .box-d {
     grid-area: d;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    background: #6aa3ff;
+    border-radius: 10px;
 }
+
+#boxes .box-d:hover {
+    grid-area: d;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    border-radius: 10px;
+    background: #5694f8;
+}
+
 #boxes .box-e {
     grid-area: e;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    background: #6aa3ff;
+    border-radius: 10px;
 }
+
+#boxes .box-e:hover {
+    grid-area: e;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    border-radius: 10px;
+    background: #5694f8;
+}
+
 #boxes .box-f {
     grid-area: f;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    background: #6aa3ff;
+    border-radius: 10px;
+}
+
+#boxes .box-f:hover {
+    grid-area: f;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    border-radius: 10px;
+    background: #5694f8;
 }
 
 #boxes .box-g {
     grid-area: g;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    background: #6aa3ff;
+    border-radius: 10px;
 }
+
+#boxes .box-g:hover {
+    grid-area: g;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    border-radius: 10px;
+    background: #5694f8;
+}
+
 #boxes .box-h {
     grid-area: h;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    background: #6aa3ff;
+    border-radius: 10px;
 }
+
+#boxes .box-h:hover {
+    grid-area: h;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    border-radius: 10px;
+    background: #5694f8;
+}
+
 #boxes .box-i {
     grid-area: i;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    background: #6aa3ff;
+    border-radius: 10px;
+}
+
+#boxes .box-i:hover {
+    grid-area: i;
+
+    width: 300px;
+    padding-top: 20px;
+    height: 270px; 
+    border-radius: 10px;
+    background: #5694f8;
 }
 
 #boxes img{
