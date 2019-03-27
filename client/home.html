@@ -3,6 +3,7 @@
 	<meta charset="utf-8">
 	<title>Bloom</title>
 	<link rel="stylesheet" href="./styles/home.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body ng-app="app" ng-controller="userDataController">
 	<header>
@@ -16,8 +17,15 @@
 				<li><a href="/events">Events</a></li>
 				<li><a href="/resources">Resources</a></li>
 				<li><a href="/about">About Us</a></li>
-				<li ng-if="bio == 'No current user'"><a href="/login"><button class="buttonhdr">Login</button></a></li>		
-				<li ng-if="bio != 'No current user'"><a href="/profile"><button class="buttonhdr">{{bio.username}}</button></a></li>		
+				<li ng-if="bio == 'No current user'">
+					<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
+				</li>		
+				<div id="username" ng-if="bio != 'No current user'">
+					<h2>
+						{{bio.username}}
+						<a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
+					</h2>
+				</div>	
 				
 			</ul>
 		</nav>

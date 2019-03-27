@@ -7,7 +7,6 @@ body {
 
 /* Global */
 .container{
-    width: 80%;
     margin:auto;
     overflow:hidden;
     color: #ffffff;
@@ -27,8 +26,9 @@ ul{
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 10px;
     margin-top: -6px;
+    margin-right: 30px;
     font-size: 18px;
 }
 
@@ -51,7 +51,7 @@ header{
     background: #4286f4;
     color: #ffffff;
     padding-top: 20px;
-    min-height: 80px;
+    padding-bottom: 20px;
     border-bottom: #ffbe5e 4px solid;
 }
 
@@ -63,15 +63,16 @@ header a{
 }
 
 header li{
-    float:left;
+
     display:inline;
     padding: 5px 20px 0 20px;
 }
 
 header #branding{
     margin-top:5px;
-    position: absolute;
-    left: 45px;
+    margin-left:40px;
+    float: left;
+
 }
 header #branding h1{
     margin:0;
@@ -86,9 +87,8 @@ header #branding img{
 }
 
 header nav{
-    margin-top: 10px;
-    position: absolute;
-    left: 1250px;
+    margin-top: 12px;
+    text-align: center;
 }
 
 header .highlight{
@@ -102,6 +102,12 @@ header .current a{
 header a:hover{
     color: #ffbe5e;
     text-decoration: none;
+}
+
+#username {
+    margin-right: 50px;
+    margin-top: -20px;
+    float: right;
 }
 
 /*Showcase */
