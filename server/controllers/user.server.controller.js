@@ -20,7 +20,7 @@ exports.getAll = async function(req, res, next) {
     });
 };
 
-exports.get = async function(req, res, next) {
+exports.getUserById = async function(req, res, next) {
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
@@ -38,6 +38,25 @@ exports.get = async function(req, res, next) {
       }
     });
 };
+
+exports.getCurrentUser = async function(req, res, next) {
+  // conncects to postres server
+  const client = new Client({connectionString: uri.db.uri,ssl: true,});
+  await client.connect();
+
+  client.query("SELECT * FROM users where id=$1", [req.session.user_id], (err, result) => {
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      if(result.rowCount !== 0) {
+        res.send(result.rows[0]);
+      } else {
+        res.send("No current user");
+      }
+    }
+  });
+}
 
 exports.create = async function(req, res, next) {
     // conncects to postres server
@@ -72,6 +91,21 @@ exports.create = async function(req, res, next) {
     });
 };
 
+exports.getBio = async function(req, res, next) {
+  //In progress
+  res.send("In progress");
+};
+
+exports.setBio = async function(req, res, next) {
+  //In progress
+  res.send("In progress");
+};
+
+exports.updateBio = async function(req, res, next) {
+  //In progress
+  res.send("In progress");
+};
+
 exports.creategoogleuser = async function(req, res, next) {
     var googleuser = await googleurl.GetGoogleUser(req.query.code);
     var useremail = googleuser.email;
@@ -86,6 +120,7 @@ exports.creategoogleuser = async function(req, res, next) {
     // if it does not exist add the user
     if(result.rows.length == 0) {
       req.session.user = username;
+      req.session.user_id = id;
       res.redirect('/');
       await client.query('INSERT INTO users(username, password,admin,email) values($1, $2 ,$3,$4)',[username.substr(0,16), '',false,useremail]);
       await client.end();
@@ -118,6 +153,7 @@ exports.login = async function(req, res, next) {
           bcrypt.compare(req.body.password, result.rows[0].password, (err, response) => {
             if(response) {
               req.session.user = req.body.username;
+              req.session.user_id = result.rows[0].id;
               res.send("User signed in successfully");
             } else {
               res.send("Incorrect password");
