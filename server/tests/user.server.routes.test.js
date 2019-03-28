@@ -13,8 +13,8 @@ describe('User API tests', function() {
     app = express.init();
     agent = request.agent(app);
     testUser = {
-        username: "test",
-        email: "test@email.com",
+        username: "usertesttestuser",
+        email: "usertesttestuser@email.com",
         password: "password",
         id: ""
     }
