@@ -7,10 +7,7 @@ body {
 
 /* Global */
 .container{
-<<<<<<< HEAD:client/styles/main.css
     width: 95%;
-=======
->>>>>>> frontend_new:client/styles/home.css
     margin:auto;
     overflow:hidden;
     color: #1fd3ac;
@@ -37,8 +34,7 @@ ul{
 }
 
 button:hover {
-    background-color: #fab042;
-    color: rgb(236, 236, 236);
+    background-color: #eeeeee;
 }
 
 .button_1 {
@@ -101,11 +97,11 @@ header .highlight{
 }
 
 header .current a{
-    color: #ffbe5e;
+    color: #eeeeee;
 }
 
 header a:hover{
-    color: #ffbe5e;
+    color: #eeeeee;
     text-decoration: none;
 }
 
@@ -113,6 +109,7 @@ header a:hover{
     margin-right: 50px;
     margin-top: -20px;
     float: right;
+    color: white;
 }
 
 /*Showcase */
