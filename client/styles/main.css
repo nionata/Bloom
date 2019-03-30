@@ -2,15 +2,15 @@ body {
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding:0;
     margin:0;
-    background-color: #eaf1ff
+    background-color: white
 }
 
 /* Global */
 .container{
-    width: 80%;
+    width: 95%;
     margin:auto;
     overflow:hidden;
-    color: #ffffff;
+    color: #1fd3ac;
 }
 ul{
     margin: 0;
@@ -18,9 +18,9 @@ ul{
 
 }
 .buttonhdr {
-    background: #ffbe5e;
+    background: white;
     border: 0;
-    color: white;
+    color: #1fd3ac;
     height: 38px;
     width: 120px;
     float: right;
@@ -34,24 +34,24 @@ ul{
 
 .button_1 {
     height: 38px;
-    background: #ffbe5e;
+    background: white;
     border: 0;
     padding-left: 20px;
     padding-right: 20px;
-    color: white;
+    color: #1fd3ac;
 }
 
 
 header{
-    background: #4286f4;
-    color: #ffffff;
-    padding-top: 20px;
-    min-height: 80px;
-    border-bottom: #ffbe5e 4px solid;
+    background: #1fd3ac;
+    color: white;
+    padding-top: 15px;
+    min-height: 70px;
+    border-bottom: #1fd3ac 4px solid;
 }
 
 header a{
-    color: #ffffff;
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 18px;
@@ -70,6 +70,7 @@ header #branding{
 header #branding h1{
     margin:0;
     display:inline;
+    color:white;
 }
 
 header #branding img{
@@ -88,12 +89,12 @@ header .highlight{
 }
 
 header .current a{
-    color: #ffbe5e;
+    color: white;
     font-weight: bold;
 }
 
 header a:hover{
-    color: #ffbe5e;
+    color: white;
     font-weight: bold;
     text-decoration: none;
 }
@@ -101,10 +102,11 @@ header a:hover{
 /*Showcase */
 
 #showcase{
-    min-height: 400px;
-    background: url('../img/showcase.jpg') no-repeat 0 -400px;
+    min-height: 660px;
+    background: url('../img/showcase.svg') no-repeat 10px -85px;
     text-align: center;
-    color:white;
+    color:#1fd3ac;
+    background-size: cover;
 }
 
 #showcase h1{
@@ -122,23 +124,26 @@ header a:hover{
 
 /*newsletter*/
 #newsletter{
-    padding:15px;
+    padding:5px;
     color: white;
-    background: #4286f4;
+    background: #1fd3ac;
 }
 
 #newsletter h1{
+    color:white;
     float:left;
     font-size: 30px;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 #newsletter form{
     float:right;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #newsletter input[type="email"]{
-    margin-top: 5px;
+    margin-top: 10px;
     padding: 4px;
     height: 35px;
     width: 250px;
@@ -190,6 +195,6 @@ footer{
     padding: 20px;
     margin-top: 20px;
     color: white;
-    background-color: #ffbe5e;
+    background-color: #1fd3ac;
     text-align: center;
 }
