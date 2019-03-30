@@ -52,19 +52,11 @@ button:hover {
 
 
 header{
-<<<<<<< HEAD:client/styles/main.css
     background: #1fd3ac;
     color: white;
     padding-top: 15px;
     min-height: 70px;
     border-bottom: #1fd3ac 4px solid;
-=======
-    background: #4286f4;
-    color: #ffffff;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: #ffbe5e 4px solid;
->>>>>>> frontend_new:client/styles/home.css
 }
 
 header a{
@@ -109,21 +101,11 @@ header .highlight{
 }
 
 header .current a{
-<<<<<<< HEAD:client/styles/main.css
-    color: white;
-    font-weight: bold;
-}
-
-header a:hover{
-    color: white;
-    font-weight: bold;
-=======
     color: #ffbe5e;
 }
 
 header a:hover{
     color: #ffbe5e;
->>>>>>> frontend_new:client/styles/home.css
     text-decoration: none;
 }
 
