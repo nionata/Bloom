@@ -1,5 +1,6 @@
 /* register the modules the application depends upon here*/
-angular.module('moduleName', []);
+angular.module('userDataModule', []);
+angular.module('eventModule', []);
 
 /* register the application and inject all the necessary dependencies */
-var app = angular.module('app', ['moduleName']);
+var app = angular.module('app', ['userDataModule', 'eventModule']);
