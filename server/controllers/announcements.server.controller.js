@@ -39,7 +39,7 @@ exports.getById = async function(req, res, next) {
         if(result.rowCount !== 0) {
           res.send(result.rows[0]);
         } else {
-          res.send("Invalid user id");
+          res.send("Invalid announcement id");
         }
       }
     });
@@ -76,7 +76,11 @@ exports.like = async function(req, res, next) {
         console.log(err);
         res.status(400).send(err);
       } else {
-        res.send(result.rows[0])
+        if(result.rowCount !== 0) {
+          res.send(result.rows[0]);
+        } else {
+          res.send("Invalid announcement id");
+        }
       }
     });
 };
@@ -88,7 +92,7 @@ exports.create = async function(req, res, next) {
 
     const { title, content } = req.body;
 
-    client.query('INSERT INTO announcements(user_id, post_title, post_content) values($1, $2, $3) RETURNING *', [req.session.user_id, title, content], (err, result) => {
+    client.query('INSERT INTO announcements(user_id, title, content) values($1, $2, $3) RETURNING *', [req.session.user_id, title, content], (err, result) => {
       client.end();
       if(err) {
         console.log(err);
