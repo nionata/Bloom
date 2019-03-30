@@ -9,9 +9,10 @@ exports.getAll = async function(req, res, next) {
     await client.connect();
 
     var query = "SELECT * FROM announcements";
+    const approved = req.query.approved;
 
-    if(req.query.approved === "true") {
-      query += " where approved=true";
+    if(approved === "true" || approved === "false") {
+      query += " where approved=" + approved;
     }
 
     client.query(query, (err, result) => {
