@@ -21,7 +21,7 @@ exports.getAll = async function(req, res, next) {
     });
 };
 
-exports.getUserById = async function(req, res, next) {
+exports.getById = async function(req, res, next) {
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
@@ -41,7 +41,7 @@ exports.getUserById = async function(req, res, next) {
     });
 };
 
-exports.getCurrentUser = async function(req, res, next) {
+exports.getCurrent = async function(req, res, next) {
   // conncects to postres server
   const client = new Client({connectionString: uri.db.uri,ssl: true,});
   await client.connect();
