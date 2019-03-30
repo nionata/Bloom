@@ -53,9 +53,11 @@ module.exports.init = function() {
         "/api/users/user"
       ];
 
+      var testing = false;
+
       // check if a user is logged-in, if not, make sure they can't access the api
       if (!req.session.user || !req.cookies.user_sid) {
-        if(req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl)) {
+        if(!testing && req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl)) {
           res.send("Missing authentication");
         }
 
