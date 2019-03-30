@@ -21,7 +21,11 @@ exports.geteventsbyid = async function(req, res, next) {
     await client.connect();
     var events = await client.query('select * from events where eventid=$1',[req.params.id]);
     await client.end();
-    res.json(events.rows);
+    if(events.rowCount !== 0) {
+          res.json(events.rows[0]);
+        } else {
+          res.send("Invalid event id");
+        }
 };
 
 exports.createEvent = async function(req, res, next) {
@@ -33,9 +37,23 @@ exports.createEvent = async function(req, res, next) {
                 if(err) {
                   console.log(err);
                   res.status(400).send(err);
-                } else {
-                    console.log(result.rows[0]);
+                } else {    
                   res.send(result.rows[0]);
+                }
+              });
+};
+
+exports.deleteEvent = async function(req, res, next) {
+    // conncects to postres server
+    const client = new Client({connectionString: uri.db.uri,ssl: true,});
+    await client.connect();
+    client.query('Delete from events where eventid = $1', [req.params.id], (err, result) => {
+               client.end();
+                if(err) {
+                  console.log(err);
+                  res.status(400).send(err);
+                } else {
+                  res.sendStatus(200);
                 }
               });
 };

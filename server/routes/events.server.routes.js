@@ -13,6 +13,8 @@ res.json(res.locals.events);
 
 router.route('/').post(events.createEvent,function(req, res){
 });
+router.route('/:id').delete(events.deleteEvent);
+
 
 
 module.exports = router;
