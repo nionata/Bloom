@@ -11,6 +11,7 @@ exports.getAll = async function(req, res, next) {
     await client.connect();
 
     client.query("SELECT * FROM users", (err, result) => {
+      client.end();
       if(err) {
         console.log(err);
         res.status(400).send(err);
@@ -26,6 +27,7 @@ exports.getUserById = async function(req, res, next) {
     await client.connect();
 
     client.query("SELECT * FROM users where id=$1", [req.params.id], (err, result) => {
+      client.end();
       if(err) {
         console.log(err);
         res.status(400).send(err);
@@ -45,6 +47,7 @@ exports.getCurrentUser = async function(req, res, next) {
   await client.connect();
 
   client.query("SELECT * FROM users where id=$1", [req.session.user_id], (err, result) => {
+    client.end();
     if(err) {
       console.log(err);
       res.status(400).send(err);
@@ -72,6 +75,7 @@ exports.create = async function(req, res, next) {
         if(result.rowCount === 0) {
           bcrypt.hash(req.body.password, 10, async function(err, hash) {
               client.query('INSERT INTO users(username, password,admin,email) values($1, $2, $3, $4) RETURNING *', [req.body.username, hash, false, req.body.email], (err, result) => {
+                client.end();
                 if(err) {
                   console.log(err);
                   res.status(400).send(err);
@@ -81,6 +85,7 @@ exports.create = async function(req, res, next) {
               });
           });
         } else {
+          client.end();
           if(result.rows[0].username === req.body.username) {
             res.send("That username is taken");
           } else {
@@ -143,6 +148,7 @@ exports.login = async function(req, res, next) {
 
     // check if select row with entered user name
     client.query("SELECT * FROM users where username = $1",[req.body.username], (err, result) => {
+      client.end();
       if(err) {
         console.log(err);
         res.status(400).send(err);
@@ -170,6 +176,7 @@ exports.delete = async function(req, res, next) {
     await client.connect();
 
     client.query("DELETE FROM users where id = $1", [req.params.id], (err, result) => {
+      client.end();
       if(err) {
         console.log(err);
         res.status(400).send(err);
