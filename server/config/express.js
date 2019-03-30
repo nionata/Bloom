@@ -48,14 +48,14 @@ module.exports.init = function() {
       var whiteListedEndpoints = [
         "/api/users/login",
         "/api/users/register",
-        "/api/auth/google",
-        "/api/auth/google-auth",
+        "/api/users/auth/google",
+        "/api/users/auth/google-auth",
         "/api/users/user"
       ];
 
       // check if a user is logged-in, if not, make sure they can't access the api
       if (!req.session.user || !req.cookies.user_sid) {
-        if(req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl)) {
+        if(req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl) && !req.originalUrl.includes("/api/users/auth/google-auth")) {
           res.send("Missing authentication");
         }
 
