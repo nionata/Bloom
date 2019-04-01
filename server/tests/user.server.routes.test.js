@@ -3,7 +3,7 @@ var should = require('should'),
     express = require('../config/express');
 
 // Global vars
-var app, agent, testUser
+var app, agent, testUser, testBio
 
 describe('User API tests', function() {
 
@@ -17,7 +17,13 @@ describe('User API tests', function() {
         email: "usertesttestuser@email.com",
         password: "password",
         id: ""
-    }
+    };
+    testBio = {
+      firstName: "Test",
+      lastName: "User",
+      affiliation: "Individual",
+      bio: "I am a simple test user",
+    };
 
     done();
   });
@@ -132,6 +138,55 @@ describe('User API tests', function() {
         should.not.exist(err);
         should.exist(res);
         res.text.should.equal("Invalid user id");
+        done();
+      });
+  });
+
+  it('should return empty when getting a user\'s bio that hasn\'t been set', function(done) {
+    agent.get('/api/users/user/bio')
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err);
+        should.exist(res);
+        res.text.should.equal("Bio is empty");
+        done();
+      });
+  });
+
+  it('should set the current user\'s bio', function(done) {
+    agent.post('/api/users/user/bio')
+      .send(testBio)
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err);
+        should.exist(res);
+        res.body.should.be.an.instanceOf(Object).and.have.property('bio', 'I am a simple test user');
+        done();
+      });
+  });
+
+  it('should not set the current user\'s bio if it is already set', function(done) {
+    agent.post('/api/users/user/bio')
+      .send(testBio)
+      .expect(400)
+      .end((err, res) => {
+        should.not.exist(err);
+        should.exist(res);
+        res.text.should.equal("This user already has a bio");
+        done();
+      });
+  });
+
+  it('should update the current user\'s bio', function(done) {
+    testBio.bio = 'changed';
+
+    agent.put('/api/users/user/bio')
+      .send(testBio)
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err);
+        should.exist(res);
+        res.body.should.be.an.instanceOf(Object).and.have.property('bio', 'changed');
         done();
       });
   });
