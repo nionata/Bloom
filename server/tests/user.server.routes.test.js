@@ -103,6 +103,17 @@ describe('User API tests', function() {
       });
   });
 
+  it('should get the current user', function(done) {
+    agent.get('/api/users/user')
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err);
+        should.exist(res);
+        res.body.should.be.an.instanceOf(Object).and.have.property('id', testUser.id);
+        done();
+      });
+  });
+
   it('should get a user by id', function(done) {
     agent.get('/api/users/' + testUser.id)
       .expect(200)
