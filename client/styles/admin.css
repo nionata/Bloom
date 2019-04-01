@@ -123,7 +123,25 @@ footer{
 
 
 .announcement{
-    background-color: #97fce6;
+    background-color: #b8fff0;
     word-wrap: break-word;
     padding: 20px 20px 20px 20px;
+}
+
+.button{
+    background-color: #7affe2;
+    font-size: 10pt;
+    padding: 14px 20px;
+    text-align: center;
+    margin-top: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+}
+
+.button:hover {
+    background-color: #64e4c8;
+}
+.button:active {
+    background-color: #48af99;
 }

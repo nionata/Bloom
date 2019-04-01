@@ -70,9 +70,9 @@
 
         <div ng-controller="announcementController">
             <form novalidate class="simple-form">
+				<button type="Send" id="sendButton" ng-click="createAnnouncement(newAnnouncement)">Send</button> <br>
                 <input type="text" id="suggestTitle" ng-model="newAnnouncement.title" placeholder="Title"><br>
                 <textarea rows="10" cols="60" id="suggestContent" ng-model="newAnnouncement.content" placeholder="Body">
-				<button type="Send" id="sendButton" ng-click="createAnnouncement(newAnnouncement)">Send</button> <br>
                 
             </form>
         </div>
