@@ -4,6 +4,8 @@
 <script src="js/app.js"></script>
 <script src="js/factories/userDataFactory.js"></script>
 <script src="js/controllers/userDataController.js"></script>
+<script src="js/factories/announcementFactory.js"></script>
+<script src="js/controllers/announcementController.js"></script>
 
 <html>
 <head>
@@ -12,42 +14,55 @@
 	<link rel="stylesheet" href="./styles/home.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body ng-app="app" ng-controller="userDataController">
-	<header>
-	<div class="container">
-		<div id="branding">
-      		<img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+<body ng-app="app">
+	<header ng-controller="userDataController">
+		<div class="container">
+			<div id="branding">
+				<img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+			</div>
+			<nav>
+				<ul>
+					<li class="current"><a href="/">Home</a></li>
+					<li><a href="/events">Events</a></li>
+					<li><a href="/resources">Resources</a></li>
+					<li><a href="/about">About Us</a></li>
+					<li ng-if="bio == 'No current user' || bio == undefined">
+						<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
+					</li>		
+					<div id="username" ng-if="bio != 'No current user'">
+						<h2>
+							{{bio.username}}
+							<a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
+							<a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
+						</h2>
+					</div>	
+					
+				</ul>
+			</nav>
 		</div>
-		<nav>
-			<ul>
-				<li class="current"><a href="/">Home</a></li>
-				<li><a href="/events">Events</a></li>
-				<li><a href="/resources">Resources</a></li>
-				<li><a href="/about">About Us</a></li>
-				<li ng-if="bio == 'No current user'">
-					<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
-				</li>		
-				<div id="username" ng-if="bio != 'No current user'">
-					<h2>
-						{{bio.username}}
-						<a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
-					</h2>
-				</div>	
-				
-			</ul>
-		</nav>
-	</div>
 	</header>
 	
 	<section id="showcase">
-		<div class ="container">
-			<h1> Entrepreneurship Empowerment </h1>
-			<p>Empowering individuals through a resource-intensive, educational experience. Entrepreneurship Empowerment exists to help people create their own jobs.</p>
-		</div>
 	</section>
+	<!--div ng-controller="announcementController">
+		<section id="showcase">
+				<div class="slideshow-container">
+					<a class="prev" style="float: left; margin-left: 20px; font-size: 30px;" onclick="plusSlides(-1)">&#10094;</a>
+					<a class="next"  style="float: right; margin-right: 20px; font-size: 30px;" onclick="plusSlides(1)">&#10095;</a>
+
+					<div ng-repeat="post in approvedAnnouncements">
+						<div class="announcementSlides">
+							<h1>{{post.title}}</h1>
+							<h2>{{post.content}}</h2>
+						</div>
+					</div>
+				</div>
+		</section>
+	</div-->
+
 	<section id = "newsletter">
 		<div class="container">
-			<h1>Subscribe to our newletter</h1>
+			<h1>Subscribe to Our Newsletter!</h1>
 			<form>
 			<input type="email" placeholder="Enter Email…">
 			<button type="submit" class="button_1">Subscribe</button>
@@ -94,5 +109,6 @@
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
 	</footer>
+	<script src="slideshow.js"></script>
 </body>
 </html>

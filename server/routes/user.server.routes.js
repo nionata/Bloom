@@ -6,12 +6,12 @@ var user = require('../controllers/user.server.controller.js'),
 
 //These method calls are responsible for routing requests to the correct request handler.
 router.route('').get(user.getAll);
-router.route('/user').get(user.getCurrentUser);
+router.route('/user').get(user.getCurrent);
 router.route('/user/bio').get(user.getBio)
                          .post(user.setBio)
                          .put(user.updateBio);
-router.route('/:id').get(user.getUserById)
-                   .delete(user.delete);
+router.route('/:id').get(user.getById)
+                    .delete(user.delete);
 router.route('/login').post(user.login);
 router.route('/register').post(user.create);
 router.route('/:id/bio').get(user.getBio)
