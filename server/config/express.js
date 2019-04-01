@@ -51,7 +51,7 @@ module.exports.init = function() {
         "/api/users/auth/google",
         "/api/users/auth/google-auth",
         "/api/users/user",
-        "/api/announcements"
+        "/api/announcements/?approved=true"
       ];
 
       var testing = false;
