@@ -5,6 +5,7 @@ angular.module('eventModule').controller('eventController', ['$scope','eventFact
     });
 
     $scope.createEvent = function(newEvent) {
+      console.log(newEvent);
       eventFactory.createEvent(newEvent);
     }
 

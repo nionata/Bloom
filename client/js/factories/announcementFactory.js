@@ -8,6 +8,10 @@ angular.module('announcementModule', []).factory('announcementFactory', function
             return $http.get('/api/announcements/?approved=true');
         },
 
+        getUnapprovedAnnouncements: function(){
+            return $http.get('/api/announcements/?approved=false');
+        },
+
         createAnnouncement: function(newAnnouncement) {
             return $http.post('/api/announcements/create', newAnnouncement);
         },

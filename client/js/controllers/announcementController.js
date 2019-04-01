@@ -9,6 +9,10 @@ angular.module('announcementModule').controller('announcementController', ['$sco
       $scope.approvedAnnouncements = response.data;
     });
 
+    $scope.unapprovedAnnouncements = announcementFactory.getUnapprovedAnnouncements().then(function(response){
+      $scope.unapprovedAnnouncements = response.data;
+    });
+
     $scope.testAnnounce = function() {
       console.log($scope.newAnnouncement);
     }

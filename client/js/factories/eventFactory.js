@@ -9,7 +9,7 @@ angular.module('eventModule', []).factory('eventFactory', function($http, $windo
     },
 
     createEvent: function(newEvent) {
-        return $http.post('/api/events/', newEvent);
+        return $http.post('/api/events', newEvent);
       },
 
     deleteEvent: function(eventID) {

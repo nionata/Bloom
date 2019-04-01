@@ -44,7 +44,6 @@
 	
 	<div class="eventCards" ng-controller="eventController">
 		<div class="event" ng-repeat="post in events" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
-			<h2> {{post}}</h2>
 			<h2 id="title">{{post.eventtitle}}</h2>
 			<h3 id="infomation">{{post.eventid}} {{post.eventend}}</h3>
 			<h4 id="content">{{post.eventcontent}}</h4>
