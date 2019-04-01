@@ -5,6 +5,10 @@ angular.module('announcementModule').controller('announcementController', ['$sco
       $scope.announcements = response.data;
     });
 
+    $scope.approvedAnnouncements = announcementFactory.getApprovedAnnouncements().then(function(response){
+      $scope.approvedAnnouncements = response.data;
+    });
+
     $scope.testAnnounce = function() {
       console.log($scope.newAnnouncement);
     }
@@ -13,8 +17,17 @@ angular.module('announcementModule').controller('announcementController', ['$sco
       announcementFactory.like();
     }
 
-    $scope.createAnnouncement = function() {
-      announcementFactory.createAnnouncement($scope.newAnnouncement);
+    $scope.createAnnouncement = function(newAnnouncement) {
+      console.log(newAnnouncement);
+      announcementFactory.createAnnouncement(newAnnouncement);
+    }
+
+    $scope.deleteAnnouncement = function(postID) {
+      announcementFactory.deleteAnnouncement(postID);
+    }
+
+    $scope.approveAnnouncement = function(postID) {
+      announcementFactory.approveAnnouncement(postID);
     }
   }     
 ]);

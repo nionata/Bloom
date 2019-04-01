@@ -11,7 +11,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Bloom</title>
-	<link rel="stylesheet" href="./styles/announcements.css">
+	<link rel="stylesheet" href="./styles/admin.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body ng-app="app">
@@ -42,16 +42,16 @@
 		</div>
     </header>
     
-    <div class="box">
-        <h1>Suggest an Announcement</h1>
-        <div ng-controller="announcementController">
-            <form novalidate class="simple-form">
-                <input type="text" ng-model="newAnnouncement.title" placeholder="title"><br>
-                <input type="text" ng-model="newAnnouncement.content" placeholder="content"><br>
-                <button type="Send" ng-click="createAnnouncement(newAnnouncement)">Send</button> <br>
-                <button type="submit" ng-click="testAnnounce()">test</button> <br>
-            </form>
-        </div>
+    <div class="box" ng-controller="announcementController">
+        <h1 style="text-align: center;">ADMIN CONTROLS</h1>
+        <h3 ng-repeat="post in announcements" style="margin-left: 10px;">
+            {{post}} 
+            <br>
+            <button type="submit" ng-click="approveAnnouncement(post.id)">Approve</button> <br>
+            <button type="submit" ng-click="deleteAnnouncement(post.id)">Delete</button> <br>
+        </h3>
+
+
     </div>
 	
 	<footer>
