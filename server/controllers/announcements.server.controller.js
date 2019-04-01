@@ -86,6 +86,28 @@ exports.like = async function(req, res, next) {
     });
 };
 
+exports.review = async function(req, res, next) {
+    // conncects to postres server
+    const client = new Client({connectionString: uri.db.uri, ssl: true,});
+    await client.connect();
+
+    const { review } = req.body;
+
+    client.query('UPDATE announcements set approved=$1, admin_id=$2 where id=$3 RETURNING approved', [review, req.session.user_id, req.params.id], (err, result) => {
+      client.end();
+      if(err) {
+        console.log(err);
+        res.status(400).send(err);
+      } else {
+        if(result.rowCount !== 0) {
+          res.send(result.rows[0]);
+        } else {
+          res.send("Invalid announcement id");
+        }
+      }
+    });
+};
+
 exports.create = async function(req, res, next) {
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri, ssl: true,});
