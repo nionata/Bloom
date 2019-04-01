@@ -8,6 +8,7 @@ router.route('').get(announcements.getAll);
 router.route('/:id').get(announcements.getById)
                     .delete(announcements.delete);
 router.route('/:id/like').put(announcements.like);
+router.route('/:id/review').put(announcements.review)
 router.route('/create').post(announcements.create);
 
 module.exports = router;

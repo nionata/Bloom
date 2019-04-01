@@ -9,9 +9,10 @@ exports.getAll = async function(req, res, next) {
     await client.connect();
 
     var query = "SELECT * FROM announcements";
+    const approved = req.query.approved;
 
-    if(req.query.approved === "true") {
-      query += " where approved=true";
+    if(approved === "true" || approved === "false") {
+      query += " where approved=" + approved;
     }
 
     client.query(query, (err, result) => {
@@ -71,6 +72,28 @@ exports.like = async function(req, res, next) {
     await client.connect();
 
     client.query('UPDATE announcements set likes=likes+1 where id=$1 RETURNING likes', [req.params.id], (err, result) => {
+      client.end();
+      if(err) {
+        console.log(err);
+        res.status(400).send(err);
+      } else {
+        if(result.rowCount !== 0) {
+          res.send(result.rows[0]);
+        } else {
+          res.send("Invalid announcement id");
+        }
+      }
+    });
+};
+
+exports.review = async function(req, res, next) {
+    // conncects to postres server
+    const client = new Client({connectionString: uri.db.uri, ssl: true,});
+    await client.connect();
+
+    const { review } = req.body;
+
+    client.query('UPDATE announcements set approved=$1, admin_id=$2 where id=$3 RETURNING approved', [review, req.session.user_id, req.params.id], (err, result) => {
       client.end();
       if(err) {
         console.log(err);
