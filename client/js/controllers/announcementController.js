@@ -18,7 +18,8 @@ angular.module('announcementModule').controller('announcementController', ['$sco
     }
 
     $scope.createAnnouncement = function(newAnnouncement) {
-      console.log(newAnnouncement);
+      $("#suggestTitle").val('');
+      $("#suggestContent").val('');
       announcementFactory.createAnnouncement(newAnnouncement);
     }
 
