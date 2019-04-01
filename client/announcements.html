@@ -58,7 +58,7 @@
 	</script>
 
 	<div class="announcementForum" ng-controller="announcementController">
-		<div class="announcement" ng-repeat="post in announcements" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
+		<div class="announcement" ng-repeat="post in approvedAnnouncements" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
 			<h2 id="title">{{post.title}}</h2>
 			<h3 id="infomation">{{post.user_id}} {{post.timestamp.slice(0, 10)}}</h3>
 			<h4 id="content">{{post.content}}</h4>
@@ -70,9 +70,9 @@
 
         <div ng-controller="announcementController">
             <form novalidate class="simple-form">
-				<button type="Send" id="sendButton" ng-click="createAnnouncement(newAnnouncement)">Send</button> <br>
                 <input type="text" id="suggestTitle" ng-model="newAnnouncement.title" placeholder="Title"><br>
-                <textarea rows="10" cols="60" id="suggestContent" ng-model="newAnnouncement.content" placeholder="Body">
+				<textarea rows="10" cols="60" id="suggestContent" ng-model="newAnnouncement.content" placeholder="Body"></textarea>
+				<button type="Send" id="sendButton" ng-click="createAnnouncement(newAnnouncement)">Send</button> <br>
                 
             </form>
         </div>

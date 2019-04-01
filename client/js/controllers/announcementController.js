@@ -23,11 +23,13 @@ angular.module('announcementModule').controller('announcementController', ['$sco
     }
 
     $scope.deleteAnnouncement = function(postID) {
-      announcementFactory.deleteAnnouncement(postID);
+      review = {"review": false};
+      announcementFactory.deleteAnnouncement(postID, review);
     }
 
     $scope.approveAnnouncement = function(postID) {
-      announcementFactory.approveAnnouncement(postID);
+      review = {"review": true};
+      announcementFactory.approveAnnouncement(postID, review);
     }
   }     
 ]);

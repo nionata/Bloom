@@ -6,19 +6,19 @@ angular.module('announcementModule', []).factory('announcementFactory', function
 
         //CHANGE TO /api/announcements/true
         getApprovedAnnouncements: function(){
-            return $http.get('/api/announcements');
+            return $http.get('/api/announcements/?approved=true');
         },
 
         createAnnouncement: function(newAnnouncement) {
             return $http.post('/api/announcements/create', newAnnouncement);
         },
 
-        deleteAnnouncement: function(postID) {
-            return $http.post('/api/announcements/' + postID +"/review", "deny");
+        deleteAnnouncement: function(postID, review) {
+            return $http.put('/api/announcements/' + postID +"/review", review);
         },
 
-        approveAnnouncement: function(postID) {
-            return $http.post('/api/announcements/' + postID +"/review", "approve");
+        approveAnnouncement: function(postID, review) {
+            return $http.put('/api/announcements/' + postID +"/review", review);
         },
 
         getUserByID: function(id){
