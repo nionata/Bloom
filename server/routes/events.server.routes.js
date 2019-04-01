@@ -13,7 +13,7 @@ router.route('/').get(events.getevents,function(req, res){
 
 router.route('/').post(events.createEvent,function(req, res){
 });
-router.route('/:id').delete(events.deleteEvent);
+router.route('/:id').delete(events.deleteEvent).put(events.approveEvent);
 
 
 
