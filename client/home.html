@@ -26,7 +26,7 @@
 					<li><a href="/events">Events</a></li>
 					<li><a href="/resources">Resources</a></li>
 					<li><a href="/about">About Us</a></li>
-					<li ng-if="bio == 'No current user'">
+					<li ng-if="bio == 'No current user' || bio == undefined">
 						<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
 					</li>		
 					<div id="username" ng-if="bio != 'No current user'">
@@ -41,29 +41,22 @@
 			</nav>
 		</div>
 	</header>
-
-	<script src="slideshow.js"></script>
 	
-	<div ng-controller="announcementController">
+	<!--div ng-controller="announcementController">
 		<section id="showcase">
-				<script>
-					window.onload = function() {
-						currentSlide(1);
-					}
-				</script>
-
 				<div class="slideshow-container">
 					<a class="prev" style="float: left; margin-left: 20px; font-size: 30px;" onclick="plusSlides(-1)">&#10094;</a>
 					<a class="next"  style="float: right; margin-right: 20px; font-size: 30px;" onclick="plusSlides(1)">&#10095;</a>
+
 					<div ng-repeat="post in approvedAnnouncements">
-						<div class="mySlides fade">
+						<div class="announcementSlides">
 							<h1>{{post.title}}</h1>
 							<h2>{{post.content}}</h2>
 						</div>
 					</div>
 				</div>
 		</section>
-	</div>
+	</div-->
 
 	<section id = "newsletter">
 		<div class="container">
@@ -114,5 +107,6 @@
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
 	</footer>
+	<script src="slideshow.js"></script>
 </body>
 </html>

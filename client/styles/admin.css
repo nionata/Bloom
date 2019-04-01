@@ -121,6 +121,9 @@ footer{
     text-align: center;
 }
 
-.box{
-    text-align: center;
+
+.announcement{
+    background-color: #97fce6;
+    word-wrap: break-word;
+    padding: 20px 20px 20px 20px;
 }

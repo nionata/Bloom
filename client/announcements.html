@@ -41,15 +41,39 @@
 			</nav>
 		</div>
     </header>
-    
+	<h1 style="margin-left: 20px;">Announcements</h1>
+
+	<script>
+		var expand = false;
+		function toggle(){
+			expand = !expand;
+			if(expand){
+				this.style.height = "400px";
+			}
+			else{
+				this.style.height = "100px";
+			}
+
+		}
+	</script>
+
+	<div class="announcementForum" ng-controller="announcementController">
+		<div class="announcement" ng-repeat="post in announcements" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
+			<h2 id="title">{{post.title}}</h2>
+			<h3 id="infomation">{{post.user_id}} {{post.timestamp.slice(0, 10)}}</h3>
+			<h4 id="content">{{post.content}}</h4>
+		</div>
+	</div>
+	
     <div class="box">
-        <h1>Suggest an Announcement</h1>
+		<h1>Suggest an Announcement</h1>
+
         <div ng-controller="announcementController">
             <form novalidate class="simple-form">
-                <input type="text" ng-model="newAnnouncement.title" placeholder="title"><br>
-                <input type="text" ng-model="newAnnouncement.content" placeholder="content"><br>
-                <button type="Send" ng-click="createAnnouncement(newAnnouncement)">Send</button> <br>
-                <button type="submit" ng-click="testAnnounce()">test</button> <br>
+                <input type="text" id="suggestTitle" ng-model="newAnnouncement.title" placeholder="Title"><br>
+                <textarea rows="10" cols="60" id="suggestContent" ng-model="newAnnouncement.content" placeholder="Body">
+				<button type="Send" id="sendButton" ng-click="createAnnouncement(newAnnouncement)">Send</button> <br>
+                
             </form>
         </div>
     </div>

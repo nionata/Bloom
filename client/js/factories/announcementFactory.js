@@ -4,8 +4,9 @@ angular.module('announcementModule', []).factory('announcementFactory', function
             return $http.get('/api/announcements');
         },
 
+        //CHANGE TO /api/announcements/true
         getApprovedAnnouncements: function(){
-            return $http.get('/api/announcements/true');
+            return $http.get('/api/announcements');
         },
 
         createAnnouncement: function(newAnnouncement) {

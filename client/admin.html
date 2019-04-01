@@ -44,7 +44,7 @@
     
     <div class="box" ng-controller="announcementController">
         <h1 style="text-align: center;">ADMIN CONTROLS</h1>
-        <h3 ng-repeat="post in announcements" style="margin-left: 10px;">
+        <h3 class="announcement" ng-repeat="post in announcements" style="margin-left: 10px;">
             {{post}} 
             <br>
             <button type="submit" ng-click="approveAnnouncement(post.id)">Approve</button> <br>
