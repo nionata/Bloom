@@ -3,11 +3,13 @@ angular.module('eventModule').controller('eventController', ['$scope','eventFact
     $scope.events = eventFactory.getEvents().then(function(response){
       $scope.events = response.data;
     });
-    
+
     $scope.createEvent = function(newEvent) {
-      console.log(newEvent);
       eventFactory.createEvent(newEvent);
     }
 
-  }     
+    $scope.deleteEvent = function(eventID) {
+      eventFactory.deleteEvent(eventID);
+    }
+  }
 ]);

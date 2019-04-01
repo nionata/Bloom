@@ -6,6 +6,8 @@
 <script src="js/controllers/userDataController.js"></script>
 <script src="js/factories/announcementFactory.js"></script>
 <script src="js/controllers/announcementController.js"></script>
+<script src="js/factories/eventFactory.js"></script>
+<script src="js/controllers/eventController.js"></script>
 
 <html>
 <head>
@@ -43,16 +45,26 @@
     </header>
     
     <div class="box" ng-controller="announcementController">
-        <h1 style="text-align: center;">ADMIN CONTROLS</h1>
+        <h1 style="text-align: center;">Announcement</h1>
         <h3 class="announcement" ng-repeat="post in announcements" style="margin-left: 10px;">
             {{post}} 
             <br>
             <button type="submit" class="button" ng-click="approveAnnouncement(post.id)">Approve</button> <br>
             <button type="submit" class="button" ng-click="deleteAnnouncement(post.id)">Delete</button> <br>
         </h3>
-
-
     </div>
+
+    <div class="box" ng-controller="eventController">
+            <h1 style="text-align: center;">Events</h1>
+            <h3 class="announcement" ng-repeat="event in events" style="margin-left: 10px;">
+                {{event}} 
+                <br>
+                <button type="submit" class="button" ng-click="console.log(event.eventid)">Approve</button> <br>
+                <button type="submit" class="button" ng-click="deleteEvent(event.eventid)">Delete</button> <br>
+            </h3>
+    
+    
+        </div>
     
 	
 	<footer>

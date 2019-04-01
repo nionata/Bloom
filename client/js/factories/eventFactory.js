@@ -12,8 +12,8 @@ angular.module('eventModule', []).factory('eventFactory', function($http, $windo
         return $http.post('/api/events/', newEvent);
       },
 
-    deleteEvent: function(postID, review) {
-        return $http.put('/api/events/' + postID +"/review", review);
+    deleteEvent: function(eventID) {
+        return $http.delete('/api/events/' + eventID);
       },
 
     approveEvent: function(postID, review) {
