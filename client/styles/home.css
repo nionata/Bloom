@@ -108,6 +108,7 @@ header a:hover{
 #username {
     margin-right: 50px;
     margin-top: -20px;
+    margin-right: 10px;
     float: right;
     color: white;
 }

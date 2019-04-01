@@ -1,0 +1,61 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/factories/userDataFactory.js"></script>
+<script src="js/controllers/userDataController.js"></script>
+<script src="js/factories/announcementFactory.js"></script>
+<script src="js/controllers/announcementController.js"></script>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bloom</title>
+	<link rel="stylesheet" href="./styles/announcements.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body ng-app="app">
+	<header ng-controller="userDataController">
+		<div class="container">
+			<div id="branding">
+				<img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+			</div>
+			<nav>
+				<ul>
+					<li></li><a href="/">Home</a></li>
+					<li><a href="/events">Events</a></li>
+					<li><a href="/resources">Resources</a></li>
+					<li><a href="/about">About Us</a></li>
+					<li ng-if="bio == 'No current user'">
+						<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
+					</li>		
+					<div id="username" ng-if="bio != 'No current user'">
+						<h2>
+							{{bio.username}}
+							<a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
+							<a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px; color: #eeeeee;">notifications</i></a>
+						</h2>
+					</div>	
+					
+				</ul>
+			</nav>
+		</div>
+    </header>
+    
+    <div class="box">
+        <h1>Suggest an Announcement</h1>
+        <div ng-controller="announcementController">
+            <form novalidate class="simple-form">
+                <input type="text" ng-model="newAnnouncement.title" placeholder="title"><br>
+                <input type="text" ng-model="newAnnouncement.content" placeholder="content"><br>
+                <button type="Send" ng-click="createAnnouncement()">Send</button> <br>
+                <button type="submit" ng-click="testAnnounce()">test</button> <br>
+            </form>
+        </div>
+    </div>
+	
+	<footer>
+		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
+	</footer>
+</body>
+</html>

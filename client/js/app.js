@@ -4,4 +4,4 @@ angular.module('eventModule', []);
 angular.module('announcementModule', []);
 
 /* register the application and inject all the necessary dependencies */
-var app = angular.module('app', ['userDataModule', 'eventModule', 'announcementModule']);
+var app = angular.module('app', ['announcementModule', 'eventModule', 'userDataModule']);

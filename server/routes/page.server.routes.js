@@ -41,4 +41,8 @@ router.route('/profile').get((req, res) => {
   res.sendFile('/client/profile.html', { root: '.'});
 });
 
+router.route('/announcements').get((req, res) => {
+  res.sendFile('/client/announcements.html', { root: '.'});
+});
+
 module.exports = router;
