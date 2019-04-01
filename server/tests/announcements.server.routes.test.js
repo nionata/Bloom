@@ -125,6 +125,56 @@ describe('Announcements API tests', function() {
       });
   });
 
+  it('should approve an announcement', function(done) {
+    agent.put('/api/announcements/' + testAnnouncement.id + '/review')
+      .send({"review": true})
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err);
+        should.exist(res);
+        res.body.should.have.property('approved', true);
+        done();
+      });
+  });
+
+  it('should delete an announcement if it gets denied', function(done) {
+    const tempAnnouncement = {
+      title: "Pending Announcement",
+      content: "This will get deleted",
+    };
+
+    agent.post('/api/announcements/create')
+      .send(tempAnnouncement)
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err);
+        should.exist(res);
+        const id = res.body.id;
+
+        agent.put('/api/announcements/' + id + '/review')
+          .send({"review": false})
+          .expect(200)
+          .end((err, res) => {
+            should.not.exist(err);
+            should.exist(res);
+            res.text.should.equal("Invalid announcement id");
+            done();
+          });
+      });
+  });
+
+  it('should not review an announcement with an invalid id', function(done) {
+    agent.put('/api/announcements/1/review')
+      .send({"review": true})
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err);
+        should.exist(res);
+        res.text.should.equal("Invalid announcement id");
+        done();
+      });
+  });
+
   it('should delete an announcement', function(done) {
     agent.delete('/api/announcements/' + testAnnouncement.id)
       .expect(200)
