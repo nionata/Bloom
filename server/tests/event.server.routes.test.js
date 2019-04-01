@@ -15,7 +15,6 @@ describe('Event API tests', function() {
     testEvent = {
         eventtitle: "group meeting for software engineering project",
         eventcontent: "Donec varius sed tortor at blandit. Mauris dignissim finibus libero, vestibulum pellentesque eros fermentum vel. In suscipit risus ut dui convallis, eu sollicitudin nibh pharetra. Vivamus pharetra imperdiet quam, sed pellentesque erat rutrum vel. In libero velit, feugiat ut mauris vel, condimentum egestas sem. Aenean aliquet sapien vel bibendum hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare feugiat enim et lacinia.",
-        adminid: "7",
         userid: '6',
         eventstart: "2011-01-01T00:00:00.000Z",
         eventend: "2011-01-01T00:00:00.000Z",
@@ -52,7 +51,6 @@ describe('Event API tests', function() {
         res.body.should.be.an.instanceOf(Object).and.have.properties({
           eventtitle: testEvent.eventtitle,
           eventcontent: testEvent.eventcontent,
-          adminid: testEvent.adminid,
           userid: testEvent.userid,
           eventstart: testEvent.eventstart,
           eventend: testEvent.eventend,
@@ -74,8 +72,8 @@ describe('Event API tests', function() {
       });
   });
     
-    it('should get a event by id', function(done) {
-    agent.get('/api/events/' + testEvent.id)
+     it('should approve an event by id', function(done) {
+    agent.put('/api/events/' + testEvent.id)
       .expect(200)
       .end((err, res) => {
         should.not.exist(err);
@@ -85,6 +83,19 @@ describe('Event API tests', function() {
       });
   });
     
+    it('should get a event by id', function(done) {
+    agent.get('/api/events/' + testEvent.id)
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err);
+        should.exist(res);
+        res.body.should.be.an.instanceOf(Object).and.have.properties({
+          approved: true
+        });
+        done();
+      });
+  });
+     
     
   it('should not get a event with an invalid id', function(done) {
     agent.get('/api/events/0')
@@ -96,6 +107,8 @@ describe('Event API tests', function() {
         done();
       });
   });
+    
+    
     
     it('should delete a event', function(done) {
     agent.delete('/api/events/' + testEvent.id)
@@ -117,9 +130,6 @@ describe('Event API tests', function() {
       });
   });
     
-    
-
-
 
   after((done) => {
     done();
