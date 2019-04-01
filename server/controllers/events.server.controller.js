@@ -29,6 +29,7 @@ exports.geteventsbyid = async function(req, res, next) {
 };
 
 
+
 exports.approveEvent = async function(req, res, next) {
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
