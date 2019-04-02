@@ -108,7 +108,6 @@ header a:hover{
 #username {
     margin-right: 50px;
     margin-top: -20px;
-    margin-right: 10px;
     float: right;
     color: white;
 }
@@ -116,15 +115,14 @@ header a:hover{
 /*Showcase */
 
 #showcase{
-    min-height: 650px;
-    background: url('../img/showcase.svg') no-repeat 10px -25px;
+    min-height: 660px;
     text-align: center;
     color:#1fd3ac;
     background-size: cover;
 }
 
 #showcase h1{
-    margin-top: 100px;
+    margin-top: 50px;
     font-size: 40px;
     margin-bottom: 10px;
     font-weight: bold;
@@ -132,80 +130,11 @@ header a:hover{
 }
 
 #showcase p{
-    margin-top: 20px;
+    margin: 30px 50px 30px 50px;
     font-size: 20px;
 }
 
 
-/*newsletter*/
-#newsletter{
-    padding:5px;
-    color: white;
-    background: #1fd3ac;
-}
-
-#newsletter h1{
-    color:white;
-    float:left;
-    font-size: 30px;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-#newsletter form{
-    float:right;
-    margin-top: 10px;
-}
-
-#newsletter input[type="email"]{
-    margin-top: 10px;
-    padding: 4px;
-    height: 35px;
-    width: 250px;
-}
-
-#boxes{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-/*boxes*/
-.boxes{
-    display: grid;
-    grid-template-columns:25% 25% 25%;
-    grid-template-rows: auto auto; 
-    grid-column-gap: 40px;
-    grid-row-gap: 10px;
-    justify-content: center;
-    grid-template-areas: 
-    "a b c"
-    "d e f";
-}
-
-#boxes .box-a {
-    grid-area: a;
-}
-#boxes .box-b {
-    grid-area: b;
-}
-#boxes .box-c {
-    grid-area: c;
-}
-#boxes .box-d {
-    grid-area: d;
-}
-#boxes .box-e {
-    grid-area: e;
-}
-#boxes .box-f {
-    grid-area: f;
-}
-
-
-#boxes img{
-    width:90px;
-    height:90px;
-}
 footer{
     padding: 20px;
     margin-top: 20px;
