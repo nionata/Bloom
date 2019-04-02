@@ -38,23 +38,23 @@
     </header>
     
     <div class="box" ng-controller="announcementController">
-        <h1 style="text-align: center;">Unapproved Announcement</h1>
-        <h3 class="announcement" ng-repeat="post in unapprovedAnnouncements" style="margin-left: 10px;">
-            {{post}} 
-            <br>
-            <button type="submit" class="button" ng-click="approveAnnouncement(post.id)">Approve</button> <br>
-            <button type="submit" class="button" ng-click="deleteAnnouncement(post.id)">Delete</button> <br>
-        </h3>
+			<h1 style="text-align: center;">Unapproved Announcement</h1>
+			<h3 class="announcement" ng-repeat="post in unapprovedAnnouncements" style="margin-left: 10px;">
+					{{post}} 
+					<br>
+					<button type="submit" class="button" ng-click="approveAnnouncement(post.id)">Approve</button> <br>
+					<button type="submit" class="button" ng-click="deleteAnnouncement(post.id)">Delete</button> <br>
+			</h3>
 	</div>
 	
 	<div class="box" ng-controller="announcementController">
-			<h1 style="text-align: center;">Approved Announcement</h1>
-			<h3 class="announcement" ng-repeat="post in approvedAnnouncements" style="margin-left: 10px;">
-				{{post}} 
-				<br>
-				<button type="submit" class="button" ng-click="approveAnnouncement(post.id)">Approve</button> <br>
-				<button type="submit" class="button" ng-click="deleteAnnouncement(post.id)">Delete</button> <br>
-			</h3>
+		<h1 style="text-align: center;">Approved Announcement</h1>
+		<h3 class="announcement" ng-repeat="post in approvedAnnouncements" style="margin-left: 10px;">
+			{{post}} 
+			<br>
+			<button type="submit" class="button" ng-click="approveAnnouncement(post.id)">Approve</button> <br>
+			<button type="submit" class="button" ng-click="deleteAnnouncement(post.id)">Delete</button> <br>
+		</h3>
 		</div>
 
     <div class="box" ng-controller="eventController">

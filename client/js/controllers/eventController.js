@@ -7,6 +7,10 @@ angular.module('eventModule').controller('eventController', ['$scope','eventFact
     $scope.createEvent = function(newEvent) { 
       newEvent.eventend = new Date(newEvent.eventend.toISOString());
       newEvent.startend = new Date(newEvent.eventstart.toISOString());
+      $("#suggestEventTitle").val('');
+      $("#suggestEventContent").val('');
+      $("#suggestEventStart").val('');
+      $("#suggestEventEnd").val('');
       eventFactory.createEvent(newEvent);
     }
 
