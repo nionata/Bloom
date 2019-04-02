@@ -36,5 +36,10 @@ angular.module('announcementModule').controller('announcementController', ['$sco
       review = {"review": true};
       announcementFactory.approveAnnouncement(postID, review);
     }
+
+    $scope.users = announcementFactory.getUsers().then(function(response){
+      $scope.users = response.data;
+      console.log($scope.users);
+    });
   }     
 ]);

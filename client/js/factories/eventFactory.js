@@ -16,8 +16,8 @@ angular.module('eventModule', []).factory('eventFactory', function($http, $windo
         return $http.put('/api/events/' + postID);
       },
 
-    getUserByID: function(id){
-        return $http.get('/api/users/' + id);
+    getUsers: function(){
+        return $http.get('/api/users/');
       }
   }
 

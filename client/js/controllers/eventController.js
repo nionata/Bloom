@@ -16,6 +16,9 @@ angular.module('eventModule').controller('eventController', ['$scope','eventFact
 
     $scope.approveEvent = function(eventID) {
       eventFactory.approveEvent(eventID);
-    }
+    } 
+    $scope.users = eventFactory.getUsers().then(function(response){
+      $scope.users = response.data;
+    });
   }
 ]);

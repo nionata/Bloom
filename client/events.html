@@ -54,7 +54,7 @@
 					{{post.eventend | date : format : MM/dd/yyyy}}
 				</div>
 			</h3>
-			<h4 id="postUsername"> {{post.userid}} </h4>
+			<h4 id="postUsername" ng-repeat="user in users | filter:{'id': post.userid}:true">{{user.username}}</h4>
 			<h4 id="content">{{post.eventcontent}}</h4>
 			
 		</div>
