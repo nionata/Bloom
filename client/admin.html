@@ -1,13 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-<script src="js/app.js"></script>
-<script src="js/factories/userDataFactory.js"></script>
-<script src="js/controllers/userDataController.js"></script>
-<script src="js/factories/announcementFactory.js"></script>
-<script src="js/controllers/announcementController.js"></script>
-<script src="js/factories/eventFactory.js"></script>
-<script src="js/controllers/eventController.js"></script>
 
 <html>
 <head>
@@ -65,16 +58,28 @@
 		</div>
 
     <div class="box" ng-controller="eventController">
-            <h1 style="text-align: center;">Events</h1>
-            <h3 class="announcement" ng-repeat="event in events" style="margin-left: 10px;">
-                {{event}} 
-                <br>
-                <button type="submit" class="button" ng-click="console.log(event.eventid)">Approve</button> <br>
-                <button type="submit" class="button" ng-click="deleteEvent(event.eventid)">Delete</button> <br>
-            </h3>
-    
-    
-        </div>
+		<h1 style="text-align: center;">Unapproved Events</h1>
+		<h3 class="announcement" ng-repeat="unevent in events | filter:{approved:false}" style="margin-left: 10px;">
+			{{unevent}}
+			<br>
+			<button type="submit" class="button" ng-click="approveEvent(unevent.eventid)">Approve</button> <br>
+			<button type="submit" class="button" ng-click="deleteEvent(unevent.eventid)">Delete</button> <br>
+		</h3>
+
+
+	</div>
+
+	<div class="box" ng-controller="eventController">
+		<h1 style="text-align: center;">Approved Events</h1>
+		<h3 class="announcement" ng-repeat="apevent in events | filter:{approved:true}" style="margin-left: 10px;">
+			{{apevent}} 
+			<br>
+			<button type="submit" class="button" ng-click="approveEvent(apevent.eventid)">Approve</button> <br>
+			<button type="submit" class="button" ng-click="deleteEvent(apevent.eventid)">Delete</button> <br>
+		</h3>
+
+
+	</div>
     
 	
 	<footer>
@@ -82,3 +87,11 @@
 	</footer>
 </body>
 </html>
+
+<script src="js/app.js"></script>
+<script src="js/factories/userDataFactory.js"></script>
+<script src="js/controllers/userDataController.js"></script>
+<script src="js/factories/announcementFactory.js"></script>
+<script src="js/controllers/announcementController.js"></script>
+<script src="js/factories/eventFactory.js"></script>
+<script src="js/controllers/eventController.js"></script>

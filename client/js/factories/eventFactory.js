@@ -4,10 +4,6 @@ angular.module('eventModule', []).factory('eventFactory', function($http, $windo
       return $http.get('/api/events/');
     },
 
-    getApprovedEvents: function(){
-      return $http.get('/api/events/?approved=true');
-    },
-
     createEvent: function(newEvent) {
         return $http.post('/api/events', newEvent);
       },
@@ -16,8 +12,8 @@ angular.module('eventModule', []).factory('eventFactory', function($http, $windo
         return $http.delete('/api/events/' + eventID);
       },
 
-    approveEvent: function(postID, review) {
-        return $http.put('/api/announcements/' + postID +"/review", review);
+    approveEvent: function(postID) {
+        return $http.put('/api/events/' + postID);
       },
 
     getUserByID: function(id){
