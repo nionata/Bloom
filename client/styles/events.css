@@ -17,6 +17,9 @@ ul{
     padding: 0;
 
 }
+#all{
+    width: 100%;
+}
 .buttonhdr {
     background: white;
     border: 0;

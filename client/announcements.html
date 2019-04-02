@@ -61,9 +61,8 @@
 		<div class="announcement" ng-repeat="post in approvedAnnouncements" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
 			<h2 id="title">{{post.title}}</h2>
 			<h3 id="infomation">
-				<div ng-repeat="user in users | filter:{'id': post.user_id} : true">
-					{{user.username}}
-					
+				<div>
+					{{post.username}}
 				</div> 
 				<div>
 					{{post.timestamp.slice(0, 10) | date : format : MM/dd/yyyy}}
