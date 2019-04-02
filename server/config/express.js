@@ -48,15 +48,19 @@ module.exports.init = function() {
       var whiteListedEndpoints = [
         "/api/users/login",
         "/api/users/register",
-        "/api/auth/google",
-        "/api/auth/google-auth",
-        "/api/users/user"
+        "/api/users/auth/google",
+        "/api/users/auth/google-auth",
+        "/api/users/user",
+        "/api/announcements/?approved=true"
       ];
+
+      var testing = false;
 
       // check if a user is logged-in, if not, make sure they can't access the api
       if (!req.session.user || !req.cookies.user_sid) {
-        if(req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl)) {
+        if(!testing && req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl) && !req.originalUrl.includes("/api/users/auth/google-auth")) {
           res.send("Missing authentication");
+          return;                                                                                                                                                         
         }
 
         //Add redirecting to bio if they are logged in and bio is empty

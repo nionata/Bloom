@@ -21,7 +21,7 @@ exports.getAll = async function(req, res, next) {
     });
 };
 
-exports.getUserById = async function(req, res, next) {
+exports.getById = async function(req, res, next) {
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
@@ -41,7 +41,7 @@ exports.getUserById = async function(req, res, next) {
     });
 };
 
-exports.getCurrentUser = async function(req, res, next) {
+exports.getCurrent = async function(req, res, next) {
   // conncects to postres server
   const client = new Client({connectionString: uri.db.uri,ssl: true,});
   await client.connect();
@@ -97,18 +97,65 @@ exports.create = async function(req, res, next) {
 };
 
 exports.getBio = async function(req, res, next) {
-  //In progress
-  res.send("In progress");
+  // conncects to postres server
+  const client = new Client({connectionString: uri.db.uri,ssl: true,});
+  await client.connect();
+
+  const id = req.query.id || req.session.user_id;
+
+  client.query("SELECT * FROM user_bios where user_id=$1", [id], (err, result) => {
+    client.end();
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      if(result.rowCount !== 0) {
+        res.send(result.rows[0]);
+      } else {
+        res.send("Bio is empty");
+      }
+    }
+  });
 };
 
 exports.setBio = async function(req, res, next) {
-  //In progress
-  res.send("In progress");
+  // conncects to postres server
+  const client = new Client({connectionString: uri.db.uri, ssl: true,});
+  await client.connect();
+
+  const { firstName, lastName, affiliation, bio } = req.body;
+
+  client.query('INSERT INTO user_bios(first_name, last_name, affiliation, bio, user_id) values($1, $2, $3, $4, $5) RETURNING *', [firstName, lastName, affiliation, bio, req.session.user_id], (err, result) => {
+    client.end();
+    if(err) {
+      if(err.code === "23505") {
+        res.status(400).send("This user already has a bio");
+      } else {
+        console.log(err);
+        res.status(400).send(err);
+      }
+    } else {
+      res.send(result.rows[0]);
+    }
+  });
 };
 
 exports.updateBio = async function(req, res, next) {
-  //In progress
-  res.send("In progress");
+  // conncects to postres server
+  const client = new Client({connectionString: uri.db.uri, ssl: true,});
+  await client.connect();
+
+  const { firstName, lastName, affiliation, bio } = req.body;
+
+  client.query('UPDATE user_bios SET first_name=$1, last_name=$2, affiliation=$3, bio=$4 WHERE user_id=$5 RETURNING *', [firstName, lastName, affiliation, bio, req.session.user_id], (err, result) => {
+    client.end();
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.send(result.rows[0]);
+    }
+  });
 };
 
 exports.creategoogleuser = async function(req, res, next) {
