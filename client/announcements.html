@@ -28,15 +28,15 @@
 					<li><a href="/about">About Us</a></li>
 					<li ng-if="bio == 'No current user'">
 						<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
-					</li>		
+					</li>
 					<div id="username" ng-if="bio != 'No current user'">
 						<h2>
 							{{bio.username}}
 							<a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
 							<a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px; color: #eeeeee;">notifications</i></a>
 						</h2>
-					</div>	
-					
+					</div>
+
 				</ul>
 			</nav>
 		</div>
@@ -62,8 +62,8 @@
 			<h2 id="title">{{post.title}}</h2>
 			<h3 id="infomation">
 				<div>
-					{{post.user_id}}
-				</div> 
+					{{post.username}}
+				</div>
 				<div>
 					{{post.timestamp.slice(0, 10) | date : format : MM/dd/yyyy}}
 				</div>
@@ -71,7 +71,7 @@
 			<h4 id="content">{{post.content}}</h4>
 		</div>
 	</div>
-	
+
     <div class="box">
 		<h1>Suggest an Announcement</h1>
 
@@ -80,11 +80,11 @@
                 <input type="text" id="suggestTitle" ng-model="newAnnouncement.title" placeholder="Title"><br>
 				<textarea rows="10" cols="60" id="suggestContent" ng-model="newAnnouncement.content" placeholder="Body"></textarea>
 				<button type="Send" id="sendButton" ng-click="createAnnouncement(newAnnouncement)">Send</button> <br>
-                
+
             </form>
         </div>
     </div>
-	
+
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
 	</footer>
