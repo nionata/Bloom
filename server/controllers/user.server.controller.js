@@ -74,7 +74,7 @@ exports.create = async function(req, res, next) {
         // check if username already exist
         if(result.rowCount === 0) {
           bcrypt.hash(req.body.password, 10, async function(err, hash) {
-              client.query('INSERT INTO users(username, password,admin,email) values($1, $2, $3, $4) RETURNING *', [req.body.username, hash, false, req.body.email], (err, result) => {
+              client.query('INSERT INTO users(username, password,admin,email) values($1, $2, $3, $4)    RETURNING *', [req.body.username, hash, false, req.body.email], (err, result) => {
                 client.end();
                 if(err) {
                   console.log(err);
@@ -97,18 +97,65 @@ exports.create = async function(req, res, next) {
 };
 
 exports.getBio = async function(req, res, next) {
-  //In progress
-  res.send("In progress");
+  // conncects to postres server
+  const client = new Client({connectionString: uri.db.uri,ssl: true,});
+  await client.connect();
+
+  const id = req.query.id || req.session.user_id;
+
+  client.query("SELECT * FROM user_bios where user_id=$1", [id], (err, result) => {
+    client.end();
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      if(result.rowCount !== 0) {
+        res.send(result.rows[0]);
+      } else {
+        res.send("Bio is empty");
+      }
+    }
+  });
 };
 
 exports.setBio = async function(req, res, next) {
-  //In progress
-  res.send("In progress");
+  // conncects to postres server
+  const client = new Client({connectionString: uri.db.uri, ssl: true,});
+  await client.connect();
+
+  const { firstName, lastName, affiliation, bio } = req.body;
+
+  client.query('INSERT INTO user_bios(first_name, last_name, affiliation, bio, user_id) values($1, $2, $3, $4, $5) RETURNING *', [firstName, lastName, affiliation, bio, req.session.user_id], (err, result) => {
+    client.end();
+    if(err) {
+      if(err.code === "23505") {
+        res.status(400).send("This user already has a bio");
+      } else {
+        console.log(err);
+        res.status(400).send(err);
+      }
+    } else {
+      res.send(result.rows[0]);
+    }
+  });
 };
 
 exports.updateBio = async function(req, res, next) {
-  //In progress
-  res.send("In progress");
+  // conncects to postres server
+  const client = new Client({connectionString: uri.db.uri, ssl: true,});
+  await client.connect();
+
+  const { firstName, lastName, affiliation, bio } = req.body;
+
+  client.query('UPDATE user_bios SET first_name=$1, last_name=$2, affiliation=$3, bio=$4 WHERE user_id=$5 RETURNING *', [firstName, lastName, affiliation, bio, req.session.user_id], (err, result) => {
+    client.end();
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.send(result.rows[0]);
+    }
+  });
 };
 
 exports.creategoogleuser = async function(req, res, next) {
@@ -125,14 +172,15 @@ exports.creategoogleuser = async function(req, res, next) {
     // if it does not exist add the user
     if(result.rows.length == 0) {
       req.session.user = username;
-      req.session.user_id = id;
-      res.redirect('/');
-      await client.query('INSERT INTO users(username, password,admin,email) values($1, $2 ,$3,$4)',[username.substr(0,16), '',false,useremail]);
+       result =await client.query('INSERT INTO users(username, password,admin,email) values($1, $2 ,$3,$4) RETURNING *',[username.substr(0,16), '',false,useremail]);
+      req.session.user_id = result.rows[0].id;
       await client.end();
+        res.redirect('/');
       next();
     } else {
       console.log("pas " + result.rows[0].password);
       if(result.rows[0].password == '') {
+        req.session.user_id = result.rows[0].id;
         req.session.user = username;
         next();
       } else {

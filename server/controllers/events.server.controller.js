@@ -47,7 +47,7 @@ exports.createEvent = async function(req, res, next) {
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
-    client.query('INSERT INTO events(eventtitle, eventcontent,userid,eventstart,eventend,approved) values($1, $2, $3, $4,$5,$6) RETURNING *', [req.body.eventtitle, req.body.eventcontent, req.body.userid,req.body.eventstart,req.body.eventend,false], (err, result) => {
+    client.query('INSERT INTO events(eventtitle, eventcontent,userid,eventstart,eventend,approved) values($1, $2, $3, $4,$5,$6) RETURNING *', [req.body.eventtitle, req.body.eventcontent, req.session.user_id, req.body.eventstart,req.body.eventend,false], (err, result) => {
                client.end();
                 if(err) {
                   console.log(err);

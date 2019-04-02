@@ -1,4 +1,59 @@
-ABOUT US
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/factories/userDataFactory.js"></script>
+<script src="js/controllers/userDataController.js"></script>
 
-<br><br>
-<a href="/">BACK TO HOME</a>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bloom</title>
+	<link rel="stylesheet" href="./styles/about.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body ng-app="app" ng-controller="userDataController">
+	<header>
+	<div class="container">
+		<div id="branding">
+      		<img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+		</div>
+		<nav>
+			<ul>
+				<li class="current"><a href="/">Home</a></li>
+				<li><a href="/events">Events</a></li>
+				<li><a href="/resources">Resources</a></li>
+				<li><a href="/about">About Us</a></li>
+				<li ng-if="bio == 'No current user'">
+					<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
+				</li>		
+				<div id="username" ng-if="bio != 'No current user'">
+					<h2>
+						{{bio.username}}
+						<a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
+					</h2>
+				</div>	
+				
+			</ul>
+		</nav>
+	</div>
+	</header>
+
+
+	<section id="showcase">
+        <h1>Entrepreneurship Empowerment</h1>
+        <img src="./img/profile.jpg">
+        <img src="./img/SPODER.png">
+        <p>Entrepreneurship Empowerment is a program that was created by Michael H. Morris with the intention of acting as a resource for communities, organizations, nonprofits, and universities across the country- anyone around the country who are trying to address poverty by untraditional means. The focus of Entrepreneurship Empowerment is to support people who are trying to help themselves through poverty. Entrepreneurship Empowerment has done work in Gainesville and has partnered with organizations, such as one in Chicago that teaches entrepreneurship to financially unstable neighborhoods. Bloom is intended to be a resource-intensive, educational experience that should ultimately help people create their own jobs. The ideals of Entrepreneurship Empowerment focus on empowerment abd recognizing entrepreneurial possibilities. 
+        </p>
+        <img src="./img/book.jpg">
+        <p>
+            Morris, M. H., Santos, S. C., & Neumeyer, X. (2018). Poverty and entrepreneurship in developed economies. Edward Elgar Publishing.
+        </p>
+	</section>
+		
+	<footer>
+		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
+	</footer>
+</body>
+</html>

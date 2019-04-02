@@ -8,6 +8,10 @@ angular.module('announcementModule', []).factory('announcementFactory', function
             return $http.get('/api/announcements/?approved=true');
         },
 
+        getUnapprovedAnnouncements: function(){
+            return $http.get('/api/announcements/?approved=false');
+        },
+
         createAnnouncement: function(newAnnouncement) {
             return $http.post('/api/announcements/create', newAnnouncement);
         },
@@ -20,9 +24,9 @@ angular.module('announcementModule', []).factory('announcementFactory', function
             return $http.put('/api/announcements/' + postID +"/review", review);
         },
 
-        getUserByID: function(id){
-            return $http.get('/api/users/' + id);
-        },
+        getUsers: function(){
+            return $http.get('/api/users/');
+          },
 
         like: function(){
             return $http.put('/api/announcements');
