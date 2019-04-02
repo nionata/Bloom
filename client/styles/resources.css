@@ -5,12 +5,17 @@ body {
     background-color: white
 }
 
+
 /* Global */
 .container{
     width: 80%;
     margin:auto;
     overflow:hidden;
     color: #1fd3ac;
+}
+.container h3 {
+    margin-top:20px;
+    margin-bottom:10px;
 }
 @media only screen and (max-width: 600px){
     .container {
@@ -219,7 +224,7 @@ Categories
 .categories>.category>img{
     width: 100%;
     display: block;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 .categories>.category>.name{
     display: block;
@@ -233,13 +238,11 @@ Videos
 */
 .videos>.video{
     width: 21.5%;
-    margin-left: 1%;
-    margin-right: 1%;
     display: inline-block;
     padding: 5px;
     cursor: pointer;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
-    margin-bottom: 10px;
+    margin: 10px 1% 10px 1%;
 }
 .videos>.video>img{
     width: 100%;
