@@ -74,7 +74,7 @@ exports.create = async function(req, res, next) {
         // check if username already exist
         if(result.rowCount === 0) {
           bcrypt.hash(req.body.password, 10, async function(err, hash) {
-              client.query('INSERT INTO users(username, password,admin,email) values($1, $2, $3, $4) RETURNING *', [req.body.username, hash, false, req.body.email], (err, result) => {
+              client.query('INSERT INTO users(username, password,admin,email) values($1, $2, $3, $4)    RETURNING *', [req.body.username, hash, false, req.body.email], (err, result) => {
                 client.end();
                 if(err) {
                   console.log(err);
@@ -172,14 +172,15 @@ exports.creategoogleuser = async function(req, res, next) {
     // if it does not exist add the user
     if(result.rows.length == 0) {
       req.session.user = username;
-      req.session.user_id = id;
-      res.redirect('/');
-      await client.query('INSERT INTO users(username, password,admin,email) values($1, $2 ,$3,$4)',[username.substr(0,16), '',false,useremail]);
+       result =await client.query('INSERT INTO users(username, password,admin,email) values($1, $2 ,$3,$4) RETURNING *',[username.substr(0,16), '',false,useremail]);
+      req.session.user_id = result.rows[0].id;
       await client.end();
+        res.redirect('/');
       next();
     } else {
       console.log("pas " + result.rows[0].password);
       if(result.rows[0].password == '') {
+        req.session.user_id = result.rows[0].id;
         req.session.user = username;
         next();
       } else {
