@@ -53,7 +53,7 @@ header{
     padding-top: 15px;
     min-height: 70px;
     border-bottom: #1fd3ac 4px solid;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 
 header a{
@@ -155,11 +155,16 @@ footer{
 }
 
 #content{
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 20px;
     margin-right: 40px;
     font-size: 15pt;
     word-wrap: break-word;
+}
+
+#postUsername{
+    margin-left: 20px;
+    margin-top: 40px;
 }
 
 .box{
