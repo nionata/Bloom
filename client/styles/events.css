@@ -1,15 +1,17 @@
+
 body {
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding:0;
     margin:0;
-    background-color: #eaf1ff
+    background-color: white
 }
 
 /* Global */
 .container{
+    width: 95%;
     margin:auto;
     overflow:hidden;
-    color: #ffffff;
+    color: #1fd3ac;
 }
 ul{
     margin: 0;
@@ -17,9 +19,9 @@ ul{
 
 }
 .buttonhdr {
-    background: #ffbe5e;
+    background: white;
     border: 0;
-    color: white;
+    color: #1fd3ac;
     height: 38px;
     width: 120px;
     float: right;
@@ -33,30 +35,29 @@ ul{
 }
 
 button:hover {
-    background-color: #fab042;
-    color: rgb(236, 236, 236);
+    background-color: #eeeeee;
 }
 
 .button_1 {
     height: 38px;
-    background: #ffbe5e;
+    background: white;
     border: 0;
     padding-left: 20px;
     padding-right: 20px;
-    color: white;
+    color: #1fd3ac;
 }
 
 
 header{
-    background: #4286f4;
-    color: #ffffff;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: #ffbe5e 4px solid;
+    background: #1fd3ac;
+    color: white;
+    padding-top: 15px;
+    min-height: 70px;
+    border-bottom: #1fd3ac 4px solid;
 }
 
 header a{
-    color: #ffffff;
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 18px;
@@ -77,6 +78,7 @@ header #branding{
 header #branding h1{
     margin:0;
     display:inline;
+    color:white;
 }
 
 header #branding img{
@@ -96,12 +98,119 @@ header .highlight{
 }
 
 header .current a{
-    color: #ffbe5e;
+    color: #eeeeee;
 }
 
 header a:hover{
-    color: #ffbe5e;
+    color: #eeeeee;
     text-decoration: none;
+}
+
+#username {
+    margin-right: 50px;
+    margin-top: -20px;
+    float: right;
+    color: white;
+}
+
+/*Showcase */
+
+#showcase{
+    min-height: 650px;
+    text-align: center;
+    color:#1fd3ac;
+    background-size: cover;
+}
+
+#showcase h1{
+    margin-top: 100px;
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-weight: bold;
+
+}
+
+#showcase p{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+
+/*newsletter*/
+#newsletter{
+    padding:5px;
+    color: white;
+    background: #1fd3ac;
+}
+
+#newsletter h1{
+    color:white;
+    float:left;
+    font-size: 30px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#newsletter form{
+    float:right;
+    margin-top: 10px;
+}
+
+#newsletter input[type="email"]{
+    margin-top: 10px;
+    padding: 4px;
+    height: 35px;
+    width: 250px;
+}
+
+#boxes{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+/*boxes*/
+.boxes{
+    display: grid;
+    grid-template-columns:25% 25% 25%;
+    grid-template-rows: auto auto; 
+    grid-column-gap: 40px;
+    grid-row-gap: 10px;
+    justify-content: center;
+    grid-template-areas: 
+    "a b c"
+    "d e f";
+}
+
+#boxes .box-a {
+    grid-area: a;
+}
+#boxes .box-b {
+    grid-area: b;
+}
+#boxes .box-c {
+    grid-area: c;
+}
+#boxes .box-d {
+    grid-area: d;
+}
+#boxes .box-e {
+    grid-area: e;
+}
+#boxes .box-f {
+    grid-area: f;
+}
+
+
+#boxes img{
+    width:90px;
+    height:90px;
+}
+footer{
+    padding: 20px;
+    margin-top: 20px;
+    color: white;
+    background-color: #1fd3ac;
+    text-align: center;
 }
 
 #username {
@@ -121,13 +230,4 @@ header a:hover{
     padding-left:15px; 
     border:1px solid black; 
     overflow:hidden;
-}
-
-
-footer{
-    padding: 20px;
-    margin-top: 20px;
-    color: white;
-    background-color: #ffbe5e;
-    text-align: center;
 }
