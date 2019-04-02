@@ -41,6 +41,10 @@ router.route('/profile').get((req, res) => {
   res.sendFile('/client/profile.html', { root: '.'});
 });
 
+router.route('/bio').get((req, res) => {
+  res.sendFile('/client/bio.html', { root: '.'});
+});
+
 router.route('/announcements').get((req, res) => {
   res.sendFile('/client/announcements.html', { root: '.'});
 });
@@ -49,7 +53,5 @@ router.route('/admin').get((req, res) => {
   res.sendFile('/client/admin.html', { root: '.'});
 });
 
-router.route('*').get((req, res) => {
-  res.status(404).sendFile('/client/notfound.html', { root: '.'});
-});
+
 module.exports = router;
