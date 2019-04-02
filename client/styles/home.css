@@ -117,7 +117,7 @@ header a:hover{
 
 #showcase{
     min-height: 650px;
-    background: url('../img/showcase.svg') no-repeat 10px -85px;
+    background: url('../img/showcase.svg') no-repeat 10px -25px;
     text-align: center;
     color:#1fd3ac;
     background-size: cover;
