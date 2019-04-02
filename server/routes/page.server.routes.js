@@ -38,7 +38,7 @@ router.route('/events').get((req, res) => {
 });
 
 router.route('/profile').get((req, res) => {
-  res.sendFile('/client/profile.html', { root: '.'});
+  res.sendFile('/client/bio.html', { root: '.'});
 });
 
 router.route('/bio').get((req, res) => {
