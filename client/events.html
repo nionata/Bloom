@@ -41,19 +41,23 @@
 			</nav>
 		</div>
 	</header>
-	
-	<div class="recentEvents">
-		<h1 style="padding-left: 20px; padding-top: 10px;">Recent Events</h1>
-	</div>
 
 	<div class="eventCards" ng-controller="eventController">
 		<div class="event" ng-repeat="post in events | filter:{approved:true}" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
 			<h2 id="title">{{post.eventtitle}}</h2>
-			<h3 id="infomation">{{post.eventid}} {{post.eventend}}</h3>
+			<h3 id="infomation">
+				<div id="startDate">
+					{{post.eventstart | date : format : MM/dd/yyyy}}
+				</div>
+				<div id="endDate">
+					{{post.eventend | date : format : MM/dd/yyyy}}
+				</div>
+			</h3>
 			<h4 id="content">{{post.eventcontent}}</h4>
 		</div>
 	</div>
 
+		
 	<div class="box">
 		<h1 style="text-align: center">Suggest an Event</h1>
 

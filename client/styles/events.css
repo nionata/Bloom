@@ -53,6 +53,7 @@ header{
     padding-top: 15px;
     min-height: 70px;
     border-bottom: #1fd3ac 4px solid;
+    margin-bottom: 80px;
 }
 
 header a{
@@ -121,19 +122,13 @@ footer{
     text-align: center;
 }
 
-.recentEvents{
-    height: 500px;
-    margin-left: 20px;
-    background-color: #befff1;
-    width: 800px;
+.eventCards{
+    margin-left: 40px;
 }
-
 .event {
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-bottom: 10px;
     width: 1800px;
     height: 100px;
+    margin-top: 20px;
     font-size:15px;
     font-family:Tahoma; 
     padding-left:15px; 
@@ -148,6 +143,7 @@ footer{
 #title{
     margin-top: 30px;
     margin-left: 5px;
+    word-wrap: break-word;
 }
 
 
@@ -155,12 +151,19 @@ footer{
     float: right;
     padding-right: 20px;
     padding-left: 10px;
-    margin-top: -45px;
+    margin-top: -60px;
+}
 
+#content{
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 40px;
+    font-size: 15pt;
+    word-wrap: break-word;
 }
 
 .box{
-    margin-top: 50px;
+    margin-top: 80px;
     padding-top: 20px;
     margin-bottom: 60px;
     height: 680px;
