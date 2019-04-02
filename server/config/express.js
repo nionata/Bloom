@@ -77,6 +77,11 @@ module.exports.init = function() {
   app.use('/api/events', eventsRouter);
   app.use('/api/announcements', announcementsRouter);
   app.use('/api/admin', adminRouter);
+  
 
+/*redirects all other routes to 404 error page. When adding more routes, add them before this comment.*/
+  app.get('/*', function(req, res){
+    res.sendFile(path.resolve("client/notfound.html"));
+  });
   return app;
 };
