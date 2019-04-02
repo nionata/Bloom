@@ -49,7 +49,5 @@ router.route('/admin').get((req, res) => {
   res.sendFile('/client/admin.html', { root: '.'});
 });
 
-router.route('*').get((req, res) => {
-  res.status(404).sendFile('/client/notfound.html', { root: '.'});
-});
+
 module.exports = router;
