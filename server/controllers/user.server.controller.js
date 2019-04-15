@@ -61,10 +61,19 @@ exports.getCurrent = async function(req, res, next) {
   });
 }
 
+
+exports.logout = async function(req, res, next) {
+    req.session.user = null;
+    req.session.user_id = null;
+    res.redirect('/');
+}
+
 exports.create = async function(req, res, next) {
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri, ssl: true,});
     await client.connect();
+    var datetime = new Date();
+
 
     client.query('select * from users where username=$1 or email=$2',[req.body.username, req.body.email], (err, result) => {
       if(err) {
@@ -74,12 +83,14 @@ exports.create = async function(req, res, next) {
         // check if username already exist
         if(result.rowCount === 0) {
           bcrypt.hash(req.body.password, 10, async function(err, hash) {
-              client.query('INSERT INTO users(username, password,admin,email) values($1, $2, $3, $4)    RETURNING *', [req.body.username, hash, false, req.body.email], (err, result) => {
+              client.query('INSERT INTO users(username, password,admin,email,date_created,last_login) values($1, $2, $3, $4, $5,$6)    RETURNING *', [req.body.username, hash, false, req.body.email,datetime,datetime], (err, result) => {
                 client.end();
                 if(err) {
                   console.log(err);
                   res.status(400).send(err);
                 } else {
+                  req.session.user = req.body.username;
+                  req.session.user_id = result.rows[0].id;
                   res.send(result.rows[0])
                 }
               });
@@ -161,8 +172,9 @@ exports.updateBio = async function(req, res, next) {
 exports.creategoogleuser = async function(req, res, next) {
     var googleuser = await googleurl.GetGoogleUser(req.query.code);
     var useremail = googleuser.email;
-    var username = googleuser.id;
-
+    var username = useremail;
+    username = username.replace('@gmail.com','');
+    var datetime = new Date();
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
@@ -172,14 +184,15 @@ exports.creategoogleuser = async function(req, res, next) {
     // if it does not exist add the user
     if(result.rows.length == 0) {
       req.session.user = username;
-       result =await client.query('INSERT INTO users(username, password,admin,email) values($1, $2 ,$3,$4) RETURNING *',[username.substr(0,16), '',false,useremail]);
+       result =await client.query('INSERT INTO users(username, password,admin,email,date_created,last_login) values($1, $2 ,$3,$4,$5,$6) RETURNING *',[username.substr(0,16), '',false,useremail,datetime,datetime]);
       req.session.user_id = result.rows[0].id;
       await client.end();
-        res.redirect('/');
+        res.redirect('/bio');
       next();
     } else {
-      console.log("pas " + result.rows[0].password);
       if(result.rows[0].password == '') {
+        await client.query("UPDATE users set last_login = $1 where email =$2",[datetime,useremail]);
+        await client.end();
         req.session.user_id = result.rows[0].id;
         req.session.user = username;
         next();
@@ -193,23 +206,30 @@ exports.login = async function(req, res, next) {
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
+    var datetime = new Date();
 
     // check if select row with entered user name
-    client.query("SELECT * FROM users where username = $1",[req.body.username], (err, result) => {
-      client.end();
+     client.query("SELECT * FROM users where username = $1",[req.body.username], (err, result)  => {
       if(err) {
+        client.end();
         console.log(err);
         res.status(400).send(err);
       } else {
         if(result.rows.length === 0) {
+          client.end();
           res.send("That username does not exist");
         } else {
           bcrypt.compare(req.body.password, result.rows[0].password, (err, response) => {
             if(response) {
-              req.session.user = req.body.username;
-              req.session.user_id = result.rows[0].id;
-              res.send("User signed in successfully");
+                client.query("UPDATE users set last_login = $1 where username =$2",[datetime,req.body.username], (err, results)  => {
+                     client.end();
+                     req.session.user = req.body.username;
+                     req.session.user_id = result.rows[0].id;
+                     res.send("User signed in successfully");
+                })
+             
             } else {
+              client.end();
               res.send("Incorrect password");
             }
           });
