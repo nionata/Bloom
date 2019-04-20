@@ -1,3 +1,9 @@
+body{
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding:0;
+    margin:0;
+    background-color: white
+}
 .form input[type = "text"]{
 border: 0;
 display: block;

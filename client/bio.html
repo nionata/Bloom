@@ -1,16 +1,15 @@
-<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="profile.css">
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="js/app.js"></script>
+
 <script src="js/factories/bioDataFactory.js"></script>
 <script src="js/controllers/bioDataController.js"></script>
-
+<html>
 <head>
     <meta charset="utf-8">
     <title> Login UI </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/bio.css">
+    <link rel="stylesheet" href="./styles/bio.css">
 </head>
 
 <body ng-app="app" ng-controller="bioDataController">
@@ -36,6 +35,7 @@
                     </li>
                     <li class="list-group-item text-left"><button class="button" id = "update_username">Update Username</button></li>
                     <li class="list-group-item text-left"><button class="button" id = "update_password">Update Password</button></li>
+                    <li class="list-group-item text-left"><button class="button" id = "update_user_bio">Update Your Bio</button></li>
                     <li class="list-group-item text-left"><button class="button" id = "homeButton" onclick="location.href='home.html'">Go Back</button></li>
                 </ul>
             </div>
@@ -60,7 +60,6 @@ $("body").find("span").click(function() {
                     <span class="close">&times;</span>
                     <form class="updateUsernameForm">
                         <input type="text" name="" placeholder="Current Username" ng-model="img" required="required">
-                        <input type="text" name="" placeholder="Current Password" ng-model="img" required="required">
                         <input type="text" name="" placeholder="New Username" ng-model="img" required="required">
                     </form>
 
@@ -72,18 +71,37 @@ $("body").find("span").click(function() {
 
                 <!-- Modal content -->
                 <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <form class="updatePasswordForm">
-                        <input type="text" name="" placeholder="Current Username" ng-model="img" required="required">
-                        <input type="text" name="" placeholder="Current Password" ng-model="img" required="required">
-                        <input type="text" name="" placeholder="New Password" ng-model="img" required="required">
-                    </form>
-                </div>
-
+                        <span class="close">&times;</span>
+                        <form class="updateUsernameForm">
+                            <input type="text" name="" placeholder="Current Password" ng-model="img" required="required">
+                            <input type="text" name="" placeholder="New Password" ng-model="img" required="required">
+                            <input type="text" name="" placeholder="New Username" ng-model="img" required="required">
+                        </form>
+    
+                    </div>
+          
             </div>
-            <script>
-                var bio = null;
-            </script>
+           
+            <div id="updateUserBio" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <form class="form">
+                                    <p style="text-align: center;">What is your first name?</p>
+                                    <input type="text" name="" ng-model="newBio.firstName" placeholder = "First Name" required="required">
+                                    <p style="text-align: center;">What is your last name?</p>
+                                    <input type="text" name="" ng-model="newBio.lastName" placeholder = "Last Name" required="required">
+                                    <p style="text-align: center;">What agency are you affiliated with?</p>
+                                    <input type="text" name="" ng-model="newBio.affiliation" placeholder = "Affiliation" required="required">
+                                    <p style="text-align: center;">In a sentence, how do you plan to help future enterpreneurs?</p>
+                                    <input type="text" name="" ng-model="newBio.bio" placeholder = "How will you help others?" required="required">
+                                    <input type="submit" name="" ng-click="update()" value="Submit">
+                                </form>
+        
+                        </div>
+              
+                </div>
             <div class="col-sm-9" style="" contenteditable="false">
                 <div class="panel panel-default">
                     <div class="panel-heading">Your Bio</div>
@@ -91,30 +109,28 @@ $("body").find("span").click(function() {
                 </div>
                 <div class="panel panel-default target">
                     <div class="panel-heading" contenteditable="false">Your Profile</div>
-                    <div class="panel-body">
+                  <div class="panel-body" ng-show = "bio != null">
+                       <p style="text-align: left">Your First Name: {{bio.first_name}}</p>
+                       <p style="text-align: left;">Your Last Name: {{bio.last_name}}</p>
+                       <p style="text-align: left;">Your affiliated Agency: {{bio.affiliation}}</p>
+                    </div>
+                      
+                    <div class="panel-body" ng-show ="bio == null">
                         <form class="form">
                             <p style="text-align: center;">What is your first name?</p>
-                            <input type="text" name="" ng-model="bio.firstName" required="required">
+                            <input type="text" name="" ng-model="newBio.firstName" placeholder = "First Name" required="required">
                             <p style="text-align: center;">What is your last name?</p>
-                            <input type="text" name="" ng-model="bio.lastName" required="required">
+                            <input type="text" name="" ng-model="newBio.lastName" placeholder = "Last Name" required="required">
                             <p style="text-align: center;">What agency are you affiliated with?</p>
-                            <input type="text" name="" ng-model="bio.affiliation" required="required">
-
-
-                            <p style="text-align: center;">In a sentence, how do you plan to help future enterpreneurs?
-                            </p>
-                            <input type="text" name="" ng-model="bio.bio" required="required">
-
-                            <input type="submit" name="" ng-click="createBio()" value="Submit">
+                            <input type="text" name="" ng-model="newBio.affiliation" placeholder = "Affiliation" required="required">
+                            <p style="text-align: center;">In a sentence, how do you plan to help future enterpreneurs?</p>
+                            <input type="text" name="" ng-model="newBio.bio" placeholder = "How will you help others?" required="required">
+                            <input type="submit" name="" ng-click="create()" value="Submit">
                         </form>
                     </div>
-                    <div class="panel-body" ng-if="bio.agency != undefined || bio.agency != null">
-                        <p style="text-align: left;">Name: {{bio.name}}</p>
-                        <p style="text-align: left;">Agency: {{bio.agency}}</p>
-
-
-                    </div>
+             </div>
 
                 </div>
             </div>
 </body>
+</html>

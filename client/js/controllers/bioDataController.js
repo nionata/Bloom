@@ -1,8 +1,27 @@
 angular.module('bioDataModule').controller('bioDataController', ['$scope','bioDataFactory','$window',
-  function($scope, bioDataFactory) { 
+  function($scope, bioDataFactory, $window) { 
+
+    /*
+http://localhost:8080/api/users/user/bio
+
+http://localhost:8080/api/users/user/bio
+{
+    “firstName”: “Nicholas”,
+    “lastName”: “Ionata”,
+    “affiliation”: “Individual”,
+    “bio”: “I like avacados”
+}
+    */
     
     $scope.bio = bioDataFactory.getBio().then(function(response){
-      $scope.bio = response.data;
+      if (typeof response.data != 'object'){
+      $scope.bio = null;
+      console.log(response.data);
+      }
+      else {
+        $scope.bio = response.data;
+        console.log(response.data);
+      }
     });
     
     $scope.test = function() {
@@ -10,7 +29,10 @@ angular.module('bioDataModule').controller('bioDataController', ['$scope','bioDa
     }
 
     $scope.create = function() {
-     bioDataFactory.createBio($scope.bio);
+      console.log("checkpoint reached");
+      console.log($scope.newBio);
+     bioDataFactory.createBio($scope.newBio);
+     $window.location.reload(true); 
     }
     
     $scope.update = function() {
