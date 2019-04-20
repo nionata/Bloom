@@ -1,3 +1,4 @@
+const { Client } = require('pg');
 var path = require('path'),
     express = require('express'),
     morgan = require('morgan'),
@@ -46,6 +47,7 @@ module.exports.init = function() {
 
       //Any api endpoint not in this list will not be accessable unless you are authenticated
       var whiteListedEndpoints = [
+          "/api/admin/",
         "/api/users/login",
         "/api/users/register",
         "/api/users/auth/google",
@@ -59,16 +61,37 @@ module.exports.init = function() {
       var testing = false;
 
       // check if a user is logged-in, if not, make sure they can't access the api
-      if (!req.session.user || !req.cookies.user_sid) {
-        if(!testing && req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl) && !req.originalUrl.includes("/api/users/auth/google-auth")) {
+      if (!req.session.user || !req.cookies.user_sid) { 
+          if(!testing && req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl) && !req.originalUrl.includes("/api/users/auth/google-auth")) {
           res.send("Missing authentication");
-          return;                                                                                                                                                         
+          return;                                                                                                                                     
         }
-
         //Add redirecting to bio if they are logged in and bio is empty
       }
+      
+       // check if the user is an admin
+       if(req.originalUrl.includes("/api/admin"))
+          {
+              console.log("admin page");
+              const client = new Client({connectionString: config.db.uri,ssl: true,});
+              client.connect();
+              client.query('select admin from users where id=$1',[req.session.user_id], (err, result)  => {
+                  if(result.rows[0].admin == false)
+                  {
+                      console.log(result.rows[0]);
+                      res.send("You do not have premission to access this page");
+                  }else
+                  {
+                       next();
+                  }
+              
+              })
+          }else
+          {
+              next();
+          }
 
-      next();
+      
   });
 
   //applies page router

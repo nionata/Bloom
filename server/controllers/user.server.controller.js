@@ -73,6 +73,15 @@ exports.create = async function(req, res, next) {
     const client = new Client({connectionString: uri.db.uri, ssl: true,});
     await client.connect();
     var datetime = new Date();
+    if(req.body.username.length > 16)
+    {
+        res.send("Username can't be longer than 16 characters");
+        return;
+    }else if(req.body.password.length < 6)
+    {
+        res.send("Password must be longer than 6 character");
+        return;
+    }
 
 
     client.query('select * from users where username=$1 or email=$2',[req.body.username, req.body.email], (err, result) => {

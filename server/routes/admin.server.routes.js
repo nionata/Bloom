@@ -4,6 +4,6 @@ var admin = require('../controllers/admin.server.controller.js'),
     router = express.Router();
 
 //The ':' specifies a URL parameter.
-router.route('/:Id')
+router.route('/events/:startDate&:EndDate').get(admin.getUserLogins);
 
 module.exports = router;
