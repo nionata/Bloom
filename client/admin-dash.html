@@ -1,17 +1,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-<script src="js/app.js"></script>
-<script src="js/factories/userDataFactory.js"></script>
-<script src="js/controllers/userDataController.js"></script>
-<script src="js/factories/announcementFactory.js"></script>
-<script src="js/controllers/announcementController.js"></script>
 
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Bloom</title>
-	<link rel="stylesheet" href="./styles/announcements.css">
+	<link rel="stylesheet" href="./styles/admin.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body ng-app="app">
@@ -41,52 +36,22 @@
                 </nav>
             </div>
         </header>
-	<h1 style="margin-left: 20px; text-align: center; font-size: 40pt">Announcements</h1>
-
-	<script>
-		var expand = false;
-		function toggle(){
-			expand = !expand;
-			if(expand){
-				this.style.height = "400px";
-			}
-			else{
-				this.style.height = "100px";
-			}
-
-		}
-	</script>
-
-	<div class="announcementForum" ng-controller="announcementController">
-		<div class="announcement" ng-repeat="post in approvedAnnouncements" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
-			<h2 id="title">{{post.title}}</h2>
-			<h3 id="infomation">
-				<div>			
-					{{post.username}}
-				</div> 
-				<div>
-					{{post.timestamp.slice(0, 10) | date : format : MM/dd/yyyy}}
-				</div>
-			</h3>
-			<h4 id="content">{{post.content}}</h4>
-		</div>
-	</div>
-
-    <div class="box">
-		<h1>Suggest an Announcement</h1>
-
-        <div ng-controller="announcementController">
-            <form novalidate class="simple-form">
-                <input type="text" id="suggestTitle" ng-model="newAnnouncement.title" placeholder="Title"><br>
-				<textarea rows="10" cols="60" id="suggestContent" ng-model="newAnnouncement.content" placeholder="Body"></textarea>
-				<button type="Send" id="sendButton" ng-click="createAnnouncement(newAnnouncement)">Send</button> <br>
-
-            </form>
-        </div>
-    </div>
+    
+    <a href="/admin-event">Event Approval</i></a> </br>
+    <a href="/admin-announcement">Announcement Approval</i></a> </br>
+    <a href="/admin-anayltics">Anayltics</i></a> </br>
+    <a href="/admin-controls">Admin Controls</i></a>
 
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
 	</footer>
 </body>
 </html>
+
+<script src="js/app.js"></script>
+<script src="js/factories/userDataFactory.js"></script>
+<script src="js/controllers/userDataController.js"></script>
+<script src="js/factories/announcementFactory.js"></script>
+<script src="js/controllers/announcementController.js"></script>
+<script src="js/factories/eventFactory.js"></script>
+<script src="js/controllers/eventController.js"></script>
