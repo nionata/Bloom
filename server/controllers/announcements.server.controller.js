@@ -31,7 +31,7 @@ exports.getById = async function(req, res, next) {
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
 
-    client.query("SELECT * FROM announcements where id=$1", [req.params.id], (err, result) => {
+    client.query("select * from announcements inner join users on announcements.user_id=users.id where announcements.id=$1", [req.params.id], (err, result) => {
       client.end();
       if(err) {
         console.log(err);
