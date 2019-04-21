@@ -76,6 +76,7 @@ module.exports.init = function() {
               const client = new Client({connectionString: config.db.uri,ssl: true,});
               client.connect();
               client.query('select admin from users where id=$1',[req.session.user_id], (err, result)  => {
+                  client.end();
                   if(result.rows[0].admin == false)
                   {
                       console.log(result.rows[0]);
