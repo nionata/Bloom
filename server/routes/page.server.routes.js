@@ -49,5 +49,25 @@ router.route('/admin').get((req, res) => {
   res.sendFile('/client/admin.html', { root: '.'});
 });
 
+router.route('/admin-dash').get((req, res) => {
+  res.sendFile('/client/admin-dash.html', { root: '.'});
+});
+
+router.route('/admin-event').get((req, res) => {
+  res.sendFile('/client/admin-event.html', { root: '.'});
+});
+
+router.route('/admin-announcement').get((req, res) => {
+  res.sendFile('/client/admin-announcement.html', { root: '.'});
+});
+
+router.route('/admin-anayltics').get((req, res) => {
+  res.sendFile('/client/admin-anayltics.html', { root: '.'});
+});
+
+router.route('/admin-controls').get((req, res) => {
+  res.sendFile('/client/admin-controls.html', { root: '.'});
+});
+
 
 module.exports = router;
