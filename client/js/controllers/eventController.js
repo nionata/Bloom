@@ -21,6 +21,15 @@ angular.module('eventModule').controller('eventController', ['$scope','eventFact
     $scope.approveEvent = function(eventID) {
       eventFactory.approveEvent(eventID);
     } 
+    
+     $scope.DateEvent = function(newEvent) {
+      newEvent.eventend = new Date(newEvent.eventend.toISOString());
+      newEvent.startend = new Date(newEvent.eventstart.toISOString());
+      eventFactory.GetEventBydateRange(newEvent).then(function(response){
+      console.log(response.data);
+    });
+    } 
+     
     $scope.users = eventFactory.getUsers().then(function(response){
       $scope.users = response.data;
     });

@@ -15,6 +15,10 @@ angular.module('eventModule', []).factory('eventFactory', function($http, $windo
     approveEvent: function(postID) {
         return $http.put('/api/events/' + postID);
       },
+      
+      GetEventBydateRange: function(newEvent) {
+        return $http.post('/api/admin/anaylics/',newEvent);
+      },
 
     getUsers: function(){
         return $http.get('/api/users/');

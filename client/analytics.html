@@ -1,0 +1,38 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/factories/userDataFactory.js"></script>
+<script src="js/controllers/userDataController.js"></script>
+<script src="js/factories/eventFactory.js"></script>
+<script src="js/controllers/eventController.js"></script>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bloom</title>
+	<link rel="stylesheet" href="./styles/events.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body ng-app="app">
+	<div>
+	<div class="box">
+		<h1 style="text-align: center">Suggest an Event</h1>
+		<div ng-controller="eventController">
+			<form novalidate class="simple-form">
+				<div class="form-group" id="dates" style="display: inline-block"> 
+					<h2 style="display: inline-block;">Starting Date</h2> <input type="date"  id="suggestEventStart" ng-model="newEvent.eventstart" placeholder="Start Date (MM/DD/YYYY)">
+					<h2 style="display: inline-block; margin-left: 40px;">Ending Date</h2> <input type="date" id="suggestEventEnd" ng-model="newEvent.eventend" placeholder="End Date">
+					<button type="Send" id="sendButton" ng-click="DateEvent(newEvent)">Send</button> <br>
+				</div>
+				
+			</form>
+		</div>
+	</div>
+</div>
+
+	<footer>
+		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
+	</footer>
+</body>
+</html>
