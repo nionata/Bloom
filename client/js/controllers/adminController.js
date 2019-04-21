@@ -10,10 +10,20 @@ angular.module('adminModule').controller('adminController', ['$scope','adminFact
         backgroundColor : "white",
         series : [
           {
-            values : [1,2,3,4],
+            values : [1,2,3,7],
             backgroundColor : "#4DC0CF"
           }
         ]
       };
+      
+       $scope.DateEvent = function(newEvent) {
+      newEvent.eventend = new Date(newEvent.eventend.toISOString());
+      newEvent.startend = new Date(newEvent.eventstart.toISOString());
+      adminFactory.GetEventBydateRange(newEvent).then(function(response){
+      $scope.myJson.series.values = response.data[1];
+      console.log($scope.myJson.series.values);
+    });
+    }
+       
   }     
 ]);
