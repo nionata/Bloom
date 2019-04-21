@@ -126,10 +126,11 @@ footer{
 }
 
 .eventCards{
-    margin-left: 40px;
+    margin-left: 5%;
+    width:100%;
 }
 .event {
-    width: 1800px;
+    width: 90%;
     height: 100px;
     margin-top: 20px;
     font-size:15px;
