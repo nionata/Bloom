@@ -109,13 +109,14 @@ exports.review = async function(req, res, next) {
 };
 
 exports.create = async function(req, res, next) {
+    var datetime = new Date();
     // conncects to postres server
     const client = new Client({connectionString: uri.db.uri, ssl: true,});
     await client.connect();
 
     const { title, content } = req.body;
 
-    client.query('INSERT INTO announcements(user_id, title, content) values($1, $2, $3) RETURNING *', [req.session.user_id, title, content], (err, result) => {
+    client.query('INSERT INTO announcements(user_id, title, content,date_created) values($1, $2, $3,$4) RETURNING *', [req.session.user_id, title, content,datetime], (err, result) => {
       client.end();
       if(err) {
         console.log(err);
