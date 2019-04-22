@@ -53,5 +53,9 @@ router.route('/admin').get((req, res) => {
   res.sendFile('/client/admin.html', { root: '.'});
 });
 
+//redirects all other routes to 404 error page
+router.route('/*').get((req, res) => {
+  res.redirect('/404');
+});
 
 module.exports = router;
