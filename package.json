@@ -13,6 +13,7 @@
     "googleapis": "^38.0.0",
     "mongoose": "^4.2.9",
     "morgan": "^1.6.1",
+    "nyc": "^14.0.0",
     "pg": "^7.8.1",
     "request": "^2.67.0"
   },
@@ -22,6 +23,6 @@
     "supertest": "^3.1.0"
   },
   "scripts": {
-    "test": "mocha --exit server/tests"
+    "test": "nyc mocha --exit server/tests"
   }
 }
