@@ -116,11 +116,16 @@ header a:hover{
 /*Showcase */
 
 #showcase{
-    min-height: 850px;
-    background: url('../img/showcase.svg') no-repeat 10px -25px;
+    min-height: 650px;
+    background-image: url('../img/showcase.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
     text-align: center;
     color:#1fd3ac;
     background-size: cover;
+    width:100%
 }
 
 #showcase h1{
