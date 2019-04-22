@@ -121,6 +121,39 @@ exports.getAll = async function(req, res) {
     res.send(anaylics);
 }
 
+exports.Ban = async function(req, res) {
+    
+    const client = new Client({connectionString: uri.db.uri,ssl: true,});
+    await client.connect();
+    await client.query('Delete from events where userid = $1',[req.params.id]);
+    await client.query('Delete from announcements where user_id = $1',[req.params.id]);
+    await client.query('Delete from user_bios where user_id = $1',[req.params.id]);
+    await client.query('Delete from users where id = $1',[req.params.id]);
+    await client.end();
+    
+    res.send('banned');
+}
+
+exports.Promote = async function(req, res) {
+    
+    const client = new Client({connectionString: uri.db.uri,ssl: true,});
+    await client.connect();
+    await client.query('Update users set admin = true where id = $1',[req.params.id]);
+    await client.end();
+    
+    res.send('promoted');
+}
+
+exports.Demote = async function(req, res) {
+    
+    const client = new Client({connectionString: uri.db.uri,ssl: true,});
+    await client.connect();
+    await client.query('Update users set admin = false where id = $1',[req.params.id]);
+    await client.end();
+    
+    res.send('Demoted');
+}
+
 class Logins {
   constructor(date, number) {
     this.date = date;
