@@ -236,6 +236,7 @@ exports.login = async function(req, res, next) {
                      client.end();
                      req.session.user = req.body.username;
                      req.session.user_id = result.rows[0].id;
+                     req.session.admin = result.rows[0].admin;
                      res.send("User signed in successfully");
                 })
              

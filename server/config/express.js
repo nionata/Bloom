@@ -41,6 +41,7 @@ module.exports.init = function() {
 
   // middleware
   app.use((req, res, next) => {
+     
       // check if user's cookie is still saved in browser and user is not set, then automatically log the user out
       if (req.cookies.user_sid && !req.session.user) {
         res.clearCookie('user_sid');
@@ -73,18 +74,16 @@ module.exports.init = function() {
        // check if the user is an admin
        if(req.originalUrl.includes("/api/admin"))
           {
-              console.log(req.session.admin);
               const client = new Client({connectionString: config.db.uri,ssl: true,});
               client.connect();
               client.query('select admin from users where id=$1',[req.session.user_id], (err, result)  => {
                   client.end();
                   if(result.rows[0].admin == false)
                   {
-                      console.log(result.rows[0]);
                       res.send("You do not have premission to access this page");
                   }else
                   {
-                       next();
+                        next();
                   }
               
               })

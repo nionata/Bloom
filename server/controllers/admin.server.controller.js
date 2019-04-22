@@ -24,8 +24,7 @@ exports.getAll = async function(req, res) {
     var numberOfLogins = 0;
     var last = events.rows[0].date_created.toDateString();
     (allDate = []).length = ((e-d)/86400000)+1;
-    allDate.fill(0);
-    console.log(allDate);
+    allDate.fill(0);;
     for(var x = 0; x< events.rows.length; x++)
     {
         current = events.rows[x].date_created.toDateString();
