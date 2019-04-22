@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Bloom</title>
-	<link rel="stylesheet" href="./styles/admin.css">
+	<link rel="stylesheet" href="/styles/admin.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body ng-app="app">
@@ -36,12 +36,32 @@
                 </nav>
             </div>
         </header>
-    
-    <a href="/admin-event">Event Approval</i></a> </br>
-    <a href="/admin-announcement">Announcement Approval</i></a> </br>
-    <a href="/admin-anayltics">Anayltics</i></a> </br>
-    <a href="/admin-controls">Admin Controls</i></a>
 
+    <div class="box" ng-controller="eventController">
+		<h1 style="text-align: center;">Unapproved Events</h1>
+		<h3 class="announcement" ng-repeat="unevent in events | filter:{approved:false}" style="margin-left: 10px;">
+			{{unevent}}
+			<br>
+			<button type="submit" class="button" ng-click="approveEvent(unevent.eventid)">Approve</button> <br>
+			<button type="submit" class="button" ng-click="deleteEvent(unevent.eventid)">Delete</button> <br>
+		</h3>
+
+
+	</div>
+
+	<div class="box" ng-controller="eventController">
+		<h1 style="text-align: center;">Approved Events</h1>
+		<h3 class="announcement" ng-repeat="apevent in events | filter:{approved:true}" style="margin-left: 10px;">
+			{{apevent}} 
+			<br>
+			<button type="submit" class="button" ng-click="approveEvent(apevent.eventid)">Approve</button> <br>
+			<button type="submit" class="button" ng-click="deleteEvent(apevent.eventid)">Delete</button> <br>
+		</h3>
+
+
+	</div>
+    
+	
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
 	</footer>

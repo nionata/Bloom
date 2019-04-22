@@ -1,6 +1,14 @@
 angular.module('adminModule').controller('adminController', ['$scope','adminFactory','$window',
   function($scope, adminFactory) { 
       
+    $scope.banUser = function(bannedUserID) {;
+      adminFactory.banUser(bannedUserID);
+    }
+
+    $scope.promote = function(promoteUserID) {;
+      adminFactory.promoteUser(promoteUserID);
+    }
+
        $scope.myJson = {
         type : "line",
         title:{
