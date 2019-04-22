@@ -195,6 +195,7 @@ exports.creategoogleuser = async function(req, res, next) {
       req.session.user = username;
        result =await client.query('INSERT INTO users(username, password,admin,email,date_created,last_login) values($1, $2 ,$3,$4,$5,$6) RETURNING *',[username.substr(0,16), '',false,useremail,datetime,datetime]);
       req.session.user_id = result.rows[0].id;
+     
       await client.end();
         res.redirect('/bio');
       next();
@@ -216,6 +217,7 @@ exports.login = async function(req, res, next) {
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
     var datetime = new Date();
+
 
     // check if select row with entered user name
      client.query("SELECT * FROM users where username = $1",[req.body.username], (err, result)  => {

@@ -37,6 +37,7 @@ module.exports.init = function() {
 
   //serves static files from the angular app
   app.use(express.static('client'));
+  
 
   // middleware
   app.use((req, res, next) => {
@@ -72,7 +73,7 @@ module.exports.init = function() {
        // check if the user is an admin
        if(req.originalUrl.includes("/api/admin"))
           {
-              console.log("admin page");
+              console.log(req.session.admin);
               const client = new Client({connectionString: config.db.uri,ssl: true,});
               client.connect();
               client.query('select admin from users where id=$1',[req.session.user_id], (err, result)  => {
