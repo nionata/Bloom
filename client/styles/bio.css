@@ -4,6 +4,7 @@ body{
     margin:0;
     background-color: white
 }
+
 .form input[type = "text"]{
 border: 0;
 display: block;
@@ -23,6 +24,7 @@ transition: 0.2s;
 width: 550px;
 border-color:#2ecc71;
 }
+
 
 .form input[type ="submit"] {
 border: 0;
@@ -45,8 +47,8 @@ background: #3498db;
 color: white;
 }
 
-
-.updatePasswordForm input[type = "text"]{
+    
+.updateUserBio input[type = "text"]{
     border: 0;
     display: block;
     margin: 25px auto;
@@ -61,12 +63,12 @@ color: white;
     transition: 0.2s;
     }
 
-.updatePasswordForm input[type = "text"]:focus{
+.updateUserBio input[type = "text"]:focus{
     width: 250px;
     border-color:#2ecc71;
     }
     
-.updatePasswordForm  input[type ="submit"] {
+.updateUserBio  input[type ="submit"] {
     border: 0;
     display: block;
     margin: 18px auto;
@@ -81,87 +83,13 @@ color: white;
     cursor: pointer;
     }
     
-.updatePasswordForm  input[type = "submit"]:hover {
+.updateUserBio  input[type = "submit"]:hover {
     background: #3498db;
     color: white;
     }
     
-
-    .updateUsernameForm input[type = "text"]{
-        border: 0;
-        display: block;
-        margin: 25px auto;
-        background: none;
-        text-align: left;
-        border: 2px solid #3498db;
-        padding: 15px 10px;
-        width: 200px;
-        color: black;
-        outline: none;
-        border-radius: 24px;
-        transition: 0.2s;
-        }
-
-.updateUsernameForm input[type = "text"]:focus{
-        width: 250px;
-        border-color:#2ecc71;
-        }
-        
-
-.updateUsernameForm  input[type ="submit"] {
-        border: 0;
-        display: block;
-        margin: 18px auto;
-        background: none;
-        text-align: center;
-        border: 2px solid #3498db;
-        padding: 15px 45px;
-        outline: none;
-        color: black;
-        border-radius: 24px;
-        transition: 0.2s;
-        cursor: pointer;
-        }
-
-.updateUsernameForm input[type = "submit"]:hover {
-        background: #3498db;
-        color: white;
-        }
-        
-        
+    .modal { 
+        overflow: initial; 
     
-.modal {
-	background-color: rgba(0, 0, 0, 0.8);
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	display: none;
-	justify-content: center;
-	align-items: center;
-}
+    }
 
-.modal-content {
-	height: 300px;
-	width: 500px;
-	background-color: white;
-	text-align: center;
-	padding: 20px;
-	position: relative;
-	border-radius: 4px;
-}
-
-
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
