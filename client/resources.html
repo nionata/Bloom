@@ -22,8 +22,8 @@
 					<nav>
 						<ul>
 							<li><a href="/">Home</a></li>
-							<li class="current"><a href="/events">Events</a></li>
-							<li><a href="/resources">Resources</a></li>
+							<li><a href="/events">Events</a></li>
+							<li class="current"><a href="/resources">Resources</a></li>
 							<li><a href="/about">About Us</a></li>
 							<li ng-if="bio == 'No current user' || bio == undefined">
 								<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
@@ -71,68 +71,77 @@
 		let videos = [
 			{
 				name: 'General Video 1',
-				thumbnail: 'https://via.placeholder.com/350x200',
+				thumbnail: 'https://i.ytimg.com/vi/n-beA3gmRsM/mqdefault.jpg',
 				category: 'All', 
 				url: 'https://www.youtube.com/embed/n-beA3gmRsM'
 			},
 			{
 				name: 'Finance Video 1',
-				thumbnail: 'https://via.placeholder.com/350x200',
+				thumbnail: 'https://i.ytimg.com/vi/WEDIj9JBTC8/mqdefault.jpg',
 				category: 'Finance',
 				url: 'https://www.youtube.com/embed/WEDIj9JBTC8',
 			},
 			{
 				name: 'Investment Video 1',
-				thumbnail: 'https://via.placeholder.com/350x200',
+				thumbnail: 'https://i.ytimg.com/vi/covxjhXsCi8/mqdefault.jpg',
 				category: 'Investment',
-				url: 'https://www.youtube.com/embed/'
+				url: 'https://www.youtube.com/embed/covxjhXsCi8'
 			},
 			{
 				name: 'Writing Video 1',
-				thumbnail: 'https://via.placeholder.com/350x200',
-				category: 'Writing'
+				thumbnail: 'https://i.ytimg.com/vi/8E-oqahDnb8/mqdefault.jpg',
+				category: 'Writing',
+				url: 'https://www.youtube.com/embed/8E-oqahDnb8'
 			},
 			{
 				name: 'Research Video 1',
-				thumbnail: 'https://via.placeholder.com/350x200',
-				category: 'Research'
+				thumbnail: 'https://i.ytimg.com/vi/CCKHH9jjS0s/mqdefault.jpg',
+				category: 'Research',
+				url: 'https://www.youtube.com/embed/CCKHH9jjS0s'
+
 			},
 			{
 				name: 'Networking Video 1',
-				thumbnail: 'https://via.placeholder.com/350x200',
-				category: 'Networking'
+				thumbnail: 'https://i.ytimg.com/vi/FAPySGLL3gg/mqdefault.jpg',
+				category: 'Networking',
+				url: 'https://www.youtube.com/embed/FAPySGLL3gg'
+
 			},
 			{
 				name: 'General Video 2',
-				thumbnail: 'https://via.placeholder.com/350x200',
+				thumbnail: 'https://i.ytimg.com/vi/jRcfE2xxSAw/mqdefault.jpg',
 				category: 'All',
 				url: 'https://www.youtube.com/embed/jRcfE2xxSAw'
 			},
 			{
 				name: 'Finance Video 2',
-				thumbnail: 'https://via.placeholder.com/350x200',
+				thumbnail: 'https://i.ytimg.com/vi/9JPCSD4rCok/mqdefault.jpg',
 				category: 'Finance',
 				url: 'https://www.youtube.com/embed/9JPCSD4rCok'
 			},
 			{
 				name: 'Investment Video 2',
-				thumbnail: 'https://via.placeholder.com/350x200',
-				category: 'Investment'
+				thumbnail: 'https://i.ytimg.com/vi/wJB90G-tsgo/mqdefault.jpg',
+				category: 'Investment',
+				url: 'https://www.youtube.com/embed/wJB90G-tsgo'
 			},
 			{
 				name: 'Writing Video 2',
-				thumbnail: 'https://via.placeholder.com/350x200',
-				category: 'Writing'
+				thumbnail: 'https://i.ytimg.com/vi/sjdxUiAJ0UQ/mqdefault.jpg',
+				category: 'Writing',
+				url: 'https://www.youtube.com/embed/sjdxUiAJ0UQ'
 			},
 			{
 				name: 'Research Video 2',
-				thumbnail: 'https://via.placeholder.com/350x200',
-				category: 'Research'
+				thumbnail: 'https://i.ytimg.com/vi/KvAV4ADDfHM/mqdefault.jpg',
+				category: 'Research',
+				url: 'https://www.youtube.com/embed/KvAV4ADDfHM'
 			},
 			{
 				name: 'Networking Video 2',
-				thumbnail: 'https://via.placeholder.com/350x200',
-				category: 'Networking'
+				thumbnail: 'https://i.ytimg.com/vi/xFrqZjIDE44/mqdefault.jpg',
+				category: 'Networking',
+				url: 'https://www.youtube.com/embed/xFrqZjIDE44'
 			}
 		]
 		// Wait for page to load
@@ -146,7 +155,7 @@
 			let displayCategory=$('.active').find('.name').text();
 
 			for (let video of videos){
-				$('.videos').append(`<div category="${video.category}" class=video><img src="${video.thumbnail}"><span class="vidName">${video.name}</span></div>`);
+				$('.videos').append(`<div category="${video.category}" vidSrc="${video.url}" class="video"><img src="${video.thumbnail}"><span class="vidName">${video.name}</span></div>`);
 			}
 			$('.video').toggle(false);
 			if(displayCategory=="All"){
@@ -177,8 +186,9 @@
 			});
 
 			$('.video').click(() => {
+				var vidSrc = $(this);
+				console.log(vidSrc);
 				$('#myModal').toggle(true);  
-				$( "#modalTitle" ).html( this).attr('name');
 
 			});
 			var modal = document.getElementById('myModal');
@@ -219,37 +229,13 @@
 		</nav> -->
 	</div>
 	<div id="myModal" class="modal">
-
-		<!-- Modal content -->
 		<div class="modal-content">
-		  <span class="close">&times;</span>
-		  <h5 id = "modalTitle"></h5>
-		  <div class="modal-body">
-			<iframe class ="embedVideo" width="100%" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		</div>
-		  <p id="description">description</p>
-		</div>
-	  
-	  </div>
-	  
-	<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Video</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-						<iframe width="100%" height="315" src="https://www.youtube.com/embed/ohCjHf0XA8w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-			</div>
+			<span class="close">&times;</span>
+			<h5>General Video 1</h5>
+			<iframe width="100%" src="https://www.youtube.com/embed/n-beA3gmRsM" height="90%" id="modalVideo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 	</div>
+	  
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
 	</footer>
