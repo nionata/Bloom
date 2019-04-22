@@ -23,7 +23,7 @@
                 <nav>
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li class="current"><a href="/events">Events</a></li>
+                        <li><a href="/events">Events</a></li>
                         <li><a href="/resources">Resources</a></li>
                         <li><a href="/about">About Us</a></li>
                         <li ng-if="bio == 'No current user' || bio == undefined">
@@ -35,7 +35,8 @@
                             <h2>
                                 {{bio.username}}
                                 <a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
-                                <a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
+                                <a class="current" href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
+								<a class="current" href="/admin"><i class="material-icons" style="font-size:30px; vertical-align:-6px;" ng-if="bio.admin == true">verified_user</i></a>
                             </h2>
                         </div>	
 					</div>
