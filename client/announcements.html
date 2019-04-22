@@ -15,34 +15,6 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body ng-app="app">
-<<<<<<< HEAD
-    <header ng-controller="userDataController">
-            <div class="container">
-                <div id="branding">
-                    <img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li class="current"><a href="/events">Events</a></li>
-                        <li><a href="/resources">Resources</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li ng-if="bio == 'No current user' || bio == undefined">
-                            <a id="login" href="/login"><button class="buttonhdr">Login</button></a>
-                        </li>		
-                        <div id="username" ng-if="bio != 'No current user'">
-                            <h2>
-                                {{bio.username}}
-                                <a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
-                                <a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
-                            </h2>
-                        </div>	
-                        
-                    </ul>
-                </nav>
-            </div>
-        </header>
-=======
 	<header ng-controller="userDataController">
 		<div class="container">
 			<div id="branding">
@@ -69,7 +41,6 @@
 			</nav>
 		</div>
     </header>
->>>>>>> origin
 	<h1 style="margin-left: 20px; text-align: center; font-size: 40pt">Announcements</h1>
 
 	<script>
@@ -90,15 +61,6 @@
 		<div class="announcement" ng-repeat="post in approvedAnnouncements" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
 			<h2 id="title">{{post.title}}</h2>
 			<h3 id="infomation">
-				<div>
-<<<<<<< HEAD
-					
-					{{post.username}}
-				</div> 
-=======
-					{{post.username}}
-				</div>
->>>>>>> origin
 				<div>
 					{{post.timestamp.slice(0, 10) | date : format : MM/dd/yyyy}}
 				</div>

@@ -1,0 +1,64 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <script src="/js/app.js"></script>
+    <script src="/js/factories/userDataFactory.js"></script>
+    <script src="/js/controllers/userDataController.js"></script>
+    <script src="/js/factories/adminFactory.js"></script>
+    <script src="/js/controllers/adminController.js"></script>
+    <script src = "https://cdn.zingchart.com/zingchart.min.js" ></script>  
+    <script src = "https://cdn.zingchart.com/angular/zingchart-angularjs.js" ></script>
+
+	<title>Bloom</title>
+	<link rel="stylesheet" href="/styles/admin.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body ng-app="app">
+    <header ng-controller="userDataController">
+        <div class="container">
+            <div id="branding">
+                <img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li class="current"><a href="/events">Events</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li ng-if="bio == 'No current user' || bio == undefined">
+                        <a id="login" href="/login"><button class="buttonhdr">Login</button></a>
+                    </li>		
+                    <div id="username" ng-if="bio != 'No current user'">
+                        <h2>
+                            {{bio.username}}
+                            <a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
+                            <a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
+                        </h2>
+                    </div>	
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div ng-controller="adminController">
+        <div class="form-group" id="dates" style="display: inline-block"> 
+					<h2 style="display: inline-block;">Starting Date</h2> <input type="date"  id="suggestEventStart" ng-model="newEvent.eventstart" placeholder="Start Date (MM/DD/YYYY)">
+					<h2 style="display: inline-block; margin-left: 40px;">Ending Date</h2> <input type="date" id="suggestEventEnd" ng-model="newEvent.eventend" placeholder="End Date">
+					<button type="Send" id="sendButton" ng-click="DateEvent(newEvent)">Send</button> <br>
+				</div>
+            <div zingchart id="chart-1" zc-json="myJson" zc-width="100%" zc-height="500px"></div>
+     </div>  
+    
+	
+	<footer>
+		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
+	</footer>
+</body>
+</html>
