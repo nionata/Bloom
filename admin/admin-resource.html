@@ -42,7 +42,7 @@
 			<h1 style="text-align: center;">Resources</h1>
 			<h3 class="announcement" ng-repeat="resource in resources | orderBy : 'category'">
                     <div>
-                        <button type="submit" style="float: right; margin-left: 30px; margin-top: -5px;" class="button" ng-click="deleteEvent(unevent.eventid)">Delete</button>
+                        <button type="submit" style="float: right; margin-left: 30px; margin-top: -5px;" class="button" ng-click="deleteResource(resource.id)">Delete</button>
                         <div style="font-size: 25px; float: left;"><span style="float: left;">{{resource.category}}</span><span style="float: left; margin-left: 30px;">{{resource.title}}</span>   <span style="float: left; margin-left: 50px;">{{resource.link}}</span></div>
                     </div>
                 </h3>
