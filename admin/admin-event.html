@@ -47,12 +47,10 @@
                 <div style="font-size: 30px;">{{unevent.eventtitle}}</div>
                 <div style="float: right; margin-top: 20px; margin-right:-300px; font-size: 17pt;">Starting Date: {{unevent.eventstart | date : format : MM/dd/yyyy}}</div>
                 <div style="float: right; margin-top: 45px; margin-right:-290px; font-size: 17pt;">Ending Date:   {{unevent.eventend | date : format : MM/dd/yyyy}}</div>
-                <div style="float: right; margin-top: 70px; margin-right:-280px; font-size: 17pt;">Created On: {{unevent.eventstart | date : format : MM/dd/yyyy}}</div>
+                <div style="float: right; margin-top: 70px; margin-right:-280px; font-size: 17pt;">Created On: {{unevent.date_created | date : format : MM/dd/yyyy}}</div>
                 <div style="margin-top: 20px; margin-right: 400px;">{{unevent.eventcontent}}</div>
             </div>
 		</h3>
-
-
     </div>
     </br>
     </br>
@@ -64,7 +62,7 @@
                 <div style="font-size: 30px;">{{apevent.eventtitle}}</div>
                 <div style="float: right; margin-top: 20px; margin-right:-150px; font-size: 17pt;">Starting Date: {{apevent.eventstart | date : format : MM/dd/yyyy}}</div>
                 <div style="float: right; margin-top: 45px; margin-right:-290px; font-size: 17pt;">Ending Date:   {{apevent.eventend | date : format : MM/dd/yyyy}}</div>
-                <div style="float: right; margin-top: 70px; margin-right:-280px; font-size: 17pt;">Created On: {{apevent.eventstart | date : format : MM/dd/yyyy}}</div>
+                <div style="float: right; margin-top: 70px; margin-right:-280px; font-size: 17pt;">Created On: {{apevent.date_created | date : format : MM/dd/yyyy}}</div>
                 <div style="margin-top: 20px; margin-right: 400px;">{{apevent.eventcontent}}</div>
             </div>	
 		</h3>

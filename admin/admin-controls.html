@@ -43,7 +43,7 @@
     <div class="userTable" ng-controller="adminController">
         <div class="user" ng-repeat="user in users" style="margin-left: 40px; margin-right: 40px;">
             <button type="submit" class="button" ng-click="banUser(user.id)">Ban User</button>
-            <button type="submit" class="button" ng-href="mailto:{{user.email}}">Email User</button>
+            <a button type="submit" style="text-decoration:none; color: black; height: 15px; width: 150px;" class="button" ng-href="mailto:{{user.email}}">Email User</a>
             <div ng-if="user.admin == false">
                 <button type="submit" class="button" ng-click="promote(user.id)"> Promote To Admin </button>
             </div>

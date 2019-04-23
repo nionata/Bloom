@@ -1,5 +1,6 @@
 angular.module('eventModule').controller('eventController', ['$scope','eventFactory','$window',
   function($scope, eventFactory) { 
+    
     $scope.events = eventFactory.getEvents().then(function(response){
       $scope.events = response.data;
     });
@@ -12,6 +13,7 @@ angular.module('eventModule').controller('eventController', ['$scope','eventFact
       $("#suggestEventStart").val('');
       $("#suggestEventEnd").val('');
       eventFactory.createEvent(newEvent);
+      alert("Created Event. Now Waiting on Admin Approval.")
     }
 
     $scope.deleteEvent = function(eventID) {
@@ -20,8 +22,7 @@ angular.module('eventModule').controller('eventController', ['$scope','eventFact
 
     $scope.approveEvent = function(eventID) {
       eventFactory.approveEvent(eventID);
-    } 
-    
+    }
      
     $scope.users = eventFactory.getUsers().then(function(response){
       $scope.users = response.data;
