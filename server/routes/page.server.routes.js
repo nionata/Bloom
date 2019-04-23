@@ -103,5 +103,9 @@ router.route('/announcements').get((req, res) => {
   res.sendFile('/client/announcements.html', { root: '.'});
 });
 
+//redirects all other routes to 404 error page
+router.route('/*').get((req, res) => {
+  res.redirect('/404');
+});
 
 module.exports = router;
