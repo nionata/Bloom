@@ -43,16 +43,27 @@ exports.delete = async function(req, res, next) {
     const client = new Client({connectionString: uri.db.uri,ssl: true,});
     await client.connect();
 
-    client.query("DELETE FROM resources where id = $1", [req.params.id], (err, result) => {
-      client.end();
+    client.query("SELECT * FROM users where id=$1", [req.session.user_id], (err, result) => {
       if(err) {
         console.log(err);
         res.status(400).send(err);
       } else {
-        if(result.rowCount === 1) {
-          res.sendStatus(200);
+        if(result.rows[0].admin === true) {
+          client.query("DELETE FROM resources where id=$1", [req.params.id], (err, result) => {
+            client.end();
+            if(err) {
+              console.log(err);
+              res.status(400).send(err);
+            } else {
+              if(result.rowCount === 1) {
+                res.sendStatus(200);
+              } else {
+                res.sendStatus(404);
+              }
+            }
+          });
         } else {
-          res.sendStatus(404);
+          res.send("The current user is not an admin");
         }
       }
     });
@@ -65,13 +76,24 @@ exports.create = async function(req, res, next) {
 
     const { title, category, link, description } = req.body;
 
-    client.query('INSERT INTO resources(admin_id, title, category, link, description) values($1, $2, $3, $4, $5) RETURNING *', [req.session.user_id, title, category, link, description], (err, result) => {
-      client.end();
+    client.query("SELECT * FROM users where id=$1", [req.session.user_id], (err, result) => {
       if(err) {
         console.log(err);
         res.status(400).send(err);
       } else {
-        res.send(result.rows[0])
+        if(result.rows[0].admin === true) {
+          client.query('INSERT INTO resources(admin_id, title, category, link, description) values($1, $2, $3, $4, $5) RETURNING *', [req.session.user_id, title, category, link, description], (err, result) => {
+            client.end();
+            if(err) {
+              console.log(err);
+              res.status(400).send(err);
+            } else {
+              res.send(result.rows[0])
+            }
+          });
+        } else {
+          res.send("The current user is not an admin");
+        }
       }
     });
 };

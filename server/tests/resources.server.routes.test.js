@@ -23,8 +23,8 @@ describe('Resources API tests', function() {
         password: "1",
     };
     testAdmin = {
-        username: "Cale",
-        password: "Test"
+        username: "Admin",
+        password: "Password"
     };
 
     done();
