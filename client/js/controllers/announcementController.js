@@ -3,6 +3,7 @@ angular.module('announcementModule').controller('announcementController', ['$sco
     
     $scope.announcements = announcementFactory.getAnnouncements().then(function(response){
       $scope.announcements = response.data;
+      console.log($scope.announcements);
     });
 
     $scope.approvedAnnouncements = announcementFactory.getApprovedAnnouncements().then(function(response){

@@ -41,7 +41,7 @@
 			</nav>
 		</div>
 	</header>
-	<div>
+	<div id="all">
 	<h1 id="eventTitleBox" style="text-align: center; font-size: 40pt;"> Events </h1>>
 	<div class="eventCards" ng-controller="eventController">
 		<div class="event" ng-repeat="post in events | filter:{approved:true}" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
