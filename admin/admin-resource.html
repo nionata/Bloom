@@ -43,8 +43,7 @@
 			<h3 class="announcement" ng-repeat="resource in resources | orderBy : 'category'">
                     <div>
                         <button type="submit" style="float: right; margin-left: 30px; margin-top: -5px;" class="button" ng-click="deleteEvent(unevent.eventid)">Delete</button>
-                        <div style="font-size: 30px;"><span style="margin-right: 150px;">{{resource.category}}</span><span style="margin-right: 300px;">{{resource.title}}</span>   <span>{{resource.link}}</span></div>
-                        <div style="float: right; margin-top: 70px; margin-right:-280px; font-size: 17pt;">Created On: {{unevent.eventstart | date : format : MM/dd/yyyy}}</div>
+                        <div style="font-size: 25px; float: left;"><span style="float: left;">{{resource.category}}</span><span style="float: left; margin-left: 30px;">{{resource.title}}</span>   <span style="float: left; margin-left: 50px;">{{resource.link}}</span></div>
                     </div>
                 </h3>
     </div>
@@ -57,7 +56,7 @@
                 <input type="text" id="link" ng-model="newResource.link" placeholder="Link"><br>
                 <select id="category" ng-model="newResource.category" placeholder="Category">
                     <option value="" disabled selected>Category</option>
-                    <option value="All">Finance</option>
+                    <option value="All">All</option>
                     <option value="Finance">Finance</option>
                     <option value="Investment">Investment</option>
                     <option value="Writing">Writing</option>
