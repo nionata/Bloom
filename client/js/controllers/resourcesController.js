@@ -4,6 +4,7 @@ angular.module('resourcesModule').controller('resourcesController', ['$scope','r
       var resources = response.data;
 
       if(resources === "Missing authentication") {
+        $scope.resources = false;
         return;
       }
 

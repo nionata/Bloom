@@ -136,15 +136,21 @@
 		});
 	</script>
 	<div class="container" ng-controller="resourcesController">
-		<h3>Categories</h3>
-		<div class="categories"></div>
-		<h3>Videos</h3>
-		<div class="videos">
-			<div ng-repeat="resource in resources" category="{{ resource.category }}" vidSrc="{{ resource.link }}" title="{{ resource.title }}"" class="video">
-				<img src="{{ resource.thumbnail }}">
-				<span class="vidName">{{ resource.title }}</span>
+		<span ng-if="resources">
+			<h3>Categories</h3>
+			<div class="categories"></div>
+			<h3>Videos</h3>
+			<div class="videos">
+				<div ng-repeat="resource in resources" category="{{ resource.category }}" vidSrc="{{ resource.link }}" title="{{ resource.title }}"" class="video">
+					<img src="{{ resource.thumbnail }}">
+					<span class="vidName">{{ resource.title }}</span>
+				</div>
 			</div>
-		</div>
+		</span>
+		<span ng-if="!resources">
+			<h3>Content Unavailable</h3>
+			<p>You must be <a href="/login">signed</a> in to view this content.</p>
+		</span>
 	</div>
 	<div id="myModal" class="modal">
 		<div class="modal-content">
