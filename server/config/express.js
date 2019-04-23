@@ -12,6 +12,7 @@ var path = require('path'),
     announcementsRouter = require('../routes/announcements.server.routes'),
     googleurl =require('./google-util'),
     adminRouter = require('../routes/admin.server.routes');
+    resourcesRouter = require('../routes/resources.server.routes');
 
 
 module.exports.init = function() {
@@ -66,7 +67,8 @@ module.exports.init = function() {
       if (!req.session.user || !req.cookies.user_sid) { 
           if(!testing && req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl) && !req.originalUrl.includes("/api/users/auth/google-auth")) {
           res.send("Missing authentication");
-          return;                                                                                                                                     
+            
+          return;
         }
         //Add redirecting to bio if they are logged in and bio is empty
       }
@@ -95,17 +97,13 @@ module.exports.init = function() {
       
   });
 
-  //applies page router
-  app.use('/', pageRouter);
+  //applies the specific routers
   app.use('/api/users', userRouter);
   app.use('/api/events', eventsRouter);
   app.use('/api/announcements', announcementsRouter);
   app.use('/api/admin', adminRouter);
-  
+  app.use('/api/resources', resourcesRouter);
+  app.use('/', pageRouter); //this needs to be the last router because of /* 404 routing
 
-/*redirects all other routes to 404 error page. When adding more routes, add them before this comment.*/
-  app.get('/*', function(req, res){
-    res.sendFile(path.resolve("client/notfound.html"));
-  });
   return app;
 };
