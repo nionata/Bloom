@@ -13,46 +13,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body ng-app="app">
-    	<header>
-          <div class="container">
-            <div id="branding">
-                  <img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
-            </div>
-            <nav>
-              <ul>
-                <li class="current"><a href="/">Home</a></li>
-                <li><a href="/events">Events</a></li>
-                <li><a href="/resources">Resources</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li ng-if="bio == 'No current user'">
-                  <a id="login" href="/login"><button class="buttonhdr">Login</button></a>
-                </li>		
-                <div id="username" ng-if="bio != 'No current user'">
-                  <h2>
-                    {{bio.username}}
-                    <a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
-                  </h2>
-                </div>	
-                
-              </ul>
-            </nav>
-          </div>
-          </header>
+
     <div class="box">
       <h1> Welcome Back </h1>
       <div ng-controller="userDataController">
           <form novalidate class="simple-form">
             <input type="text" ng-model="user.username" placeholder="Username"><br>
             <input type="password" ng-model="user.password" placeholder="Password"><br>
-            <button type="submit" ng-click="login()">Sign In</button> <br>
-            <button type="submit" ng-click="google()">Google</button> <br>
+            <button type="submit" id="login" ng-click="login()">Login</button> <br>
+            <button type="submit" id="google" ng-click="google()">Google</button> <br>
             New To Bloom? 
             <a href="/register">Create An Account</a>
           </form>
       </div>
-    </div>  
-    <footer>
-        <p>Entrepreneurship Empowerment, Michael H. Morris</p>
-      </footer>    
+    </div>      
   </body>
 </html>

@@ -1,7 +1,11 @@
 body {
-    background:#3498dbc5;
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding:0;
+    margin:0;
+    background-color: #00bfa8;
 }
- h1{
+
+.box h1{
     padding-top: 50px;
     text-align: center;
     font-size: 30pt;
@@ -13,34 +17,39 @@ form {
     text-align: center;
 }
 .box{
-    background:rgb(235, 235, 235);
-    width:1000px;
-    margin: 100px auto 0 auto;
+    background:rgb(255, 255, 255);
+    width:600px;
+    margin: 100px auto 50px auto;
     padding:0px 0px 30px 0px;
 }
 
-input[type=text], input[type=password], input[type=email] {
-    width: 800px;
+input[type=text], input[type=password], input[type=email]{
+    width: 400px;
+    font-size: 20pt;
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    background-color: #e4f0ee;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-button {
-    background-color: #4CAF50;
+#create{
+    background-color: #067c6e;
     color: white;
-    font-size: 16pt;
+    font-size: 19pt;
     padding: 14px 20px;
     text-align: center;
-    margin: 30px 0;
+    margin: 20px;
     border: none;
     cursor: pointer;
-    width: 800px;
+    width: 400px;
+    letter-spacing: 1px; 
+    height: 60px;
 }
 
-button:hover {
-    background-color: rgb(56, 153, 59);
+#create:hover {
+    background-color: #035c51;
     color: rgb(236, 236, 236);
 }
