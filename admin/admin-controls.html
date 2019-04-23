@@ -40,15 +40,15 @@
     
     <h1 style="margin-left: 20px; text-align: center; font-size: 35pt">Admin Controls</h1>
 
-    <div class="userTable" ng-controller="userDataController">
+    <div class="userTable" ng-controller="adminController">
         <div class="user" ng-repeat="user in users" style="margin-left: 40px; margin-right: 40px;">
             <button type="submit" class="button" ng-click="banUser(user.id)">Ban User</button>
             <button type="submit" class="button" ng-href="mailto:{{user.email}}">Email User</button>
             <div ng-if="user.admin == false">
-                <button type="submit" class="button" ng-click="promote(post.id)"> Promote To Admin </button>
+                <button type="submit" class="button" ng-click="promote(user.id)"> Promote To Admin </button>
             </div>
             <div ng-if="user.admin == true">
-                <button type="submit" class="button" ng-click="demote(post.id)"> Demote Admin </button>
+                <button type="submit" class="button" ng-click="demote(user.id)"> Demote Admin </button>
             </div>
             <div style="font-size: 17px">
                 Username: {{user.username}} </br>
@@ -72,3 +72,5 @@
 <script src="js/controllers/announcementController.js"></script>
 <script src="js/factories/eventFactory.js"></script>
 <script src="js/controllers/eventController.js"></script>
+<script src="js/factories/adminFactory.js"></script>
+<script src="js/controllers/adminController.js"></script>

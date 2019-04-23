@@ -5,10 +5,16 @@ angular.module('adminModule', []).factory('adminFactory', function($http, $windo
         return $http.post('/api/admin/anaylics/',newEvent);
       },
       banUser: function(bannedUserId) {
-        return $http.delete('/api/admin/', bannedUserId);
+        return $http.get('/api/admin/ban/'+ bannedUserId);
       },
       promoteUser: function(promoteUserID) {
-        return $http.put('/api/admin/', promoteUserID);
+        return $http.get('/api/admin/Promote/'+ promoteUserID);
+      },
+      demoteUser: function(demoteUserID) {
+        return $http.get('/api/admin/Demote/'+ demoteUserID);
+      },
+      getUsers: function(){
+        return $http.get('/api/users/');
       }
 
     };
