@@ -26,7 +26,7 @@ angular.module('adminModule').controller('adminController', ['$scope','adminFact
         title:{
           backgroundColor : "transparent",
           fontColor :"black",
-          text : "Anayltics"
+          text : "Analytics"
         },
         backgroundColor : "white",
         series : [
@@ -79,7 +79,7 @@ angular.module('adminModule').controller('adminController', ['$scope','adminFact
         title:{
           backgroundColor : "transparent",
           fontColor :"black",
-          text : "Anayltics"
+          text : "Analytics"
         },
         backgroundColor : "white",
         series : []

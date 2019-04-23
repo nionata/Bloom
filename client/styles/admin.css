@@ -149,3 +149,23 @@ footer{
 .button:active {
     background-color: #007063;
 }
+
+#analyticButton{
+    background-color: #00bfa8;
+    font-size: 10pt;
+    padding: 14px 10px;
+    text-align: center;
+    margin-left: 10px;
+    height: 35px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+}
+
+#analyticButton:hover {
+    background-color: #029786;
+}
+#analyticButton:active {
+    background-color: #007063;
+}
