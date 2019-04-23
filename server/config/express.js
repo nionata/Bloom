@@ -67,27 +67,20 @@ module.exports.init = function() {
       if (!req.session.user || !req.cookies.user_sid) {
           if(!testing && req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl) && !req.originalUrl.includes("/api/users/auth/google-auth")) {
           res.send("Missing authentication");
-
           return;
         }
-        //Add redirecting to bio if they are logged in and bio is empty
       }
-
-       // check if the user is an admin
-       if(req.originalUrl.includes("/api/admin")) {
-         const client = new Client({connectionString: config.db.uri,ssl: true,});
-         client.connect();
-         client.query('select admin from users where id=$1',[req.session.user_id], (err, result)  => {
-           client.end();
-           if(result.rows[0].admin == false) {
-             res.send("You do not have premission to access this page");
-           } else {
-             next();
-           }
-         });
-       } else {
-         next();
-       }
+    
+      // check if the user is an admin
+      if(req.originalUrl.includes("/api/admin")) {
+        if(req.session.admin != true) {
+          res.send("You do not have premission to access this page");
+        } else {
+          next();
+        }
+      } else {
+        next();
+      }
   });
 
   //applies the specific routers

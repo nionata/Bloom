@@ -10,7 +10,7 @@ body {
     width: 95%;
     margin:auto;
     overflow:hidden;
-    color: #00bfa8;
+    color: #1fd3ac;
 }
 ul{
     margin: 0;
@@ -20,7 +20,7 @@ ul{
 .buttonhdr {
     background: white;
     border: 0;
-    color: #00bfa8;
+    color: #1fd3ac;
     height: 38px;
     width: 120px;
     float: right;
@@ -43,16 +43,16 @@ button:hover {
     border: 0;
     padding-left: 20px;
     padding-right: 20px;
-    color: #00bfa8;
+    color: #1fd3ac;
 }
 
 
 header{
-    background: #00bfa8;
+    background: #1fd3ac;
     color: white;
     padding-top: 15px;
     min-height: 70px;
-    border-bottom: #00bfa8 4px solid;
+    border-bottom: #1fd3ac 4px solid;
 }
 
 header a{
@@ -115,12 +115,69 @@ header a:hover{
 
 footer{
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 90px;
     color: white;
-    background-color: #00bfa8;
+    background-color: #1fd3ac;
     text-align: center;
 }
 
+
+.resource{
+    background-color: #b8fff0;
+    word-wrap: break-word;
+    padding: 20px 20px 20px 20px;
+    margin-top: 20px;
+}
+
+#Form{
+    background-color: #50f6d2;
+    width: 700px;
+    display: inline-block;
+    height: 370px;
+    margin-top: 60px;
+}
+.bigBox{
+    text-align: center;
+}
+#title{
+    width: 500px;
+    font-size: 25pt;
+    margin-bottom: 20px;
+}
+#link{
+    width: 500px;
+    font-size: 25pt;
+    margin-bottom: 20px;
+}
+#category{
+    width: 500px;
+    font-size: 25pt;
+    color: gray;
+}
+#description{
+    width: 500px;
+    font-size: 25pt;
+    margin-bottom: 20px;
+}
+
+
+#formButton{
+    background-color: #2fb497;
+    font-size: 20pt;
+    padding: 14px 20px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    width: 300px;
+    margin-top: 30px;
+}
+
+#formButton:hover {
+    background-color: #29aa8e;
+}
+#formButton:active {
+    background-color: #2e7968;
+}
 
 .announcement{
     background-color: #b8fff0;
@@ -147,25 +204,5 @@ footer{
     background-color: #029786;
 }
 .button:active {
-    background-color: #007063;
-}
-
-#analyticButton{
-    background-color: #00bfa8;
-    font-size: 10pt;
-    padding: 14px 10px;
-    text-align: center;
-    margin-left: 10px;
-    height: 35px;
-    margin-top: 10px;
-    border: none;
-    cursor: pointer;
-    width: 100px;
-}
-
-#analyticButton:hover {
-    background-color: #029786;
-}
-#analyticButton:active {
     background-color: #007063;
 }

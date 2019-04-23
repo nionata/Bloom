@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Bloom</title>
-	<link rel="stylesheet" href="./styles/admin.css">
+	<link rel="stylesheet" href="/styles/admin-dash.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body ng-app="app">
@@ -23,25 +23,28 @@
                         <li><a href="/about">About Us</a></li>
                         <li ng-if="bio == 'No current user' || bio == undefined">
                             <a id="login" href="/login"><button class="buttonhdr">Login</button></a>
-                        </li>		
+                        </li>
                         <div id="username" ng-if="bio != 'No current user'">
                             <h2>
                                 {{bio.username}}
                                 <a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
                                 <a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
+                                <a class="current" href="/admin"><i class="material-icons" style="font-size:30px; vertical-align:-6px;" ng-if="bio.admin == true">verified_user</i></a>
                             </h2>
-                        </div>	
-                        
+                        </div>
+
                     </ul>
                 </nav>
             </div>
         </header>
-    
-    <a href="/admin-event">Event Approval</i></a> </br>
-    <a href="/admin-announcement">Announcement Approval</i></a> </br>
-    <a href="/admin-anayltics">Anayltics</i></a> </br>
-    <a href="/admin-controls">Admin Controls</i></a>
-
+        <h1 style="margin-left: 20px; margin-top: 50px; text-align: center; font-size: 35pt">Admin Dashboard</h1>
+    <div style="text-align: center; background-color: #63fad9; margin-left: 50px; margin-right: 50px; margin-top: 50px;">
+        <a href="/admin-event" div class="button">Events</a>
+        <a href="/admin-announcement" div class="button">Announcements</a>
+        <a href="/admin-analytics" div class="button">Analytics</a>
+        <a href="/admin-controls" div class="button">Admin Control</a>
+        <a href="/admin-resource" div class="button">Resources</a>
+    </div>
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
 	</footer>

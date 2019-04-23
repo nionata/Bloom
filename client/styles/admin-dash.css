@@ -10,7 +10,7 @@ body {
     width: 95%;
     margin:auto;
     overflow:hidden;
-    color: #00bfa8;
+    color: #1fd3ac;
 }
 ul{
     margin: 0;
@@ -20,7 +20,7 @@ ul{
 .buttonhdr {
     background: white;
     border: 0;
-    color: #00bfa8;
+    color: #1fd3ac;
     height: 38px;
     width: 120px;
     float: right;
@@ -43,16 +43,16 @@ button:hover {
     border: 0;
     padding-left: 20px;
     padding-right: 20px;
-    color: #00bfa8;
+    color: #1fd3ac;
 }
 
 
 header{
-    background: #00bfa8;
+    background: #1fd3ac;
     color: white;
     padding-top: 15px;
     min-height: 70px;
-    border-bottom: #00bfa8 4px solid;
+    border-bottom: #1fd3ac 4px solid;
 }
 
 header a{
@@ -115,57 +115,38 @@ header a:hover{
 
 footer{
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 230px;
     color: white;
-    background-color: #00bfa8;
+    background-color: #1fd3ac;
     text-align: center;
 }
 
 
-.announcement{
-    background-color: #b8fff0;
-    word-wrap: break-word;
-    padding: 20px 20px 20px 20px;
-    margin-right: 100px;
-    margin-left: 100px;
-    height: 45px;
-    overflow:hidden;
-}
 
 .button{
-    background-color: #00bfa8;
-    font-size: 15pt;
+    background-color: #3db49a;
+    font-size: 30pt;
     padding: 14px 20px;
     text-align: center;
-    margin-top: 5px;
+    
     border: none;
     cursor: pointer;
-    width: 150px;
+    width: 600px;
+    height: 60px;
+    display: inline-block;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    text-decoration: none;
 }
 
 .button:hover {
-    background-color: #029786;
+    background-color: #35d3b1; 
+     text-decoration:none; 
+     cursor:pointer; 
 }
 .button:active {
-    background-color: #007063;
-}
-
-#analyticButton{
-    background-color: #00bfa8;
-    font-size: 10pt;
-    padding: 14px 10px;
-    text-align: center;
-    margin-left: 10px;
-    height: 35px;
-    margin-top: 10px;
-    border: none;
-    cursor: pointer;
-    width: 100px;
-}
-
-#analyticButton:hover {
-    background-color: #029786;
-}
-#analyticButton:active {
-    background-color: #007063;
+    background-color: #3a907e;
 }

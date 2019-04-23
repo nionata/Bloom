@@ -4,6 +4,9 @@ angular.module('userDataModule', []).factory('userDataFactory', function($http, 
     getBio: function(){
       return $http.get('/api/users/user');
     },
+    getUsers: function(){
+      return $http.get('/api/users/');
+    },
 
     create: function(user) {
       return $http.post('/api/users/register', user).success(function(data, status, headers, config) {

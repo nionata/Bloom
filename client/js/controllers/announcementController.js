@@ -26,6 +26,7 @@ angular.module('announcementModule').controller('announcementController', ['$sco
       $("#suggestTitle").val('');
       $("#suggestContent").val('');
       announcementFactory.createAnnouncement(newAnnouncement);
+      alert("Created Announcement.  Now Waiting on Admin Approval.")
     }
 
     $scope.deleteAnnouncement = function(postID) {

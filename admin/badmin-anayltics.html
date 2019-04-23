@@ -39,6 +39,7 @@
                             {{bio.username}}
                             <a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
                             <a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
+                            <a class="current" href="/admin"><i class="material-icons" style="font-size:30px; vertical-align:-6px;" ng-if="bio.admin == true">verified_user</i></a>
                         </h2>
                     </div>	
                     
@@ -49,9 +50,9 @@
 
     <div ng-controller="adminController">
         <div class="form-group" id="dates" style="display: inline-block"> 
-					<h2 style="display: inline-block;">Starting Date</h2> <input type="date"  id="suggestEventStart" ng-model="newEvent.eventstart" placeholder="Start Date (MM/DD/YYYY)">
+					<h2 style="display: inline-block; margin-left: 20px;">Starting Date</h2> <input type="date"  id="suggestEventStart" ng-model="newEvent.eventstart" placeholder="Start Date (MM/DD/YYYY)">
 					<h2 style="display: inline-block; margin-left: 40px;">Ending Date</h2> <input type="date" id="suggestEventEnd" ng-model="newEvent.eventend" placeholder="End Date">
-					<button type="Send" id="sendButton" ng-click="DateEvent(newEvent)">Send</button> <br>
+					<button type="Send" id="analyticButton" ng-click="DateEvent(newEvent)">Send</button> <br>
 				</div>
             <div zingchart id="chart-1" zc-json="myJson" zc-width="100%" zc-height="500px"></div>
      </div>  

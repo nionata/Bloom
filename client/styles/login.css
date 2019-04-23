@@ -2,216 +2,8 @@ body {
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding:0;
     margin:0;
-    background-color: white
-}
-
-/* Global */
-.container{
-    width: 95%;
-    margin:auto;
-    overflow:hidden;
-    color: #00bfa8;
-}
-ul{
-    margin: 0;
-    padding: 0;
-
-}
-.buttonhdr {
-    background: white;
-    border: 0;
-    color: #00bfa8;
-    height: 38px;
-    width: 120px;
-    float: right;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 10px;
-    margin-top: -6px;
-    margin-right: 30px;
-    font-size: 18px;
-}
-
-header button:hover {
-    background-color: #eeeeee;
-}
-
-.button_1 {
-    height: 38px;
-    background: white;
-    border: 0;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: #00bfa8;
-}
-
-
-header{
-    background: #00bfa8;
-    color: white;
-    padding-top: 15px;
-    min-height: 70px;
-    border-bottom: #00bfa8 4px solid;
-}
-
-header a{
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 18px;
-}
-
-header li{
-
-    display:inline;
-    padding: 5px 20px 0 20px;
-}
-
-header #branding{
-    margin-top:5px;
-    margin-left:40px;
-    float: left;
-
-}
-header #branding h1{
-    margin:0;
-    display:inline;
-    color:white;
-}
-
-header #branding img{
-    float: left;
-    margin-top: 5px;
-    margin-right: 20px;
-    margin-left: -20px;
-}
-
-header nav{
-    margin-top: 12px;
-    text-align: center;
-}
-
-header .highlight{
-    font-weight: bold;
-}
-
-header .current a{
-    color: #eeeeee;
-}
-
-header a:hover{
-    color: #eeeeee;
-    text-decoration: none;
-}
-
-#username {
-    margin-right: 50px;
-    margin-top: -20px;
-    float: right;
-    color: white;
-}
-
-/*Showcase */
-
-#showcase{
-    min-height: 660px;
-    text-align: center;
-    color:#00bfa8;
-    background-size: cover;
-}
-
-#showcase h1{
-    margin-top: 100px;
-    font-size: 40px;
-    margin-bottom: 10px;
-    font-weight: bold;
-
-}
-
-#showcase p{
-    margin-top: 20px;
-    font-size: 20px;
-}
-
-
-/*newsletter*/
-#newsletter{
-    padding:5px;
-    color: white;
-    background: #00bfa8;
-}
-
-#newsletter h1{
-    color:white;
-    float:left;
-    font-size: 30px;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-#newsletter form{
-    float:right;
-    margin-top: 10px;
-}
-
-#newsletter input[type="email"]{
-    margin-top: 10px;
-    padding: 4px;
-    height: 35px;
-    width: 250px;
-}
-
-#boxes{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-/*boxes*/
-.boxes{
-    display: grid;
-    grid-template-columns:25% 25% 25%;
-    grid-template-rows: auto auto; 
-    grid-column-gap: 40px;
-    grid-row-gap: 10px;
-    justify-content: center;
-    grid-template-areas: 
-    "a b c"
-    "d e f";
-}
-
-#boxes .box-a {
-    grid-area: a;
-}
-#boxes .box-b {
-    grid-area: b;
-}
-#boxes .box-c {
-    grid-area: c;
-}
-#boxes .box-d {
-    grid-area: d;
-}
-#boxes .box-e {
-    grid-area: e;
-}
-#boxes .box-f {
-    grid-area: f;
-}
-
-
-#boxes img{
-    width:90px;
-    height:90px;
-}
-footer{
-    padding: 20px;
-    margin-top: 20px;
-    color: white;
     background-color: #00bfa8;
-    text-align: center;
 }
-
 
 .box h1{
     padding-top: 50px;
@@ -225,34 +17,58 @@ form {
     text-align: center;
 }
 .box{
-    background:rgb(235, 235, 235);
-    width:1000px;
-    margin: 50px auto 50px auto;
+    background:rgb(255, 255, 255);
+    width:600px;
+    margin: 100px auto 50px auto;
     padding:0px 0px 30px 0px;
 }
 
 input[type=text], input[type=password] {
-    width: 800px;
+    width: 400px;
+    font-size: 20pt;
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    background-color: #e4f0ee;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-button {
-    background-color: #4CAF50;
+#login{
+    background-color: #067c6e;
     color: white;
-    font-size: 16pt;
+    font-size: 19pt;
     padding: 14px 20px;
     text-align: center;
-    margin: 30px 0;
+    margin: 20px;
     border: none;
     cursor: pointer;
-    width: 800px;
+    width: 400px;
+    letter-spacing: 1px; 
+    height: 60px;
 }
 
-button:hover {
-    background-color: rgb(56, 153, 59);
+#login:hover {
+    background-color: #035c51;
+    color: rgb(236, 236, 236);
+}
+
+#google{
+    background-color: #3b77df;
+    color: white;
+    font-size: 19pt;
+    padding: 14px 20px;
+    text-align: center;
+    margin: 20px;
+    border: none;
+    cursor: pointer;
+    width: 400px;
+    letter-spacing: 1px; 
+    height: 60px;
+}
+
+#google:hover {
+    background-color: #2758ac;
     color: rgb(236, 236, 236);
 }

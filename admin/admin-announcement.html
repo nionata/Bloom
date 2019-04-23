@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Bloom</title>
-	<link rel="stylesheet" href="./styles/admin.css">
+	<link rel="stylesheet" href="/styles/admin.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body ng-app="app">
@@ -29,6 +29,7 @@
                                 {{bio.username}}
                                 <a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
                                 <a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
+                                <a class="current" href="/admin"><i class="material-icons" style="font-size:30px; vertical-align:-6px;" ng-if="bio.admin == true">verified_user</i></a>
                             </h2>
                         </div>	
                         
@@ -39,22 +40,30 @@
     
     <div class="box" ng-controller="announcementController">
 			<h1 style="text-align: center;">Unapproved Announcement</h1>
-			<h3 class="announcement" ng-repeat="post in unapprovedAnnouncements" style="margin-left: 10px;">
-					{{post}} 
-					<br>
-					<button type="submit" class="button" ng-click="approveAnnouncement(post.id)">Approve</button> <br>
-					<button type="submit" class="button" ng-click="deleteAnnouncement(post.id)">Delete</button> <br>
-			</h3>
+            <h3 class="announcement" ng-repeat="post in unapprovedAnnouncements | orderBy : 'timestamp'" onClick ="if(this.style.height=='200px'){this.style.height = '50';}else{this.style.height = '200';}">
+                <div>
+                    <button type="submit" style="float: right; margin-left: 30px; margin-top: -5px;" class="button" ng-click="deleteAnnouncement(post.id)">Delete</button>
+                    <button type="submit" style="float: right; margin-top: -5px;" class="button" ng-click="approveAnnouncement(post.id)">Approve</button>
+                    <div style="font-size: 30px;">{{post.title}}</div>
+                    <div style="float: right; margin-top: 30px; margin-right:-300px; font-size: 17pt;">Created On: {{post.timestamp | date : format : MM/dd/yyyy}}</div>
+                    <div style="float: right; margin-top: 70px; margin-right:-210px; font-size: 17pt;">Created By: {{post.username}}</div>
+                    <div style="margin-top: 20px; margin-right: 400px;">{{post.content}}</div>
+                </div>
+            </h3>
 	</div>
 	
 	<div class="box" ng-controller="announcementController">
 		<h1 style="text-align: center;">Approved Announcement</h1>
-		<h3 class="announcement" ng-repeat="post in approvedAnnouncements" style="margin-left: 10px;">
-			{{post}} 
-			<br>
-			<button type="submit" class="button" ng-click="approveAnnouncement(post.id)">Approve</button> <br>
-			<button type="submit" class="button" ng-click="deleteAnnouncement(post.id)">Delete</button> <br>
-		</h3>
+		<h3 class="announcement" ng-repeat="post in approvedAnnouncements | orderBy : 'timestamp'" onClick ="if(this.style.height=='200px'){this.style.height = '50';}else{this.style.height = '200';}">
+                <div>
+                    <button type="submit" style="float: right; margin-left: 30px; margin-top: -5px;" class="button" ng-click="deleteAnnouncement(post.id)">Delete</button>
+                    <button type="submit" style="float: right; margin-top: -5px;" class="button" ng-click="approveAnnouncement(post.id)">Approve</button>
+                    <div style="font-size: 30px;">{{post.title}}</div>
+                    <div style="float: right; margin-top: 30px; margin-right:-300px; font-size: 17pt;">Created On: {{post.timestamp | date : format : MM/dd/yyyy}}</div>
+                    <div style="float: right; margin-top: 70px; margin-right:-210px; font-size: 17pt;">Created By: {{post.username}}</div>
+                    <div style="margin-top: 20px; margin-right: 400px;">{{post.content}}</div>
+                </div>
+            </h3>
 		</div>
     
 	

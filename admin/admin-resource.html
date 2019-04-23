@@ -1,0 +1,82 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bloom</title>
+	<link rel="stylesheet" href="/styles/admin-resource.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body ng-app="app">
+    <header ng-controller="userDataController">
+            <div class="container">
+                <div id="branding">
+                    <img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/resources">Resources</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li ng-if="bio == 'No current user' || bio == undefined">
+                            <a id="login" href="/login"><button class="buttonhdr">Login</button></a>
+                        </li>		
+                        <div id="username" ng-if="bio != 'No current user'">
+                            <h2>
+                                {{bio.username}}
+                                <a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
+                                <a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
+                                <a href="/admin"><i class="material-icons" style="font-size:30px; vertical-align:-6px;" ng-if="bio.admin == true">verified_user</i></a>
+                            </h2>
+                        </div>	
+                        
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    
+    <div class="box" ng-controller="resourceController">
+			<h1 style="text-align: center;">Resources</h1>
+			<h3 class="announcement" ng-repeat="resource in resources | orderBy : 'category'">
+                    <div>
+                        <button type="submit" style="float: right; margin-left: 30px; margin-top: -5px;" class="button" ng-click="deleteResource(resource.id)">Delete</button>
+                        <div style="font-size: 25px; float: left;"><span style="float: left;">{{resource.category}}</span><span style="float: left; margin-left: 30px;">{{resource.title}}</span>   <span style="float: left; margin-left: 50px;">{{resource.link}}</span></div>
+                    </div>
+                </h3>
+    </div>
+    
+    <div class="bigBox">
+        <div ng-controller="resourceController" id="Form">
+            <h1>Create Resource</h1>
+            <form novalidate class="simple-form">
+                <input type="text" id="title" ng-model="newResource.title" placeholder="Title"><br>
+                <input type="text" id="link" ng-model="newResource.link" placeholder="Link"><br>
+                <select id="category" ng-model="newResource.category" placeholder="Category">
+                    <option value="" disabled selected>Category</option>
+                    <option value="All">All</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Investment">Investment</option>
+                    <option value="Writing">Writing</option>
+                    <option value="Research">Research</option>
+                    <option value="Networking">Networking</option>
+                </select><br>
+				<button type="Send" id="formButton" class="button" ng-click="createResource(newResource)">Create</button>
+            </form>
+        </div>
+    </div>
+    
+	
+	<footer>
+		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
+	</footer>
+</body>
+</html>
+
+<script src="js/app.js"></script>
+<script src="js/factories/userDataFactory.js"></script>
+<script src="js/controllers/userDataController.js"></script>
+<script src="js/factories/resourceFactory.js"></script>
+<script src="js/controllers/resourceController.js"></script>

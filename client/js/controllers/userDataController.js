@@ -8,6 +8,7 @@ angular.module('userDataModule').controller('userDataController', ['$scope','use
     $scope.test = function() {
       console.log($scope.bio.username);
     }
+    
 
     $scope.create = function() {
       userDataFactory.create($scope.user);
@@ -20,5 +21,10 @@ angular.module('userDataModule').controller('userDataController', ['$scope','use
     $scope.google = function() {
         userDataFactory.google();
     }
+
+    $scope.users = userDataFactory.getUsers().then(function(response){
+      $scope.users = response.data;
+      console.log($scope.users);
+    });
   }     
 ]);
