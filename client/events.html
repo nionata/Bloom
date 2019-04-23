@@ -41,12 +41,13 @@
 			</nav>
 		</div>
 	</header>
-	<div>
-	<h1 id="eventTitleBox" style="text-align: center; font-size: 40pt;"> Events </h1>>
-	<div class="eventCards" ng-controller="eventController">
+	<div class = "row">
+	<div class = "upcomingEvents">
+	<div id="events"><h1> Events </h1></div>
+	<!-- <div class="eventCards" ng-controller="eventController">
 		<div class="event" ng-repeat="post in events | filter:{approved:true}" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
-			<h2 id="title">{{post.eventtitle}}</h2>
-			<h3 id="infomation">
+			<h2 id="tit>le">{{post.eventtitle}}</h2>
+			<h3 id="information">
 				<div id="startDate">
 					{{post.eventstart | date : format : MM/dd/yyyy}}
 				</div>
@@ -58,8 +59,61 @@
 			<h4 id="content">{{post.eventcontent}}</h4>
 			
 		</div>
+	</div> -->
+	<div class="eventCards" >
+			<div class="event" onClick ="if(this.style.height=='250px'){this.style.height = '100';}else{this.style.height = '250';}">
+				<div class="date">
+				<h3>
+					<div id="startDate">
+						MM/dd/yyyy
+					</div>
+					<div id="endDate">
+						MM/dd/yyyy
+					</div>
+				</h3>
+				</div>
+				<div class = "information">
+					<h2>Event title</h2>
+					<h3> username</h3>
+					<h3>eventcontent</h3>
+				</div>
+			</div>
+			<div class="event" onClick ="if(this.style.height=='250px'){this.style.height = '100';}else{this.style.height = '250';}">
+				<div class="date">
+				<h3>
+					<div id="startDate">
+						MM/dd/yyyy
+					</div>
+					<div id="endDate">
+						MM/dd/yyyy
+					</div>
+				</h3>
+				</div>
+				<div class = "information">
+					<h2>Event title</h2>
+					<h3> username</h3>
+					<h3>eventcontent</h3>
+				</div>
+			</div>
+			<div class="event" onClick ="if(this.style.height=='250px'){this.style.height = '100';}else{this.style.height = '250';}">
+				<div class="date">
+				<h3>
+					<div id="startDate">
+						MM/dd/yyyy
+					</div>
+					<div id="endDate">
+						MM/dd/yyyy
+					</div>
+				</h3>
+				</div>
+				<div class = "information">
+					<h2>Event title</h2>
+					<h3> username</h3>
+					<h3>eventcontent</h3>
+				</div>
+			</div>
+		</div>
 	</div>
-
 		
 	<div class="box">
 		<h1 style="text-align: center">Suggest an Event</h1>
@@ -70,15 +124,15 @@
 				<textarea rows="10" cols="60" id="suggestEventContent" ng-model="newEvent.eventcontent" placeholder="Body"></textarea>
 				<div class="form-group" id="dates" style="display: inline-block"> 
 					<h2 style="display: inline-block;">Starting Date</h2> <input type="date"  id="suggestEventStart" ng-model="newEvent.eventstart" placeholder="Start Date (MM/DD/YYYY)">
-					<h2 style="display: inline-block; margin-left: 40px;">Ending Date</h2> <input type="date" id="suggestEventEnd" ng-model="newEvent.eventend" placeholder="End Date">
 					<button type="Send" id="sendButton" ng-click="createEvent(newEvent)">Send</button> <br>
+					<h2 style="display: inline-block;">Ending Date </h2> <input type="date" id="suggestEventEnd" ng-model="newEvent.eventend" placeholder="End Date">
 				</div>
 				
 			</form>
 		</div>
 	</div>
 </div>
-
+</column>
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
 	</footer>
