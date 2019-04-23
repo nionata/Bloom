@@ -38,11 +38,11 @@ module.exports.init = function() {
 
   //serves static files from the angular app
   app.use(express.static('client'));
-  
+
 
   // middleware
   app.use((req, res, next) => {
-     
+
       // check if user's cookie is still saved in browser and user is not set, then automatically log the user out
       if (req.cookies.user_sid && !req.session.user) {
         res.clearCookie('user_sid');
@@ -64,37 +64,30 @@ module.exports.init = function() {
       var testing = false;
 
       // check if a user is logged-in, if not, make sure they can't access the api
-      if (!req.session.user || !req.cookies.user_sid) { 
+      if (!req.session.user || !req.cookies.user_sid) {
           if(!testing && req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl) && !req.originalUrl.includes("/api/users/auth/google-auth")) {
           res.send("Missing authentication");
-            
+
           return;
         }
         //Add redirecting to bio if they are logged in and bio is empty
       }
-      
-       // check if the user is an admin
-       if(req.originalUrl.includes("/api/admin"))
-          {
-              const client = new Client({connectionString: config.db.uri,ssl: true,});
-              client.connect();
-              client.query('select admin from users where id=$1',[req.session.user_id], (err, result)  => {
-                  client.end();
-                  if(result.rows[0].admin == false)
-                  {
-                      res.send("You do not have premission to access this page");
-                  }else
-                  {
-                        next();
-                  }
-              
-              })
-          }else
-          {
-              next();
-          }
 
-      
+       // check if the user is an admin
+       if(req.originalUrl.includes("/api/admin")) {
+         const client = new Client({connectionString: config.db.uri,ssl: true,});
+         client.connect();
+         client.query('select admin from users where id=$1',[req.session.user_id], (err, result)  => {
+           client.end();
+           if(result.rows[0].admin == false) {
+             res.send("You do not have premission to access this page");
+           } else {
+             next();
+           }
+         });
+       } else {
+         next();
+       }
   });
 
   //applies the specific routers

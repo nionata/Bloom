@@ -4,6 +4,8 @@
 <script src="js/app.js"></script>
 <script src="js/factories/userDataFactory.js"></script>
 <script src="js/controllers/userDataController.js"></script>
+<script src="js/factories/resourcesFactory.js"></script>
+<script src="js/controllers/resourcesController.js"></script>
 
 <html>
 <head>
@@ -13,33 +15,33 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
-<body ng-app="app" ng-controller="userDataController">
-		<header ng-controller="userDataController">
-				<div class="container">
-					<div id="branding">
-						<img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+<body ng-app="app">
+	<header ng-controller="userDataController">
+		<div class="container">
+			<div id="branding">
+				<img src="./img/logo.png"  height="35" width="35"><h1> Bloom</h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/events">Events</a></li>
+					<li class="current"><a href="/resources">Resources</a></li>
+					<li><a href="/about">About Us</a></li>
+					<li ng-if="bio == 'No current user' || bio == undefined">
+						<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
+					</li>
+					<div id="username" ng-if="bio != 'No current user'">
+						<h2>
+							{{bio.username}}
+							<a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
+							<a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
+						</h2>
 					</div>
-					<nav>
-						<ul>
-							<li><a href="/">Home</a></li>
-							<li><a href="/events">Events</a></li>
-							<li class="current"><a href="/resources">Resources</a></li>
-							<li><a href="/about">About Us</a></li>
-							<li ng-if="bio == 'No current user' || bio == undefined">
-								<a id="login" href="/login"><button class="buttonhdr">Login</button></a>
-							</li>		
-							<div id="username" ng-if="bio != 'No current user'">
-								<h2>
-									{{bio.username}}
-									<a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
-									<a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
-								</h2>
-							</div>	
-							
-						</ul>
-					</nav>
-				</div>
-			</header>
+
+				</ul>
+			</nav>
+		</div>
+	</header>
 	<script>
 		// List all categories that he wants! And then possibly implement Angular?
 		let categories = [
@@ -68,82 +70,7 @@
 				icon: './img/categories/networking.svg'
 			},
 		]
-		let videos = [
-			{
-				name: 'General Video 1',
-				thumbnail: 'https://i.ytimg.com/vi/n-beA3gmRsM/mqdefault.jpg',
-				category: 'All', 
-				url: 'https://www.youtube.com/embed/n-beA3gmRsM'
-			},
-			{
-				name: 'Finance Video 1',
-				thumbnail: 'https://i.ytimg.com/vi/WEDIj9JBTC8/mqdefault.jpg',
-				category: 'Finance',
-				url: 'https://www.youtube.com/embed/WEDIj9JBTC8',
-			},
-			{
-				name: 'Investment Video 1',
-				thumbnail: 'https://i.ytimg.com/vi/covxjhXsCi8/mqdefault.jpg',
-				category: 'Investment',
-				url: 'https://www.youtube.com/embed/covxjhXsCi8'
-			},
-			{
-				name: 'Writing Video 1',
-				thumbnail: 'https://i.ytimg.com/vi/8E-oqahDnb8/mqdefault.jpg',
-				category: 'Writing',
-				url: 'https://www.youtube.com/embed/8E-oqahDnb8'
-			},
-			{
-				name: 'Research Video 1',
-				thumbnail: 'https://i.ytimg.com/vi/CCKHH9jjS0s/mqdefault.jpg',
-				category: 'Research',
-				url: 'https://www.youtube.com/embed/CCKHH9jjS0s'
 
-			},
-			{
-				name: 'Networking Video 1',
-				thumbnail: 'https://i.ytimg.com/vi/FAPySGLL3gg/mqdefault.jpg',
-				category: 'Networking',
-				url: 'https://www.youtube.com/embed/FAPySGLL3gg'
-
-			},
-			{
-				name: 'General Video 2',
-				thumbnail: 'https://i.ytimg.com/vi/jRcfE2xxSAw/mqdefault.jpg',
-				category: 'All',
-				url: 'https://www.youtube.com/embed/jRcfE2xxSAw'
-			},
-			{
-				name: 'Finance Video 2',
-				thumbnail: 'https://i.ytimg.com/vi/9JPCSD4rCok/mqdefault.jpg',
-				category: 'Finance',
-				url: 'https://www.youtube.com/embed/9JPCSD4rCok'
-			},
-			{
-				name: 'Investment Video 2',
-				thumbnail: 'https://i.ytimg.com/vi/wJB90G-tsgo/mqdefault.jpg',
-				category: 'Investment',
-				url: 'https://www.youtube.com/embed/wJB90G-tsgo'
-			},
-			{
-				name: 'Writing Video 2',
-				thumbnail: 'https://i.ytimg.com/vi/sjdxUiAJ0UQ/mqdefault.jpg',
-				category: 'Writing',
-				url: 'https://www.youtube.com/embed/sjdxUiAJ0UQ'
-			},
-			{
-				name: 'Research Video 2',
-				thumbnail: 'https://i.ytimg.com/vi/KvAV4ADDfHM/mqdefault.jpg',
-				category: 'Research',
-				url: 'https://www.youtube.com/embed/KvAV4ADDfHM'
-			},
-			{
-				name: 'Networking Video 2',
-				thumbnail: 'https://i.ytimg.com/vi/xFrqZjIDE44/mqdefault.jpg',
-				category: 'Networking',
-				url: 'https://www.youtube.com/embed/xFrqZjIDE44'
-			}
-		]
 		// Wait for page to load
 		$(document).ready(() => {
 				// Foreach loop
@@ -151,12 +78,20 @@
 				// Using template literals: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 				$('.categories').append(`<div class="category"><img src="${category.icon}"><span class="name">${category.name}</span></div>`)
 			}
+
 			$('.category:eq(0)').addClass('active');
+
 			let displayCategory=$('.active').find('.name').text();
 
-			for (let video of videos){
-				$('.videos').append(`<div category="${video.category}" vidSrc="${video.url}" class="video"><img src="${video.thumbnail}"><span class="vidName">${video.name}</span></div>`);
-			}
+			$(document).on("click", ".video", function(data) {
+				var element = $(this);
+				const { vidSrc, title } = element[0].attributes;
+
+				$('#myModal').toggle(true);
+				$('#modalTitle').empty().append(title.nodeValue);
+				$('#modalVideo').attr('src', vidSrc.nodeValue)
+  		});
+
 			$('.video').toggle(false);
 			if(displayCategory=="All"){
 				$('.video').toggle(true);
@@ -185,13 +120,8 @@
 				}
 			});
 
-			$('.video').click(() => {
-				var vidSrc = $(this);
-				console.log(vidSrc);
-				$('#myModal').toggle(true);  
-
-			});
 			var modal = document.getElementById('myModal');
+
 			// When the user clicks on <span> (x), close the modal
 			document.getElementsByClassName("close")[0].onclick = function() {
 				modal.style.display = "none";
@@ -203,39 +133,26 @@
 					modal.style.display = "none";
 				}
 			}
-			
 		});
 	</script>
-	<div class="container">
+	<div class="container" ng-controller="resourcesController">
 		<h3>Categories</h3>
 		<div class="categories"></div>
 		<h3>Videos</h3>
 		<div class="videos">
+			<div ng-repeat="resource in resources" category="{{ resource.category }}" vidSrc="{{ resource.link }}" title="{{ resource.title }}"" class="video">
+				<img src="{{ resource.thumbnail }}">
+				<span class="vidName">{{ resource.title }}</span>
+			</div>
 		</div>
-		<!-- <nav aria-label="...">
-		<ul style="display:flex; justify-content: center; margin-top:10px" class="pagination">
-			<li class="page-item disabled">
-			<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-			</li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item active" aria-current="page">
-			<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-			</li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item">
-			<a class="page-link" href="#">Next</a>
-			</li>
-		</ul>
-		</nav> -->
 	</div>
 	<div id="myModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			<h5>General Video 1</h5>
+			<h5 id="modalTitle"></h5>
 			<iframe width="100%" src="https://www.youtube.com/embed/n-beA3gmRsM" height="90%" id="modalVideo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 	</div>
-	  
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
 	</footer>
