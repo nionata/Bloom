@@ -37,7 +37,7 @@ router.route('/admin-event').get((req, res) => {
 
 router.route('/admin-announcement').get((req, res) => {
   if(req.session.admin){
-      res.sendFile('/admin/admin-event.html', { root: '.'});
+      res.sendFile('/admin/admin-announcement.html', { root: '.'});
       }else
       {
           res.sendFile('/client/notfound.html', { root: '.'});

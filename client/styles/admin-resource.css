@@ -159,7 +159,9 @@ footer{
     font-size: 25pt;
     margin-bottom: 20px;
 }
-.button{
+
+
+#formButton{
     background-color: #2fb497;
     font-size: 20pt;
     padding: 14px 20px;
@@ -170,9 +172,37 @@ footer{
     margin-top: 30px;
 }
 
-.button:hover {
+#formButton:hover {
     background-color: #29aa8e;
 }
-.button:active {
+#formButton:active {
     background-color: #2e7968;
+}
+
+.announcement{
+    background-color: #b8fff0;
+    word-wrap: break-word;
+    padding: 20px 20px 20px 20px;
+    margin-right: 100px;
+    margin-left: 100px;
+    height: 45px;
+    overflow:hidden;
+}
+
+.button{
+    background-color: #00bfa8;
+    font-size: 15pt;
+    padding: 14px 20px;
+    text-align: center;
+    margin-top: 5px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+}
+
+.button:hover {
+    background-color: #029786;
+}
+.button:active {
+    background-color: #007063;
 }

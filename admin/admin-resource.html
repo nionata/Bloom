@@ -40,11 +40,13 @@
     
     <div class="box" ng-controller="resourceController">
 			<h1 style="text-align: center;">Resources</h1>
-			<h3 class="resource" ng-repeat="resource in resources" style="margin-left: 10px;">
-					{{resource}} 
-					<br>
-					<button type="submit" class="button" ng-click="deleteResource(resource.id)">Delete</button> <br>
-			</h3>
+			<h3 class="announcement" ng-repeat="resource in resources | orderBy : 'category'">
+                    <div>
+                        <button type="submit" style="float: right; margin-left: 30px; margin-top: -5px;" class="button" ng-click="deleteEvent(unevent.eventid)">Delete</button>
+                        <div style="font-size: 30px;"><span style="margin-right: 150px;">{{resource.category}}</span><span style="margin-right: 300px;">{{resource.title}}</span>   <span>{{resource.link}}</span></div>
+                        <div style="float: right; margin-top: 70px; margin-right:-280px; font-size: 17pt;">Created On: {{unevent.eventstart | date : format : MM/dd/yyyy}}</div>
+                    </div>
+                </h3>
     </div>
     
     <div class="bigBox">
@@ -61,7 +63,7 @@
                     <option value="Research">Research</option>
                     <option value="Networking">Networking</option>
                 </select><br>
-				<button type="Send" class="button" ng-click="createResource(newResource)">Create</button>
+				<button type="Send" id="formButton" class="button" ng-click="createResource(newResource)">Create</button>
             </form>
         </div>
     </div>
