@@ -9,7 +9,7 @@ angular.module('userDataModule', []).factory('userDataFactory', function($http, 
       return $http.post('/api/users/register', user).success(function(data, status, headers, config) {
           // if the response is data is success then redirect to the login otherwise send a message
           if(data instanceof Object) {
-            $window.location=('login');
+            $window.location=('bio');
           } else {
             alert(data);
           }

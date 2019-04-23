@@ -17,6 +17,15 @@ router.route('/register').get((req, res) => {
   res.sendFile('/client/register.html', { root: '.'});
 });
 
+router.route('/anaylics').get((req, res) => {
+    if(req.session.admin){
+        res.sendFile('/admin/badmin-anayltics.html', { root: '.'});
+        }else
+        {
+            res.sendFile('/client/notfound.html', { root: '.'});
+        }
+});
+
 router.route('/404').get((req, res) => {
   res.sendFile('/client/notfound.html', { root: '.'});
 });
@@ -38,7 +47,11 @@ router.route('/events').get((req, res) => {
 });
 
 router.route('/profile').get((req, res) => {
-  res.sendFile('/client/profile.html', { root: '.'});
+  res.sendFile('/client/bio.html', { root: '.'});
+});
+
+router.route('/bio').get((req, res) => {
+  res.sendFile('/client/bio.html', { root: '.'});
 });
 
 router.route('/announcements').get((req, res) => {
@@ -47,6 +60,26 @@ router.route('/announcements').get((req, res) => {
 
 router.route('/admin').get((req, res) => {
   res.sendFile('/client/admin.html', { root: '.'});
+});
+
+router.route('/admin-dash').get((req, res) => {
+  res.sendFile('/client/admin-dash.html', { root: '.'});
+});
+
+router.route('/admin-event').get((req, res) => {
+  res.sendFile('/client/admin-event.html', { root: '.'});
+});
+
+router.route('/admin-announcement').get((req, res) => {
+  res.sendFile('/client/admin-announcement.html', { root: '.'});
+});
+
+router.route('/admin-anayltics').get((req, res) => {
+  res.sendFile('/client/admin-anayltics.html', { root: '.'});
+});
+
+router.route('/admin-controls').get((req, res) => {
+  res.sendFile('/client/admin-controls.html', { root: '.'});
 });
 
 

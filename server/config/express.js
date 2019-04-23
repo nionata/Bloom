@@ -1,3 +1,4 @@
+const { Client } = require('pg');
 var path = require('path'),
     express = require('express'),
     morgan = require('morgan'),
@@ -36,9 +37,11 @@ module.exports.init = function() {
 
   //serves static files from the angular app
   app.use(express.static('client'));
+  
 
   // middleware
   app.use((req, res, next) => {
+     
       // check if user's cookie is still saved in browser and user is not set, then automatically log the user out
       if (req.cookies.user_sid && !req.session.user) {
         res.clearCookie('user_sid');
@@ -46,6 +49,7 @@ module.exports.init = function() {
 
       //Any api endpoint not in this list will not be accessable unless you are authenticated
       var whiteListedEndpoints = [
+          "/api/admin/",
         "/api/users/login",
         "/api/users/register",
         "/api/users/auth/google",
@@ -59,16 +63,36 @@ module.exports.init = function() {
       var testing = false;
 
       // check if a user is logged-in, if not, make sure they can't access the api
-      if (!req.session.user || !req.cookies.user_sid) {
-        if(!testing && req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl) && !req.originalUrl.includes("/api/users/auth/google-auth")) {
+      if (!req.session.user || !req.cookies.user_sid) { 
+          if(!testing && req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl) && !req.originalUrl.includes("/api/users/auth/google-auth")) {
           res.send("Missing authentication");
-          return;                                                                                                                                                         
+          return;                                                                                                                                     
         }
-
         //Add redirecting to bio if they are logged in and bio is empty
       }
+      
+       // check if the user is an admin
+       if(req.originalUrl.includes("/api/admin"))
+          {
+              const client = new Client({connectionString: config.db.uri,ssl: true,});
+              client.connect();
+              client.query('select admin from users where id=$1',[req.session.user_id], (err, result)  => {
+                  client.end();
+                  if(result.rows[0].admin == false)
+                  {
+                      res.send("You do not have premission to access this page");
+                  }else
+                  {
+                        next();
+                  }
+              
+              })
+          }else
+          {
+              next();
+          }
 
-      next();
+      
   });
 
   //applies page router
@@ -77,6 +101,11 @@ module.exports.init = function() {
   app.use('/api/events', eventsRouter);
   app.use('/api/announcements', announcementsRouter);
   app.use('/api/admin', adminRouter);
+  
 
+/*redirects all other routes to 404 error page. When adding more routes, add them before this comment.*/
+  app.get('/*', function(req, res){
+    res.sendFile(path.resolve("client/notfound.html"));
+  });
   return app;
 };
