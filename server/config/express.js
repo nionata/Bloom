@@ -67,6 +67,7 @@ module.exports.init = function() {
       if (!req.session.user || !req.cookies.user_sid) { 
           if(!testing && req.originalUrl.includes("/api") && !whiteListedEndpoints.includes(req.originalUrl) && !req.originalUrl.includes("/api/users/auth/google-auth")) {
           res.send("Missing authentication");
+            
           return;
         }
         //Add redirecting to bio if they are logged in and bio is empty
