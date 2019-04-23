@@ -39,24 +39,34 @@
         </header>
 
     <div class="box" ng-controller="eventController">
-		<h1 style="text-align: center;">Unapproved Events</h1>
-		<h3 class="announcement" ng-repeat="unevent in events | filter:{approved:false}" style="margin-left: 10px;">
-			{{unevent}}
-			<br>
-			<button type="submit" class="button" ng-click="approveEvent(unevent.eventid)">Approve</button> <br>
-			<button type="submit" class="button" ng-click="deleteEvent(unevent.eventid)">Delete</button> <br>
+		<h1 style="text-align: center; font-size: 50px;">Unapproved Events</h1>
+        <h3 class="announcement" ng-repeat="unevent in events | orderBy : 'date_created' | filter:{approved:false}" onClick ="if(this.style.height=='200px'){this.style.height = '50';}else{this.style.height = '200';}">
+            <div>
+                <button type="submit" style="float: right; margin-left: 30px; margin-top: -5px;" class="button" ng-click="deleteEvent(unevent.eventid)">Delete</button>
+                <button type="submit" style="float: right; margin-top: -5px;" class="button" ng-click="approveEvent(unevent.eventid)">Approve</button>
+                <div style="font-size: 30px;">{{unevent.eventtitle}}</div>
+                <div style="float: right; margin-top: 20px; margin-right:-300px; font-size: 17pt;">Starting Date: {{unevent.eventstart | date : format : MM/dd/yyyy}}</div>
+                <div style="float: right; margin-top: 45px; margin-right:-290px; font-size: 17pt;">Ending Date:   {{unevent.eventend | date : format : MM/dd/yyyy}}</div>
+                <div style="float: right; margin-top: 70px; margin-right:-280px; font-size: 17pt;">Created On: {{unevent.eventstart | date : format : MM/dd/yyyy}}</div>
+                <div style="margin-top: 20px; margin-right: 400px;">{{unevent.eventcontent}}</div>
+            </div>
 		</h3>
 
 
-	</div>
-
+    </div>
+    </br>
+    </br>
 	<div class="box" ng-controller="eventController">
-		<h1 style="text-align: center;">Approved Events</h1>
-		<h3 class="announcement" ng-repeat="apevent in events | filter:{approved:true}" style="margin-left: 10px;">
-			{{apevent}} 
-			<br>
-			<button type="submit" class="button" ng-click="approveEvent(apevent.eventid)">Approve</button> <br>
-			<button type="submit" class="button" ng-click="deleteEvent(apevent.eventid)">Delete</button> <br>
+		<h1 style="text-align: center; font-size: 50px;">Approved Events</h1>
+		<h3 class="announcement" ng-repeat="apevent in events | orderBy : 'date_created' | filter:{approved:true}" onClick ="if(this.style.height=='200px'){this.style.height = '50';}else{this.style.height = '200';}">
+            <div>
+                <button type="submit" style="float: right; margin-left: 30px; margin-top: -5px;" class="button" ng-click="deleteEvent(apevent.eventid)">Delete</button>
+                <div style="font-size: 30px;">{{apevent.eventtitle}}</div>
+                <div style="float: right; margin-top: 20px; margin-right:-150px; font-size: 17pt;">Starting Date: {{apevent.eventstart | date : format : MM/dd/yyyy}}</div>
+                <div style="float: right; margin-top: 45px; margin-right:-290px; font-size: 17pt;">Ending Date:   {{apevent.eventend | date : format : MM/dd/yyyy}}</div>
+                <div style="float: right; margin-top: 70px; margin-right:-280px; font-size: 17pt;">Created On: {{apevent.eventstart | date : format : MM/dd/yyyy}}</div>
+                <div style="margin-top: 20px; margin-right: 400px;">{{apevent.eventcontent}}</div>
+            </div>	
 		</h3>
 
 
