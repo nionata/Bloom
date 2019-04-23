@@ -1,0 +1,92 @@
+<script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+<script src="js/app.js"></script>
+
+<script src="js/factories/bioDataFactory.js"></script>
+<script src="js/controllers/bioDataController.js"></script>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> Login UI </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="./styles/bio.css">
+    
+</head>
+
+<body ng-app="app" ng-controller="bioDataController">
+    <hr class="">
+    <div class="container target">
+        <div class="row">
+            <div class="col-sm-10"  ng-show = "bio == null">
+                <h1 style="font-size: 56;" class="">Welcome to Your Profile!</h1>
+            </div>
+            <div class="col-sm-10"  ng-show = "bio != null">
+                <h1 style="font-size: 56;" class="">Welcome Back, {{bio.first_name}}!</h1>
+            </div>
+            <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image"
+                        class="img-circle img-responsive" src="img/default_avatar.png"></a>
+
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+
+                <ul class="list-group">
+                    <li class="list-group-item text-muted">Actions <i class="fa fa-dashboard fa-1x"></i>
+
+                    </li>
+                    <li class="list-group-item text-left"><p><a href="#updateUserBio" rel="modal:open" id = "showModal">Update Your Bio!</a></p></li>
+                    <li class="list-group-item text-left"><p><a href="home.html" >Go Back Home!</a></p></li>
+                    
+                </ul>
+            </div>
+
+      <div id="updateUserBio" class="modal " style = "height: 450px; max-height: 100%; width: 700px; max-width: 100%;">                  
+                    
+                            <form class="form">
+                                    <input type="text" name="" ng-model="updatedBio.firstName" placeholder = "What is your first name?" required="required">
+                                    <input type="text" name="" ng-model="updatedBio.lastName" placeholder = "What is your last name?" required="required">
+                                    <input type="text" name="" ng-model="updatedBio.affiliation" placeholder = "What agency are you affiliated with?" required="required">
+                                    <input type="text" name="" ng-model="updatedBio.bio" placeholder = "In a sentence, how do you plan to help future enterpreneurs?" required="required">
+                                    <input type="submit" name="" ng-click="update()" value="Submit">
+                                </form>
+        
+              
+                </div>
+            <div class="col-sm-9" style="" contenteditable="false">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Your Bio</div>
+                    <div class="panel-body"> {{bio.bio}}</div>
+                </div>
+                <div class="panel panel-default target">
+                    <div class="panel-heading" contenteditable="false">Your Profile</div>
+                  <div class="panel-body" ng-show = "bio != null">
+                       <p style="text-align: left">Your First Name: {{bio.first_name}}</p>
+                       <p style="text-align: left;">Your Last Name: {{bio.last_name}}</p>
+                       <p style="text-align: left;">Your affiliated Agency: {{bio.affiliation}}</p>
+                    </div>
+                      
+                    <div class="panel-body" ng-show ="bio == null">
+                        <form class="form">
+                            <p style="text-align: center;">What is your first name?</p>
+                            <input type="text" name="" ng-model="newBio.firstName" placeholder = "First Name" required="required">
+                            <p style="text-align: center;">What is your last name?</p>
+                            <input type="text" name="" ng-model="newBio.lastName" placeholder = "Last Name" required="required">
+                            <p style="text-align: center;">What agency are you affiliated with?</p>
+                            <input type="text" name="" ng-model="newBio.affiliation" placeholder = "Affiliation" required="required">
+                            <p style="text-align: center;">In a sentence, how do you plan to help future enterpreneurs?</p>
+                            <input type="text" name="" ng-model="newBio.bio" placeholder = "How will you help others?" required="required">
+                            <input type="submit" name="" ng-click="create()" value="Submit">
+                        </form>
+                    </div>
+             </div>
+
+                </div>
+            </div>
+</body>
+</html>
