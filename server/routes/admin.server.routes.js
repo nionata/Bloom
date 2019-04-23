@@ -5,5 +5,8 @@ var admin = require('../controllers/admin.server.controller.js'),
 
 //The ':' specifies a URL parameter.
 router.route('/anaylics').post(admin.getAll);
+router.route('/ban/:id').get(admin.Ban);
+router.route('/Promote/:id').get(admin.Promote);
+router.route('/Demote/:id').get(admin.Demote);
 
 module.exports = router;

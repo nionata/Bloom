@@ -17,7 +17,11 @@ router.route('/register').get((req, res) => {
   res.sendFile('/client/register.html', { root: '.'});
 });
 
+<<<<<<< HEAD
 router.route('/admin').get((req, res) => {
+=======
+router.route('/analytics').get((req, res) => {
+>>>>>>> origin/login
     if(req.session.admin){
         res.sendFile('/admin/admin.html', { root: '.'});
         }else

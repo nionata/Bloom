@@ -70,29 +70,22 @@ module.exports.init = function() {
         }
         //Add redirecting to bio if they are logged in and bio is empty
       }
-      
+      console.log(req.session.admin);
        // check if the user is an admin
        if(req.originalUrl.includes("/api/admin"))
           {
-              const client = new Client({connectionString: config.db.uri,ssl: true,});
-              client.connect();
-              client.query('select admin from users where id=$1',[req.session.user_id], (err, result)  => {
-                  client.end();
-                  if(result.rows[0].admin == false)
+                  if(req.session.admin != true)
                   {
                       res.send("You do not have premission to access this page");
                   }else
                   {
                         next();
                   }
-              
-              })
-          }else
+              }
+          else
           {
               next();
           }
-
-      
   });
 
   //applies page router
