@@ -48,8 +48,8 @@
 
 	<div class="eventCards" ng-controller="eventController">
 		<div class="event" ng-repeat="post in events | filter:{approved:true}" onClick ="if(this.style.height=='250'){this.style.height = '100';}else{this.style.height = '250';}">
-			<h2 id="tit>le">{{post.eventtitle}}</h2>
-			<h3 id="information">
+		<div class = date>	
+			<h3>
 				<div id="startDate">
 					{{post.eventstart | date : format : MM/dd/yyyy}}
 				</div>
@@ -57,9 +57,13 @@
 					{{post.eventend | date : format : MM/dd/yyyy}}
 				</div>
 			</h3>
+		</div>
+		<div class = "information">
+			<h2>{{post.eventtitle}}</h2>
 			<h3 id="postUsername" ng-repeat="user in users | filter:{'id': post.userid}:true">{{user.username}}</h3>
 			<h3 id="content">{{post.eventcontent}}</h3>
-			
+		</div>
+		
 		</div>
 	</div>
 
