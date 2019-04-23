@@ -40,15 +40,14 @@
 				</ul>
 			</nav>
 		</div>
-    </header>
-	<h1 style="margin-left: 20px; text-align: center; font-size: 40pt">Announcements</h1>
-
+	</header>
+	<h1 id="head">Announcements</h1>
 	<script>
 		var expand = false;
 		function toggle(){
 			expand = !expand;
 			if(expand){
-				this.style.height = "400px";
+				this.style.height = "250px";
 			}
 			else{
 				this.style.height = "100px";
@@ -56,11 +55,12 @@
 
 		}
 	</script>
-
-	<div class="announcementForum" ng-controller="announcementController">
-		<div class="announcement" ng-repeat="post in approvedAnnouncements" onClick ="if(this.style.height=='400px'){this.style.height = '100';}else{this.style.height = '400';}">
+	<div class = "row">
+	<div class="announcementForum" >
+		<div id="annc"><h1> Announcements </h1></div>
+		<div class="announcement" ng-repeat="post in approvedAnnouncements" onClick ="if(this.style.height=='250px'){this.style.height = '100';}else{this.style.height = '250';}">
 			<h2 id="title">{{post.title}}</h2>
-			<h3 id="infomation">
+			<h3 id="information">
 				<div>
 					{{post.username}}
 				</div>
@@ -68,7 +68,7 @@
 					{{post.timestamp.slice(0, 10) | date : format : MM/dd/yyyy}}
 				</div>
 			</h3>
-			<h4 id="content">{{post.content}}</h4>
+			<h3 id="content">{{post.content}}</h3>
 		</div>
 	</div>
 
@@ -83,7 +83,8 @@
 
             </form>
         </div>
-    </div>
+	</div>
+	</div>
 
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
