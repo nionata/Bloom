@@ -115,7 +115,7 @@ header a:hover{
 
 footer{
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 60px;
     color: white;
     background-color: #1fd3ac;
     text-align: center;
@@ -134,7 +134,7 @@ footer{
     width: 700px;
     display: inline-block;
     height: 470px;
-    
+    margin-top: 60px;
 }
 .bigBox{
     text-align: center;
@@ -153,6 +153,7 @@ footer{
     width: 500px;
     font-size: 25pt;
     margin-bottom: 20px;
+    color: gray;
 }
 #description{
     width: 500px;
