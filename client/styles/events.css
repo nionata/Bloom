@@ -4,6 +4,14 @@ body {
     margin:0;
     background-color: white
 }
+h1{
+    font-size: 15px;
+}
+body h1{
+    margin: 0;
+    text-align: center; 
+    font-size: 25px;
+}
 
 /* Global */
 .container{
@@ -56,7 +64,7 @@ header{
     padding-top: 15px;
     min-height: 70px;
     border-bottom: #00bfa8 4px solid;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 header a{
@@ -125,60 +133,82 @@ footer{
     text-align: center;
 }
 
+.row {  
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.upcomingEvents{
+    margin-left: 3%;
+    flex: 44%;
+}
+
+.upcomingEvents #events{
+    background: white;
+    border: #48af99 2px solid;
+    width: 100%
+}
 .eventCards{
-    margin-left: 5%;
     width:100%;
 }
 .event {
-    width: 90%;
+    width: 100%;
     height: 100px;
-    margin-top: 20px;
     font-size:15px;
     font-family:Tahoma; 
-    padding-left:15px; 
-    background-color: #7affe2;
+    background: white;
+    border: #48af99 2px solid;    
     overflow:hidden;
+    display: grid;
+    grid-template-columns:30% 30% 30%;
+    grid-template-rows: auto auto; 
+    grid-column-gap: 20px;
+    grid-row-gap: 5px;
+    justify-content: left;
+    grid-template-areas: 
+    "d i i";
 }
 
-.event:hover{
-    background-color: #72f0d5;
+.date{
+    grid-area: d;
+    text-align: center;
 }
 
-#title{
-    margin-top: 30px;
-    margin-left: 5px;
-    word-wrap: break-word;
+.information {
+    grid-area: i;
+    text-align: left;
 }
-
-
-#infomation{
-    float: right;
-    padding-right: 20px;
-    padding-left: 10px;
-    margin-top: -60px;
-}
-
-#content{
+.information h2{
+    font-size: 20px;
     margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 40px;
-    font-size: 15pt;
-    word-wrap: break-word;
+    margin-bottom:5px;
+}
+.information h3{
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom:20px;
+}
+.event:hover{
+    background-color: #eafffa;
 }
 
 #postUsername{
     margin-left: 20px;
-    margin-top: 40px;
+    margin-top: 5px;
 }
 
 .box{
-    margin-top: 3%;
+    flex: 44%;
     padding-top: 20px;
     margin-bottom: 60px;
     height: 680px;
     background-color: #befff1;
     width: 90%;
-    margin-left: 5%;
+    margin-left: 2%;
+    margin-right: 3%;
 }
 #eventTitleBox{
     margin-bottom:10px;
@@ -197,14 +227,14 @@ form{
     border: 1px solid #ccc;
     box-sizing: border-box;
     margin-top: 20px;
-    font-size: 35px;
+    font-size: 20px;
 }
 
 #suggestEventContent{
     width: 100%;
     padding: 12px 20px;
     height: 400px;
-    font-size: 26px;
+    font-size: 20px;
     border: 1px solid #ccc;
     box-sizing: border-box;
     margin-top: 20px;
@@ -217,27 +247,27 @@ form{
 }
 
 #suggestEventStart{
-    width: 20%;
+    width: 30%;
     height: 50px;
     padding: 12px 20px;
     border: 1px solid #ccc;
     box-sizing: border-box;
     margin-top: 20px;
-    margin-left: 20px;
-    font-size: 20px;
+    margin-left: 15px;
+    font-size: 15px;
     display: inline-block;
 }
 
 #suggestEventEnd{
-    width: 20%;
+    width: 30%;
     height: 50px;
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    margin-top: 20px;
-    margin-left: 20px;
-    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 22px;
+    font-size: 15px;
 }
 
 #sendButton{
@@ -250,6 +280,12 @@ form{
     width: 200px;
     margin-left: 5%;
     display: inline-block;
+    align-content: right;
+}
+.form-group h2{
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom:8px;
 }
 
 #sendButton:hover {
