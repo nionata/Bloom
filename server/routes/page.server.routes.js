@@ -53,6 +53,15 @@ router.route('/admin-controls').get((req, res) => {
       }
 });
 
+router.route('/admin-resource').get((req, res) => {
+  if(req.session.admin){
+      res.sendFile('/admin/admin-resource.html', { root: '.'});
+      }else
+      {
+          res.sendFile('/client/notfound.html', { root: '.'});
+      }
+});
+
 router.route('/anaylics').get((req, res) => {
   if(req.session.admin){
       res.sendFile('/admin/badmin-anayltics.html', { root: '.'});

@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Bloom</title>
-	<link rel="stylesheet" href="/styles/admin-dash.css">
+	<link rel="stylesheet" href="/styles/admin-resource.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body ng-app="app">
@@ -18,7 +18,7 @@
                 <nav>
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li class="current"><a href="/events">Events</a></li>
+                        <li><a href="/events">Events</a></li>
                         <li><a href="/resources">Resources</a></li>
                         <li><a href="/about">About Us</a></li>
                         <li ng-if="bio == 'No current user' || bio == undefined">
@@ -29,7 +29,7 @@
                                 {{bio.username}}
                                 <a href="/profile"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">person</i></a>
                                 <a href="/announcements"><i class="material-icons" style="font-size:30px; vertical-align:-6px;">notifications</i></a>
-                                <a class="current" href="/admin"><i class="material-icons" style="font-size:30px; vertical-align:-6px;" ng-if="bio.admin == true">verified_user</i></a>
+                                <a href="/admin"><i class="material-icons" style="font-size:30px; vertical-align:-6px;" ng-if="bio.admin == true">verified_user</i></a>
                             </h2>
                         </div>	
                         
@@ -37,14 +37,35 @@
                 </nav>
             </div>
         </header>
-        <h1 style="margin-left: 20px; margin-top: 50px; text-align: center; font-size: 35pt">Admin Dashboard</h1>
-    <div style="text-align: center; background-color: #63fad9; margin-left: 50px; margin-right: 50px; margin-top: 50px;">
-        <a href="/admin-event" div class="button">Events</a>
-        <a href="/admin-announcement" div class="button">Announcements</a>
-        <a href="/anaylics" div class="button">Anayltics</a>
-        <a href="/admin-controls" div class="button">Admin Control</a>
-        <a href="/admin-resource" div class="button">Resources</a>
+    
+    <div class="box" ng-controller="resourceController">
+			<h1 style="text-align: center;">Resources</h1>
+			<h3 class="resource" ng-repeat="resource in resources" style="margin-left: 10px;">
+					{{resource}} 
+					<br>
+					<button type="submit" class="button" ng-click="deleteAnnouncement(resource.id)">Delete</button> <br>
+			</h3>
     </div>
+    
+    <div class="bigBox">
+        <div ng-controller="resourceController" id="Form">
+            <h1>Create Resource</h1>
+            <form novalidate class="simple-form">
+                <input type="text" id="title" ng-model="newResource.title" placeholder="Title"><br>
+                <input type="text" id="link" ng-model="newResource.link" placeholder="Link"><br>
+                <select id="cat">
+                    <option value="Finance">Finance</option>
+                    <option value="Investment">Investment</option>
+                    <option value="Writing">Writing</option>
+                    <option value="Research">Research</option>
+                    <option value="Networking">Networking</option>
+                </select><br>
+				<button type="Send" class="button" ng-click="createResource(newResource)">Create</button>
+            </form>
+        </div>
+    </div>
+    
+	
 	<footer>
 		<p>Entrepreneurship Empowerment, Michael H. Morris</p>
 	</footer>
@@ -54,7 +75,5 @@
 <script src="js/app.js"></script>
 <script src="js/factories/userDataFactory.js"></script>
 <script src="js/controllers/userDataController.js"></script>
-<script src="js/factories/announcementFactory.js"></script>
-<script src="js/controllers/announcementController.js"></script>
-<script src="js/factories/eventFactory.js"></script>
-<script src="js/controllers/eventController.js"></script>
+<script src="js/factories/resourceFactory.js"></script>
+<script src="js/controllers/resourceController.js"></script>

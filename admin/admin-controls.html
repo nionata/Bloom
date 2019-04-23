@@ -43,12 +43,13 @@
     <div class="userTable" ng-controller="userDataController">
         <div class="user" ng-repeat="user in users" style="margin-left: 40px; margin-right: 40px;">
             <button type="submit" class="button" ng-click="banUser(user.id)">Ban User</button>
+            <button type="submit" class="button" ng-href="mailto:{{user.email}}">Email User</button>
             <div ng-if="user.admin == false">
                 <button type="submit" class="button" ng-click="promote(post.id)"> Promote To Admin </button>
             </div>
             <div ng-if="user.admin == true">
-                    <button type="submit" class="button" ng-click="demote(post.id)"> Demote Admin </button>
-                </div>
+                <button type="submit" class="button" ng-click="demote(post.id)"> Demote Admin </button>
+            </div>
             <div style="font-size: 17px">
                 Username: {{user.username}} </br>
                 Id: {{user.id}} </br>

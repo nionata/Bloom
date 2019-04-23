@@ -1,0 +1,172 @@
+body {
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding:0;
+    margin:0;
+    background-color: white
+}
+
+/* Global */
+.container{
+    width: 95%;
+    margin:auto;
+    overflow:hidden;
+    color: #1fd3ac;
+}
+ul{
+    margin: 0;
+    padding: 0;
+
+}
+.buttonhdr {
+    background: white;
+    border: 0;
+    color: #1fd3ac;
+    height: 38px;
+    width: 120px;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: -6px;
+    margin-right: 30px;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #eeeeee;
+}
+
+.button_1 {
+    height: 38px;
+    background: white;
+    border: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #1fd3ac;
+}
+
+
+header{
+    background: #1fd3ac;
+    color: white;
+    padding-top: 15px;
+    min-height: 70px;
+    border-bottom: #1fd3ac 4px solid;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+header li{
+
+    display:inline;
+    padding: 5px 20px 0 20px;
+}
+
+header #branding{
+    margin-top:5px;
+    margin-left:40px;
+    float: left;
+
+}
+header #branding h1{
+    margin:0;
+    display:inline;
+    color:white;
+}
+
+header #branding img{
+    float: left;
+    margin-top: 5px;
+    margin-right: 20px;
+    margin-left: -20px;
+}
+
+header nav{
+    margin-top: 12px;
+    text-align: center;
+}
+
+header .highlight{
+    font-weight: bold;
+}
+
+header .current a{
+    color: #eeeeee;
+}
+
+header a:hover{
+    color: #eeeeee;
+    text-decoration: none;
+}
+
+#username {
+    margin-right: 50px;
+    margin-top: -20px;
+    margin-right: 10px;
+    float: right;
+    color: white;
+}
+
+footer{
+    padding: 20px;
+    margin-top: 20px;
+    color: white;
+    background-color: #1fd3ac;
+    text-align: center;
+}
+
+
+.resource{
+    background-color: #b8fff0;
+    word-wrap: break-word;
+    padding: 20px 20px 20px 20px;
+    margin-top: 20px;
+}
+
+#Form{
+    background-color: #50f6d2;
+    width: 700px;
+    display: inline-block;
+    height: 370px;
+    
+}
+.bigBox{
+    text-align: center;
+}
+#title{
+    width: 500px;
+    font-size: 25pt;
+    margin-bottom: 20px;
+}
+#link{
+    width: 500px;
+    font-size: 25pt;
+    margin-bottom: 20px;
+}
+#cat{
+    width: 500px;
+    font-size: 25pt;
+}
+.button{
+    background-color: #2fb497;
+    font-size: 20pt;
+    padding: 14px 20px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    width: 300px;
+    margin-top: 30px;
+}
+
+.button:hover {
+    background-color: #29aa8e;
+}
+.button:active {
+    background-color: #2e7968;
+}
