@@ -6,6 +6,6 @@ angular.module('adminModule', []);
 angular.module('zingchart-angularjs', []);
 angular.module('bioDataModule', []);
 angular.module('resourcesModule', []);
-
+angular.module('resourceModule', []);
 /* register the application and inject all the necessary dependencies */
-var app = angular.module('app', ['zingchart-angularjs', 'announcementModule', 'eventModule', 'userDataModule', 'adminModule', 'bioDataModule', 'resourcesModule']);
+var app = angular.module('app', ['zingchart-angularjs', 'announcementModule', 'eventModule', 'userDataModule', 'adminModule', 'bioDataModule', 'resourcesModule', 'resourceModule']);
