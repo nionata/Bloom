@@ -5,7 +5,11 @@ angular.module('resourceModule').controller('resourceController', ['$scope','res
     });
 
     $scope.createResource = function(newResource) { 
-      $("#suggestEventTitle").val('');
+      $("#title").val('');
+      $("#link").val('');
+      $("#category").val('');
+      $("#description").val('');
+      console.log(newResource);
       resourceFactory.createResource(newResource);
     }
 

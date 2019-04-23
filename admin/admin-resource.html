@@ -43,7 +43,7 @@
 			<h3 class="resource" ng-repeat="resource in resources" style="margin-left: 10px;">
 					{{resource}} 
 					<br>
-					<button type="submit" class="button" ng-click="deleteAnnouncement(resource.id)">Delete</button> <br>
+					<button type="submit" class="button" ng-click="deleteResource(resource.id)">Delete</button> <br>
 			</h3>
     </div>
     
@@ -53,13 +53,8 @@
             <form novalidate class="simple-form">
                 <input type="text" id="title" ng-model="newResource.title" placeholder="Title"><br>
                 <input type="text" id="link" ng-model="newResource.link" placeholder="Link"><br>
-                <select id="cat">
-                    <option value="Finance">Finance</option>
-                    <option value="Investment">Investment</option>
-                    <option value="Writing">Writing</option>
-                    <option value="Research">Research</option>
-                    <option value="Networking">Networking</option>
-                </select><br>
+                <input type="text" id="description" ng-model="newResource.description" placeholder="Description"><br>
+                <input type="text" id="category" ng-model="newResource.category" placeholder="Category"><br>
 				<button type="Send" class="button" ng-click="createResource(newResource)">Create</button>
             </form>
         </div>

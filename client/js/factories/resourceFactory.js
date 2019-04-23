@@ -5,12 +5,12 @@ angular.module('resourceModule', []).factory('resourceFactory', function($http, 
       },
   
       createResource: function(newResource) {
-          return $http.post('/api/resources', newResource);
+          return $http.post('/api/resources/create', newResource);
         },
   
       deleteResource: function(resourceID) {
           return $http.delete('/api/resources/' + resourceID);
-        },
+        }
   
     }
   
