@@ -47,7 +47,7 @@
 	<div id="events"><h1> Upcoming Events </h1></div>
 
 	<div class="eventCards" ng-controller="eventController">
-		<div class="event" ng-repeat="post in events | filter:{approved:true}" onClick ="if(this.style.height=='250'){this.style.height = '100';}else{this.style.height = '250';}">
+		<div class="event" ng-repeat="post in events | filter:{approved:true}" onClick ="if(this.style.height=='250px'){this.style.height = '100';}else{this.style.height = '250';}">
 		<div class = date>	
 			<h3>
 				<div id="startDate">
