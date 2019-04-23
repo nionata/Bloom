@@ -18,57 +18,51 @@ router.route('/register').get((req, res) => {
 });
 
 router.route('/admin').get((req, res) => {
-    if(req.session.admin){
-        res.sendFile('/admin/admin.html', { root: '.'});
-        }else
-        {
-            res.sendFile('/client/notfound.html', { root: '.'});
-        }
+    if(req.session.admin) {
+      res.sendFile('/admin/admin.html', { root: '.'});
+    } else {
+      res.redirect('/404');
+    }
 });
 
 router.route('/admin-event').get((req, res) => {
   if(req.session.admin){
-      res.sendFile('/admin/admin-event.html', { root: '.'});
-      }else
-      {
-          res.sendFile('/client/notfound.html', { root: '.'});
-      }
+    res.sendFile('/admin/admin-event.html', { root: '.'});
+  } else {
+    res.redirect('/404');
+  }
 });
 
 router.route('/admin-announcement').get((req, res) => {
   if(req.session.admin){
-      res.sendFile('/admin/admin-announcement.html', { root: '.'});
-      }else
-      {
-          res.sendFile('/client/notfound.html', { root: '.'});
-      }
+    res.sendFile('/admin/admin-announcement.html', { root: '.'});
+  } else {
+    res.redirect('/404');
+  }
 });
 
 router.route('/admin-controls').get((req, res) => {
   if(req.session.admin){
-      res.sendFile('/admin/admin-controls.html', { root: '.'});
-      }else
-      {
-          res.sendFile('/client/notfound.html', { root: '.'});
-      }
+    res.sendFile('/admin/admin-controls.html', { root: '.'});
+  } else {
+    res.redirect('/404');
+  }
 });
 
 router.route('/admin-resource').get((req, res) => {
   if(req.session.admin){
-      res.sendFile('/admin/admin-resource.html', { root: '.'});
-      }else
-      {
-          res.sendFile('/client/notfound.html', { root: '.'});
-      }
+    res.sendFile('/admin/admin-resource.html', { root: '.'});
+  } else {
+    res.redirect('/404');
+  }
 });
 
-router.route('/anaylics').get((req, res) => {
+router.route('/admin-analytics').get((req, res) => {
   if(req.session.admin){
-      res.sendFile('/admin/badmin-anayltics.html', { root: '.'});
-      }else
-      {
-          res.sendFile('/client/notfound.html', { root: '.'});
-      }
+    res.sendFile('/admin/badmin-anayltics.html', { root: '.'});
+  } else {
+    res.redirect('/404');
+  }
 });
 
 router.route('/404').get((req, res) => {
