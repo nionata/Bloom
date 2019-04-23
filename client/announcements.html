@@ -56,7 +56,7 @@
 		}
 	</script>
 	<div class = "row">
-	<div class="announcementForum" >
+	<div class="announcementForum" ng-controller="announcementController">
 		<div id="annc"><h1> Announcements </h1></div>
 		<div class="announcement" ng-repeat="post in approvedAnnouncements" onClick ="if(this.style.height=='250px'){this.style.height = '100';}else{this.style.height = '250';}">
 			<h2 id="title">{{post.title}}</h2>
